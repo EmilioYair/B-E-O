@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>B E O - Sobre Nosotros</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#117278",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112021",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-[#0e1a1b] dark:text-white transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Top Navigation Bar -->
+            <%- include('../../Partials/header') %>
+
+                <main class="flex-1">
+                    <!-- Hero Section: Nuestra Historia -->
+                    <div class="max-w-[1200px] mx-auto px-4 sm:px-10">
+                        <div class="@container">
+                            <div class="flex flex-col gap-6 px-4 py-16 @[480px]:gap-12 @[864px]:flex-row items-center">
+                                <div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-xl shadow-lg @[864px]:w-1/2"
+                                    data-alt="Modern marketplace in San Juan del Río city square"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5DMAj9-01S88WIU6PKENO2oGQ4ehTY8nPuj6DZ9xMNeNCyw5LW0INPaeny7l1NK72NufMAIlXCLFaveY9cnZKDCz50GSupg3Uamyb_6GF4akLIQLb7MawxB-cGAnlHmGdkpO8EQqYXrnaPiosg4lGGtT_cNVwDDAREGAzwNibVmpYXalHnUNdvhETVYde_0crpxQi-0MQ26od6y_72dMsyaVpaX_LzNDyAxvfZ2g8dVZ2Uy0zQv26XD-uy5_klR1BLrvqzZssws4");'>
+                                </div>
+                                <div class="flex flex-col gap-6 @[480px]:gap-8 @[864px]:w-1/2">
+                                    <div class="flex flex-col gap-4 text-left">
+                                        <h1
+                                            class="text-primary text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-6xl">
+                                            Nuestra Historia
+                                        </h1>
+                                        <p class="text-[#509295] dark:text-[#a1bfc1] text-lg leading-relaxed">
+                                            B E O nace de un proyecto universitario con el objetivo de crear una
+                                            plataforma que conecte a las personas con los servicios que necesitan.
+                                        </p>
+                                        <p class="text-[#509295] dark:text-[#a1bfc1] text-base leading-relaxed">
+                                            Desde nuestras raíces en San Juan del Río, entendimos que el comercio no
+                                            solo se
+                                            trata
+                                            de transacciones, sino de personas. Por eso creamos una plataforma donde la
+                                            seguridad y la cercanía son nuestra mayor prioridad.
+                                        </p>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <button
+                                            class="flex min-w-[140px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold transition-transform hover:scale-105">
+                                            Conoce más
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Meaning of B E O -->
+                    <div
+                        class="bg-white dark:bg-[#152a2b] py-16 border-y border-solid border-[#e8f2f3] dark:border-[#1e3436]">
+                        <div class="max-w-[1200px] mx-auto px-4 sm:px-10">
+                            <h2
+                                class="text-[#0e1a1b] dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-10 text-center">
+                                ¿Qué significa B E O?</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+                                <div
+                                    class="flex flex-1 gap-5 rounded-xl border border-[#d1e5e6] dark:border-[#2a4a4d] bg-background-light dark:bg-background-dark p-8 flex-col items-center text-center hover:border-primary transition-colors">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined text-4xl">favorite</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <h2 class="text-primary text-2xl font-black">Busca</h2>
+                                        <p
+                                            class="text-[#509295] dark:text-[#a1bfc1] text-base font-normal leading-relaxed">
+                                            Encuentra servicios confiables y de calidad cerca de ti.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex flex-1 gap-5 rounded-xl border border-[#d1e5e6] dark:border-[#2a4a4d] bg-background-light dark:bg-background-dark p-8 flex-col items-center text-center hover:border-primary transition-colors">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined text-4xl">bolt</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <h2 class="text-primary text-2xl font-black">Encuentra </h2>
+                                        <p
+                                            class="text-[#509295] dark:text-[#a1bfc1] text-base font-normal leading-relaxed">
+                                            Descubre servicios confiables y de calidad cerca de ti.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex flex-1 gap-5 rounded-xl border border-[#d1e5e6] dark:border-[#2a4a4d] bg-background-light dark:bg-background-dark p-8 flex-col items-center text-center hover:border-primary transition-colors">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined text-4xl">trending_up</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <h2 class="text-primary text-2xl font-black">Ofrece</h2>
+                                        <p
+                                            class="text-[#509295] dark:text-[#a1bfc1] text-base font-normal leading-relaxed">
+                                            Promueve tus servicios de manera efectiva y llega a más clientes.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Team Section -->
+                    <div class="py-20 bg-background-light dark:bg-background-dark overflow-hidden">
+                        <div class="max-w-[1200px] mx-auto px-4 sm:px-10">
+                            <div class="flex items-center justify-between mb-12 px-4">
+                                <h2 class="text-[#0e1a1b] dark:text-white text-3xl font-bold leading-tight">Nuestro
+                                    Equipo
+                                </h2>
+                                <div class="flex gap-2">
+                                    <button
+                                        class="p-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                                        <span class="material-symbols-outlined">chevron_left</span>
+                                    </button>
+                                    <button
+                                        class="p-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Horizontal Scroll Carousel Simulation -->
+                            <div class="flex gap-8 overflow-x-auto pb-8 snap-x no-scrollbar px-4">
+                                <!-- Team Card 1 -->
+                                <div
+                                    class="min-w-[320px] bg-white dark:bg-[#1a2f31] rounded-xl overflow-hidden shadow-sm group hover:shadow-xl transition-all snap-start">
+                                    <div class="h-80 w-full overflow-hidden">
+                                        <img alt="Team Member"
+                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            data-alt="Male developer portrait smiling" src="/Images/Rafa.png" />
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold text-[#0e1a1b] dark:text-white">Jesus Zaragoza</h3>
+                                        <p class="text-primary font-medium mb-4">Tester</p>
+                                        <p class="text-sm text-[#509295] dark:text-[#a1bfc1]">Encargado de la calidad de
+                                            la plataforma
+                                        <div class="flex justify-center w-full mt-2">
+                                            <a class="flex min-w-[30px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold transition-transform hover:scale-105"
+                                                href="https://www.instagram.com/rafita.zc/" target="_blank"
+                                                rel="noopener noreferrer">
+                                                Instagram
+                                            </a>
+                                        </div>
+                                        <div class="flex justify-center w-full mt-2">
+                                            <a class="flex min-w-[30px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold transition-transform hover:scale-105"
+                                                href="https://github.com/rafaelzcti24-sketch" target="_blank"
+                                                rel="noopener noreferrer">
+                                                GitHub
+                                            </a>
+                                        </div>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- Team Card 2 -->
+                                <div
+                                    class="min-w-[320px] bg-white dark:bg-[#1a2f31] rounded-xl overflow-hidden shadow-sm group hover:shadow-xl transition-all snap-start">
+                                    <div class="h-80 w-full overflow-hidden">
+                                        <img alt="Team Member"
+                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            src="/Images/Emilio.png" />
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold text-[#0e1a1b] dark:text-white">Emilio Lopez</h3>
+                                        <p class="text-primary font-medium mb-4">Desarrollador</p>
+                                        <p class="text-sm text-[#509295] dark:text-[#a1bfc1]">Encargado del desarrollo
+                                            de
+                                            la plataforma</p>
+                                        <div class="flex justify-center w-full mt-2">
+                                            <a class="flex min-w-[30px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold transition-transform hover:scale-105"
+                                                href="https://www.instagram.com/emilio_lops/" target="_blank"
+                                                rel="noopener noreferrer">
+                                                Instagram
+                                            </a>
+                                        </div>
+                                        <div class="flex justify-center w-full mt-2">
+                                            <a class="flex min-w-[30px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold transition-transform hover:scale-105"
+                                                href="https://github.com/EmilioYair" target="_blank"
+                                                rel="noopener noreferrer">
+                                                GitHub
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Team Card 3 -->
+                                <div
+                                    class="min-w-[320px] bg-white dark:bg-[#1a2f31] rounded-xl overflow-hidden shadow-sm group hover:shadow-xl transition-all snap-start">
+                                    <div class="h-80 w-full overflow-hidden">
+                                        <img alt="Team Member"
+                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            src="/Images/Erick.png" />
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold text-[#0e1a1b] dark:text-white">Erick Resendiz</h3>
+                                        <p class="text-primary font-medium mb-4">Líder de Estrategia</p>
+                                        <p class="text-sm text-[#509295] dark:text-[#a1bfc1]">Encargado del marketing de
+                                            la plataforma</p>
+                                        <div class="flex justify-center w-full mt-2">
+                                            <a class="flex min-w-[30px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold transition-transform hover:scale-105"
+                                                href="https://www.instagram.com/erickrh_30/" target="_blank"
+                                                rel="noopener noreferrer">
+                                                Instagram
+                                            </a>
+                                        </div>
+                                        <div class="flex justify-center w-full mt-2">
+                                            <a class="flex min-w-[30px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold transition-transform hover:scale-105"
+                                                href="https://github.com/Erick13884" target="_blank"
+                                                rel="noopener noreferrer">
+                                                GitHub
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mission & Vision -->
+                    <div class="max-w-[1200px] mx-auto px-4 sm:px-10 py-20">
+                        <div class="grid md:grid-cols-2 gap-12">
+                            <div class="flex flex-col gap-6 p-10 bg-primary/5 rounded-xl border border-primary/20">
+                                <div class="flex items-center gap-4 text-primary">
+                                    <span class="material-symbols-outlined text-4xl">rocket_launch</span>
+                                    <h2 class="text-2xl font-bold">Misión</h2>
+                                </div>
+                                <p class="text-[#509295] dark:text-[#a1bfc1] text-lg leading-relaxed">
+                                    Empoderar a los comerciantes locales de San Juan del Río mediante herramientas
+                                    tecnológicas de vanguardia que faciliten el intercambio comercial justo, seguro y
+                                    eficiente, dignificando el trabajo de nuestra gente.
+                                </p>
+                            </div>
+                            <div class="flex flex-col gap-6 p-10 bg-primary/5 rounded-xl border border-primary/20">
+                                <div class="flex items-center gap-4 text-primary">
+                                    <span class="material-symbols-outlined text-4xl">visibility</span>
+                                    <h2 class="text-2xl font-bold">Visión</h2>
+                                </div>
+                                <p class="text-[#509295] dark:text-[#a1bfc1] text-lg leading-relaxed">
+                                    Ser la plataforma líder de comercio informal digital en México, reconocida por
+                                    revitalizar las economías regionales y transformar la confianza en el motor del
+                                    desarrollo comunitario.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-16 text-center px-4">
+                            <h3 class="text-xl font-bold text-primary mb-4 uppercase tracking-widest">Nuestros Valores
+                            </h3>
+                            <div
+                                class="flex flex-wrap justify-center gap-4 text-sm font-semibold text-[#0e1a1b] dark:text-white">
+                                <span
+                                    class="px-6 py-2 bg-white dark:bg-[#1a2f31] rounded-full shadow-sm border border-[#e8f2f3] dark:border-[#2a4a4d]">Confianza
+                                    Digital</span>
+                                <span
+                                    class="px-6 py-2 bg-white dark:bg-[#1a2f31] rounded-full shadow-sm border border-[#e8f2f3] dark:border-[#2a4a4d]">Impacto
+                                    Local</span>
+                                <span
+                                    class="px-6 py-2 bg-white dark:bg-[#1a2f31] rounded-full shadow-sm border border-[#e8f2f3] dark:border-[#2a4a4d]">Transparencia</span>
+                                <span
+                                    class="px-6 py-2 bg-white dark:bg-[#1a2f31] rounded-full shadow-sm border border-[#e8f2f3] dark:border-[#2a4a4d]">Innovación
+                                    Humana</span>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Footer -->
+                <footer
+                    class="bg-background-light dark:bg-background-dark border-t border-[#e8f2f3] dark:border-[#1e3436] py-12">
+                    <div
+                        class="max-w-[1200px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary text-3xl">handshake</span>
+                            <span class="text-xl font-bold uppercase tracking-tighter">B E O</span>
+                        </div>
+                        <p class="text-sm text-[#509295] dark:text-[#a1bfc1]">© 2026 B E O San Juan del Río. Todos los
+                            derechos reservados.</p>
+                        <div class="flex gap-6">
+                            <a class="text-[#509295] hover:text-primary transition-colors" href="#">Facebook</a>
+                            <a class="text-[#509295] hover:text-primary transition-colors" href="#">Instagram</a>
+                            <a class="text-[#509295] hover:text-primary transition-colors"
+                                href="/contactanos">Contacto</a>
+                        </div>
+                    </div>
+                </footer>
+        </div>
+    </div>
+</body>
+
+</html>

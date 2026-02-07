@@ -1,5 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const { app: firebaseApp, db } = require('./bd/bd');
+const rutasProyecto = require('./routes/rutas'); // Importamos el archivo de arriba
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -7,44 +10,14 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'Views'));
 
-app.use('/images', express.static(path.join(__dirname, 'Images')));
+app.use('/images', express.static(path.join(__dirname, 'public/Images')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-	console.log("GET / -> rendering Pages/inicio");
-	try {
-		res.render('Pages/inicio');
-	} catch (err) {
-		console.error('Render error on /:', err);
-		res.status(500).send('Server error');
-	}
+app.use('/', rutasProyecto);
+
+app.use((err, req, res, next) => {
+	console.error(err.stack);
+	res.status(500).send('Algo salió mal en el servidor');
 });
 
-app.get('/encuentra', (req, res) => {
-	try {
-		res.render('Pages/encuentra');
-	} catch (err) {
-		console.error('Render error:', err);
-		res.status(500).send('Server error');
-	}
-});
-
-app.get('/como_funciona', (req, res) => {
-	try {
-		res.render('Pages/como_funciona');
-	} catch (err) {
-		console.error('Render error:', err);
-		res.status(500).send('Server error');
-	}
-});
-
-app.get('/sobre_nosotros', (req, res) => {
-	try {
-		res.render('Pages/sobre_nosotros');
-	} catch (err) {
-		console.error('Render error:', err);
-		res.status(500).send('Server error');
-	}
-});
-
-app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`BEO Server running on http://localhost:${3000}`));

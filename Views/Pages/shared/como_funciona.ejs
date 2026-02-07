@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>B E O - ¿Cómo Funciona?</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#117278",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112021",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0e1a1b] dark:text-white transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- TopNavBar -->
+            <%- include('../../Partials/header') %>
+
+                <main class="flex flex-1 justify-center py-10">
+                    <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4">
+                        <!-- PageHeading -->
+                        <div class="flex flex-wrap justify-between gap-3 p-4">
+                            <div class="flex min-w-72 flex-col gap-3">
+                                <h1
+                                    class="text-[#0e1a1b] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">
+                                    ¿Cómo funciona B E O?</h1>
+                                <p class="text-primary font-medium text-lg leading-normal">Conectamos el talento local
+                                    con
+                                    las necesidades de San Juan del Río.</p>
+                            </div>
+                        </div>
+                        <!-- Tabs -->
+                        <div class="pb-3 px-4">
+                            <div class="flex border-b border-primary/10 gap-8">
+                                <a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-[13px] pt-4 transition-all"
+                                    href="/como_funciona">
+                                    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Para Clientes</p>
+                                </a>
+                                <a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-gray-500 dark:text-gray-400 pb-[13px] pt-4 hover:text-primary transition-all"
+                                    href="/registro">
+                                    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Para Profesionales
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Client Section -->
+                        <div id="section-clientes">
+                            <!-- Video Placeholder -->
+                            <div class="p-4">
+                                <div class="w-full aspect-video rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border-2 border-dashed border-primary/20 group cursor-pointer overflow-hidden relative"
+                                    data-alt="Abstract teal gradient pattern for video placeholder">
+                                    <div class="flex flex-col items-center gap-4 z-10">
+                                        <div
+                                            class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                                            <span class="material-symbols-outlined !text-4xl">play_arrow</span>
+                                        </div>
+                                        <p class="text-primary font-bold">Ver video tutorial</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- SectionHeader -->
+                            <h2
+                                class="text-[#0e1a1b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-8">
+                                Tres simples pasos para encontrar ayuda</h2>
+                            <!-- TextGrid (Steps) -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+                                <div
+                                    class="flex flex-1 gap-4 rounded-xl border border-primary/10 bg-white dark:bg-background-dark/50 p-6 flex-col hover:border-primary/40 transition-colors">
+                                    <div
+                                        class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined !text-3xl">search</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <h3 class="text-[#0e1a1b] dark:text-white text-lg font-bold leading-tight">1.
+                                            Busca
+                                        </h3>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">
+                                            Encuentra al profesional ideal filtrando por categoría, servicios y
+                                            ubicación
+                                            dentro de la ciudad.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex flex-1 gap-4 rounded-xl border border-primary/10 bg-white dark:bg-background-dark/50 p-6 flex-col hover:border-primary/40 transition-colors">
+                                    <div
+                                        class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined !text-3xl">chat</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <h3 class="text-[#0e1a1b] dark:text-white text-lg font-bold leading-tight">2.
+                                            Chatea
+                                        </h3>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">
+                                            Resuelve dudas, solicita presupuestos y coordina detalles directamente desde
+                                            nuestra plataforma.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex flex-1 gap-4 rounded-xl border border-primary/10 bg-white dark:bg-background-dark/50 p-6 flex-col hover:border-primary/40 transition-colors">
+                                    <div
+                                        class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined !text-3xl">verified_user</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <h3 class="text-[#0e1a1b] dark:text-white text-lg font-bold leading-tight">3.
+                                            Contrata</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">
+                                            Elige
+                                            al mejor candidato con base en sus reseñas y realiza tus proyectos con total
+                                            confianza.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Trust Badge Section (For Professionals Context) -->
+                        <div class="mt-10 p-6 bg-primary/5 rounded-2xl mx-4 border border-primary/10">
+                            <div class="flex flex-col md:flex-row items-center gap-8">
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold text-primary mb-3">El Sello de Confianza B E O</h3>
+                                    <p class="text-gray-600 dark:text-gray-400 mb-4">Para garantizar la seguridad de
+                                        nuestra
+                                        comunidad, los profesionales pueden obtener una insignia de verificación tras
+                                        validar su identidad y referencias locales.</p>
+                                    <div class="flex items-center gap-2 text-primary font-bold">
+                                        <span class="material-symbols-outlined">verified</span>
+                                        <span>Seguridad garantizada para todos</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="w-32 h-32 flex items-center justify-center bg-white dark:bg-background-dark rounded-full shadow-lg border-4 border-primary">
+                                    <span class="material-symbols-outlined !text-6xl text-primary">verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ Section -->
+                        <div class="mt-12 px-4 pb-10">
+                            <h2
+                                class="text-[#0e1a1b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-6">
+                                Preguntas Frecuentes</h2>
+                            <div class="space-y-4">
+                                <div
+                                    class="border border-primary/10 rounded-xl p-5 bg-white dark:bg-background-dark/30">
+                                    <button
+                                        class="flex justify-between items-center w-full text-left font-bold text-[#0e1a1b] dark:text-white">
+                                        <span>¿Tiene algún costo para los clientes?</span>
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">No, el uso de la plataforma
+                                        para buscar y contactar profesionales es completamente gratuito para los
+                                        habitantes
+                                        de San Juan del Río.</p>
+                                </div>
+                                <div
+                                    class="border border-primary/10 rounded-xl p-5 bg-white dark:bg-background-dark/30">
+                                    <button
+                                        class="flex justify-between items-center w-full text-left font-bold text-[#0e1a1b] dark:text-white">
+                                        <span>¿Cómo puedo ser un profesional verificado?</span>
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Debes completar tu perfil
+                                        al
+                                        100% y subir una identificación oficial junto con comprobante de domicilio.
+                                        Nuestro
+                                        equipo revisará la información en menos de 48 horas.</p>
+                                </div>
+                                <div
+                                    class="border border-primary/10 rounded-xl p-5 bg-white dark:bg-background-dark/30">
+                                    <button
+                                        class="flex justify-between items-center w-full text-left font-bold text-[#0e1a1b] dark:text-white">
+                                        <span>¿Qué tipos de oficios puedo encontrar?</span>
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Desde plomería y
+                                        electricidad
+                                        hasta servicios de limpieza, tutorías, cuidado de mascotas y mantenimiento
+                                        general
+                                        del hogar.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer Call to Action -->
+                        <div class="mb-10 px-4">
+                            <div
+                                class="bg-primary rounded-2xl p-8 text-center text-white flex flex-col items-center gap-6">
+                                <h2 class="text-2xl font-black">¿Listo para empezar?</h2>
+                                <p class="max-w-md opacity-90">Únete a la red más grande de servicios locales en San
+                                    Juan
+                                    del Río y profesionaliza tu oficio o encuentra la ayuda que necesitas hoy mismo.</p>
+                                <div class="flex gap-4">
+                                    <button
+                                        class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">Soy
+                                        Cliente</button>
+                                    <button
+                                        class="bg-primary border border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition-colors">Soy
+                                        Profesional</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Footer Small -->
+                <footer class="border-t border-primary/10 py-8 bg-white dark:bg-background-dark">
+                    <div
+                        class="max-w-[960px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">handyman</span>
+                            <span class="font-bold text-gray-800 dark:text-white">B E O</span>
+                        </div>
+                        <p class="text-sm text-gray-500">© 2026 B E O - San Juan del Río, Qro.</p>
+                        <div class="flex gap-6">
+                            <a class="text-gray-400 hover:text-primary" href="#"><span
+                                    class="material-symbols-outlined">public</span></a>
+                            <a class="text-gray-400 hover:text-primary" href="/contactanos"><span
+                                    class="material-symbols-outlined">mail</span></a>
+                            <a class="text-gray-400 hover:text-primary" href="#"><span
+                                    class="material-symbols-outlined">share</span></a>
+                        </div>
+                    </div>
+                </footer>
+        </div>
+    </div>
+</body>
+
+</html>

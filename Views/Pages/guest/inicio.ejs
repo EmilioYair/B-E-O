@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BEO - Servicios</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#117178",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                        "trust-blue": "#0f2c4a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for horizontal scrolling sections */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-[#0d1b12] dark:text-gray-100 font-display transition-colors duration-200">
+    <!-- Sticky Navigation Bar -->
+    <!-- Sticky Navigation Bar -->
+    <%- include('../../Partials/header') %>
+
+        <!-- Hero Section -->
+        <div class="relative w-full overflow-hidden">
+            <!-- Background Image with Gradient Overlay -->
+            <div class="absolute inset-0 bg-cover bg-center z-0"
+                data-alt="Scenic view of San Juan del Río streets with colonial architecture"
+                style='background-image: linear-gradient(rgba(16, 34, 22, 0.7), rgba(16, 34, 22, 0.5)), url("/Images/SanJunFondo.jpeg");'>
+            </div>
+            <div
+                class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 flex flex-col items-center text-center">
+                <h1
+                    class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-6 max-w-4xl">
+                    Encuentra Expertos confiables en <br /><span class="text-primary">San Juan del Río</span>
+                </h1>
+                <h2 class="text-gray-200 text-base sm:text-lg font-normal mb-10 max-w-2xl">
+                    Conectando talentos locales con vecinos que necesitan ayudan.
+                    Rapido y Seguro
+
+                </h2>
+                <!-- Search Component -->
+                <div
+                    class="w-full max-w-2xl bg-white dark:bg-[#1a3324] p-2 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2 border border-gray-200 dark:border-gray-700">
+                    <div class="flex-1 flex items-center px-4 h-12 sm:h-14">
+                        <span class="material-symbols-outlined text-gray-400 mr-3">search</span>
+                        <input
+                            class="w-full bg-transparent border-none focus:ring-0 text-gray-800 dark:text-white placeholder-gray-400 text-base"
+                            placeholder="¿Qué servicio necesitas? (ej. Electricista)" type="text" />
+                    </div>
+                    <div class="h-px sm:h-8 sm:w-px bg-gray-200 dark:bg-gray-600 my-auto hidden sm:block"></div>
+                    <div
+                        class="sm:w-48 flex items-center px-4 h-12 sm:h-14 border-t sm:border-t-0 border-gray-100 dark:border-gray-700">
+                        <span class="material-symbols-outlined text-gray-400 mr-3">location_on</span>
+                        <select
+                            class="w-full bg-transparent border-none focus:ring-0 text-gray-800 dark:text-white text-base p-0 cursor-pointer">
+                            <option>Centro</option>
+                            <option>Zona Oriente</option>
+                            <option>San Cayetano</option>
+                            <option>Pedregoso</option>
+                        </select>
+                    </div>
+                    <button
+                        class="h-12 sm:h-full bg-primary hover:bg-green-400 text-[#ffffff] font-bold rounded-xl px-8 transition-colors sm:ml-auto w-full sm:w-auto mt-2 sm:mt-0">
+                        Buscar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!-- Popular Services Grid -->
+        <section class="py-16 bg-background-light dark:bg-background-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#0d1b12] dark:text-white">Servicios
+                        Populares</h2>
+                    <a class="text-sm font-semibold text-primary hover:underline flex items-center" href="/encuentra">
+                        Ver todas las categorias
+                        <span class="material-symbols-outlined text-lg ml-1">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <!-- Card 1 -->
+                    <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
+                        href="#">
+                        <div
+                            class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl"></span>
+                        </div>
+                        <h3 class="font-bold text-[#0d1b12] dark:text-gray-100">Plomeria</h3>
+                    </a>
+                    <!-- Card 2 -->
+                    <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
+                        href="#">
+                        <div
+                            class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">electrical_services</span>
+                        </div>
+                        <h3 class="font-bold text-[#0d1b12] dark:text-gray-100">Electricidad</h3>
+                    </a>
+                    <!-- Card 3 -->
+                    <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
+                        href="#">
+                        <div
+                            class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">carpenter</span>
+                        </div>
+                        <h3 class="font-bold text-[#0d1b12] dark:text-gray-100">Carpintería</h3>
+                    </a>
+                    <!-- Card 4 -->
+                    <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
+                        href="#">
+                        <div
+                            class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">cleaning_services</span>
+                        </div>
+                        <h3 class="font-bold text-[#0d1b12] dark:text-gray-100">Limpieza</h3>
+                    </a>
+                    <!-- Card 5 -->
+                    <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
+                        href="#">
+                        <div
+                            class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">local_shipping</span>
+                        </div>
+                        <h3 class="font-bold text-[#0d1b12] dark:text-gray-100">Mudanza</h3>
+                    </a>
+                    <!-- Card 6 -->
+                    <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
+                        href="#">
+                        <div
+                            class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">yard</span>
+                        </div>
+                        <h3 class="font-bold text-[#0d1b12] dark:text-gray-100">Jardinería</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- How It Works Section -->
+        <section class="py-16 bg-white dark:bg-[#0c1a11]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-3xl font-black text-[#0d1b12] dark:text-white mb-4">Simple, Seguro y Local.</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Te facilitamos encontrar ayuda o trabajar. Así funciona
+                        para
+                        nuestros vecinos.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 relative">
+                    <!-- Connector Line (Desktop) -->
+                    <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gray-100 dark:bg-gray-800 -z-0">
+                    </div>
+                    <!-- Step 1 -->
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div
+                            class="size-24 rounded-2xl bg-white dark:bg-[#1a2e22] border-4 border-green-50 dark:border-green-900/20 shadow-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-4xl text-primary">search</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#0d1b12] dark:text-white mb-3">1. Buscar y Filtrar</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed px-4">
+                            Explora perfiles verificados por oficio, ubicación o calificación. Filtra específicamente
+                            para
+                            barrios de San Juan del Río.
+                        </p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div
+                            class="size-24 rounded-2xl bg-white dark:bg-[#1a2e22] border-4 border-green-50 dark:border-green-900/20 shadow-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-4xl text-primary">chat</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#0d1b12] dark:text-white mb-3">2. Chatea y Acuerda</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed px-4">
+                            Conecta directamente con profesionales. Discute detalles, comparte fotos del problema y
+                            acuerda
+                            un precio justo.
+                        </p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div
+                            class="size-24 rounded-2xl bg-white dark:bg-[#1a2e22] border-4 border-green-50 dark:border-green-900/20 shadow-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-4xl text-primary">verified</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#0d1b12] dark:text-white mb-3">3. Contrata con Confianza</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed px-4">
+                            Haz que se realice el trabajo. Califica a tu profesional después para ayudar a mantener
+                            nuestra
+                            comunidad de confianza y alta calidad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Top Rated Pros Carousel -->
+        <section class="py-16 bg-background-light dark:bg-background-dark overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-end justify-between mb-10">
+                    <div>
+                        <h2 class="text-3xl font-bold text-[#0d1b12] dark:text-white mb-2">Profesionales Mejor
+                            Calificados
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400">Altamente recomendados por tus vecinos.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="size-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                        </button>
+                        <button
+                            class="size-10 rounded-full bg-primary flex items-center justify-center text-[#0d1b12] hover:bg-green-400 transition-colors shadow-lg shadow-green-500/20">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Horizontal Scroll Container -->
+                <div class="flex gap-6 overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory">
+                    <!-- Pro Card 1 -->
+                    <div
+                        class="min-w-[280px] sm:min-w-[320px] bg-white dark:bg-[#1a2e22] rounded-2xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="relative">
+                                <img class="size-16 rounded-full object-cover border-2 border-white dark:border-[#1a2e22] shadow-sm"
+                                    data-alt="Portrait of a smiling electrician named Carlos"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYoDVD_Z30lNi4wxQxdILTIk6Bm2T4rcKhM5B1VODr_Sg8D7iDOILDZEYiyG3omEFN90iiPLsEVrVYAylh9y0-Sv3OYTE_oPl7FL3hXcYRicGDQw8ALEFs2JSvwH9sd_LNQdk0ONkIHmnR4g41Dh2-XTc0WY6c53cjkNkliCTtJ5Un5Y3G-5ZCzT9vBLGpzKv8gvmlerSFclnHgv61CRkPov11JQf_i1ym7SFhU35RSm_DRtSCf95Sx7BCQ5ZtM38CY4XyocJhDU4" />
+                                <div
+                                    class="absolute -bottom-1 -right-1 bg-primary text-[#0d1b12] text-[10px] font-bold px-2 py-0.5 rounded-full border border-white">
+                                    VERIFIED</div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-[#0d1b12] dark:text-white">Carlos M.</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Maestro Electricista</p>
+                                <div class="flex items-center gap-1 mt-1 text-sm font-medium text-amber-500">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    4.9 <span class="text-gray-400 font-normal text-xs ml-1">(124 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Residencial</span>
+                            <span
+                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Comercial</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-5">
+                            Más de 10 años de experiencia en San Juan. Especializado en cableado, actualización de
+                            paneles y
+                            reparaciones de emergencia.
+                        </p>
+                        <button
+                            class="w-full h-10 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-[#0d1b12] transition-colors">
+                            Ver Perfil
+                        </button>
+                    </div>
+                    <!-- Pro Card 2 -->
+                    <div
+                        class="min-w-[280px] sm:min-w-[320px] bg-white dark:bg-[#1a2e22] rounded-2xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="relative">
+                                <img class="size-16 rounded-full object-cover border-2 border-white dark:border-[#1a2e22] shadow-sm"
+                                    data-alt="Portrait of a female painter named Sofia"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCub4LP0UXIKLRHeZ4RohuQXcKp5BHKFmZrd9KSTdVCDnoGn87UH-6DDeFd7E9sPvkIFLF4UlUK3Kr4czxobTqFTu7TqQOwSsMaPycwbT1vnN4Mxx0g8tB-uvlwoTSbDijbeLS9GeDgc71Bi6kOA4jgjmK1CFBJgIJuumT2U6q3P6dnzSSeeUY1ZV0lWFvxdZVjwfBxaZMbVVVZ8Ji9LFOkTVz2mYQ3RGhdy3gKuL5GsStwY-OuoN6ErypqwOzdANnvVanVw6d_pgg" />
+                                <div
+                                    class="absolute -bottom-1 -right-1 bg-primary text-[#0d1b12] text-[10px] font-bold px-2 py-0.5 rounded-full border border-white">
+                                    VERIFIED</div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-[#0d1b12] dark:text-white">Sofia R.</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Pintora de Interiores</p>
+                                <div class="flex items-center gap-1 mt-1 text-sm font-medium text-amber-500">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    5.0 <span class="text-gray-400 font-normal text-xs ml-1">(89 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Amigable
+                                con el ambiente</span>
+                            <span
+                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Orientada
+                                a detalles</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-5">
+                            Transformando espacios con color. Limpio, rápido y respetuoso de tu hogar. Estimaciones
+                            gratis
+                            disponibles.
+                        </p>
+                        <button
+                            class="w-full h-10 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-[#0d1b12] transition-colors">
+                            View Profile
+                        </button>
+                    </div>
+                    <!-- Pro Card 3 -->
+                    <div
+                        class="min-w-[280px] sm:min-w-[320px] bg-white dark:bg-[#1a2e22] rounded-2xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="relative">
+                                <img class="size-16 rounded-full object-cover border-2 border-white dark:border-[#1a2e22] shadow-sm"
+                                    data-alt="Portrait of a plumber named Juan"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAozq4H3ZkkFrUMFKyaXZPe0lveFxfqUbuNF4oYrK_ircHqxQoyU8QBPy2ixRGMh1tBCVOdVcTuzIA1NXpMPmNAO2amQvTkkmjyIq_B0HCQk8UKYdWu2eVnQC41vPgBhJCnJwt4S4dRxi4KBH0qnuQwR9-4fxvLwYyzghDFks61PmyFedrKj2xsnnM52R4IML6EcGaciSl_1YEEoA8G06W051WtjOJUfgOMUpAOUdM0ustVorhZvzYYwNOsTb2PbrftBC8ytjmwv-Q" />
+                                <div
+                                    class="absolute -bottom-1 -right-1 bg-gray-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-white">
+                                    NEW</div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-[#0d1b12] dark:text-white">Juan P.</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Plomero</p>
+                                <div class="flex items-center gap-1 mt-1 text-sm font-medium text-amber-500">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    4.7 <span class="text-gray-400 font-normal text-xs ml-1">(14 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Fugas</span>
+                            <span
+                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Instalación</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-5">
+                            Disponible para llamadas urgentes en Zona Oriente. Servicio confiable para todas tus
+                            necesidades
+                            de plomería.
+                        </p>
+                        <button
+                            class="w-full h-10 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-[#0d1b12] transition-colors">
+                            View Profile
+                        </button>
+                    </div>
+                    <!-- Pro Card 4 -->
+                    <div
+                        class="min-w-[280px] sm:min-w-[320px] bg-white dark:bg-[#1a2e22] rounded-2xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="relative">
+                                <img class="size-16 rounded-full object-cover border-2 border-white dark:border-[#1a2e22] shadow-sm"
+                                    data-alt="Portrait of a carpenter named Miguel"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmAzsExc6p7pKz8Yoa6CrsL16qExQrsxInfirr_2Vi-kPuGkez8cuUjFs9UZXBBA3MBJw8cUkTe96ilYT5VlWNC39MKq4Uy-ebaw_FJIUPhaBEIz7E9LY2_Se1iDZCB9n5UaWIZcwaaRqzq0xhJJGyl8Jw0YYJ3pUCt4cnQAO-C-uhz1G4Va7g0n4nCelpaWYASau8V32rA-4RGZolqo8awtBtH6eUHn_EGKiGabejGZLfSfahbciuGJ_8YcUtnaYWuwlplUltrno" />
+                                <div
+                                    class="absolute -bottom-1 -right-1 bg-primary text-[#0d1b12] text-[10px] font-bold px-2 py-0.5 rounded-full border border-white">
+                                    VERIFIED</div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-[#0d1b12] dark:text-white">Miguel A.</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Carpintero</p>
+                                <div class="flex items-center gap-1 mt-1 text-sm font-medium text-amber-500">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    4.8 <span class="text-gray-400 font-normal text-xs ml-1">(56 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Muebles</span>
+                            <span
+                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Reparación</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-5">
+                            Muebles personalizados y reparaciones. Devolviendo vida a la madera con técnicas
+                            tradicionales.
+                        </p>
+                        <button
+                            class="w-full h-10 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-[#0d1b12] transition-colors">
+                            View Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Call to Action for Workers -->
+        <section class="py-20 bg-background-light dark:bg-background-dark">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div
+                    class="bg-primary rounded-3xl p-8 sm:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+                    <!-- Pattern Overlay -->
+                    <div class="absolute inset-0 opacity-10"
+                        style="background-image: radial-gradient(#0d1b12 1px, transparent 1px); background-size: 20px 20px;">
+                    </div>
+                    <div class="relative z-10 max-w-lg">
+                        <h2 class="text-3xl font-black text-[#ffffff] mb-4">¿Eres un Profesional Capacitado?</h2>
+                        <p class="text-[#ffffff]/80 text-lg font-medium mb-0">
+                            Únete a cientos de expertos locales que hacen crecer su negocio en San Juan del Río. Es
+                            gratis
+                            unirse.
+                        </p>
+                    </div>
+                    <div class="relative z-10 shrink-0">
+                        <button
+                            class="bg-[#0d1b12] text-white hover:bg-gray-900 px-8 py-4 rounded-xl font-bold text-lg transition-transform hover:scale-105 shadow-xl">
+                            Únete como Profesional
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-[#0c1a11] border-t border-gray-200 dark:border-gray-800 pt-16 pb-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                    <div class="col-span-2 md:col-span-1">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="size-0 rounded bg-primary flex items-center justify-center text-[#0d1b12]">
+                            </div>
+                            <span class="text-[#0d1b12] dark:text-white font-bold">B E O</span>
+                        </div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                            Conectando talentos locales con vecinos que necesitan ayuda. Rapido y Seguro
+                        </p>
+                        <div class="flex gap-4">
+                            <a class="text-gray-400 hover:text-primary" href="#"><span
+                                    class="material-symbols-outlined">public</span></a> <!-- abstract social icon -->
+                            <a class="text-gray-400 hover:text-primary" href="#"><span
+                                    class="material-symbols-outlined">alternate_email</span></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#0d1b12] dark:text-white mb-4">Para Clientes</h4>
+                        <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                            <li><a class="hover:text-primary" href="/encuentra">Encuentra a un Profesional</a></li>
+                            <li><a class="hover:text-primary" href="/como_funciona">Cómo Funciona</a></li>
+                            <li><a class="hover:text-primary" href="/ayuda">Seguridad y Confianza</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#0d1b12] dark:text-white mb-4">Para Profesionales</h4>
+                        <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                            <li><a class="hover:text-primary" href="/registro">Únete Ahora</a></li>
+                            <li><a class="hover:text-primary" href="#">Historias de Éxito</a></li>
+                            <li><a class="hover:text-primary" href="#">Recursos</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#0d1b12] dark:text-white mb-4">Soporte</h4>
+                        <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                            <li><a class="hover:text-primary" href="/ayuda">Centro de Ayuda</a></li>
+                            <li><a class="hover:text-primary" href="/contactanos">Contáctanos</a></li>
+                            <li><a class="hover:text-primary" href="/terminos_condiciones">Términos de Servicio</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-xs text-gray-400">© 2026 San Juan Trades. Todos los derechos reservados.</p>
+                    <div class="flex items-center gap-2 text-xs text-gray-400">
+                        <span class="material-symbols-outlined text-sm">language</span>
+                        <span>Español (MX)</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+</body>
+
+</html>
