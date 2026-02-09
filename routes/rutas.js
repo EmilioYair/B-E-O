@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const verifySession = require('../middlewares/authMiddleware');
 
 // GUEST
 
@@ -10,13 +11,13 @@ router.get('/registro', (req, res) => res.render('Pages/guest/registro'));
 // LOGGED
 
 
-router.get('/dashboard', (req, res) => res.render('Pages/logged/dashboard'));
-router.get('/mensajes', (req, res) => res.render('Pages/logged/mensajes'));
-router.get('/mis_servicios', (req, res) => res.render('Pages/logged/mis_servicios'));
-router.get('/perfil', (req, res) => res.render('Pages/logged/perfil'));
-router.get('/postear', (req, res) => res.render('Pages/logged/postear'));
-router.get('/publicaciones', (req, res) => res.render('Pages/logged/publicaciones'));
-router.get('/settings', (req, res) => res.render('Pages/logged/settings'));
+router.get('/dashboard', verifySession, (req, res) => res.render('Pages/logged/dashboard'));
+router.get('/mensajes', verifySession, (req, res) => res.render('Pages/logged/mensajes'));
+router.get('/mis_servicios', verifySession, (req, res) => res.render('Pages/logged/mis_servicios'));
+router.get('/perfil', verifySession, (req, res) => res.render('Pages/logged/perfil'));
+router.get('/postear', verifySession, (req, res) => res.render('Pages/logged/postear'));
+router.get('/publicaciones', verifySession, (req, res) => res.render('Pages/logged/publicaciones'));
+router.get('/settings', verifySession, (req, res) => res.render('Pages/logged/settings'));
 
 // SHARED
 

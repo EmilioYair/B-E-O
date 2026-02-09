@@ -20,25 +20,8 @@
         rel="stylesheet" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#117178",
-                        "background-light": "#f6f8f6",
-                        "background-dark": "#102216",
-                        "trust-blue": "#0f2c4a",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
-                },
-            },
-        }
-    </script>
+    <script src="/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
     <style>
         /* Custom scrollbar for horizontal scrolling sections */
         .hide-scrollbar::-webkit-scrollbar {
@@ -59,17 +42,24 @@
     <%- include('../../Partials/header') %>
 
         <!-- Hero Section -->
-        <div class="relative w-full overflow-hidden">
+        <div class="relative w-full h-screen overflow-hidden flex flex-col justify-center">
+            <!-- h-screen para ocupár la pantalla --->
             <!-- Background Image with Gradient Overlay -->
             <div class="absolute inset-0 bg-cover bg-center z-0"
                 data-alt="Scenic view of San Juan del Río streets with colonial architecture"
-                style='background-image: linear-gradient(rgba(16, 34, 22, 0.7), rgba(16, 34, 22, 0.5)), url("/Images/SanJunFondo.jpeg");'>
+                style='background-image: linear-gradient(rgba(16, 34, 22, 0.7), rgba(16, 34, 22, 0.5)), url("/images/SanJunFondo.jpeg");'>
             </div>
             <div
-                class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 flex flex-col items-center text-center">
+                class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 flex flex-col items-center text-center">
+                <!-- pt y pb son para el padding top y bottom -->
+                <!-- 
+                    Antiguo:
+                    1. Elimina 'h-screen flex flex-col justify-center' del div padre (línea ~45).
+                    2. Cambia 'pt-20 pb-20' aquí por 'pt-32 pb-48' 
+                -->
                 <h1
                     class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-6 max-w-4xl">
-                    Encuentra Expertos confiables en <br /><span class="text-primary">San Juan del Río</span>
+                    Encuentra Expertos confiables en <br /><span class="text-secondary">San Juan del Río</span>
                 </h1>
                 <h2 class="text-gray-200 text-base sm:text-lg font-normal mb-10 max-w-2xl">
                     Conectando talentos locales con vecinos que necesitan ayudan.

@@ -14,24 +14,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#117278",
-                        "background-light": "#f6f8f8",
-                        "background-dark": "#112021",
-                    },
-                    fontFamily: {
-                        "display": ["Inter"]
-                    },
-                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
-                },
-            },
-        }
-    </script>
+    <script src="/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -221,11 +205,13 @@
                                     del Río y profesionaliza tu oficio o encuentra la ayuda que necesitas hoy mismo.</p>
                                 <div class="flex gap-4">
                                     <button
-                                        class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">Soy
-                                        Cliente</button>
+                                        class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors"><a
+                                            href="/registro">Aun
+                                            no soy cliente</a></button>
                                     <button
-                                        class="bg-primary border border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition-colors">Soy
-                                        Profesional</button>
+                                        class="bg-primary border border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition-colors"><a
+                                            href="/login">Ya
+                                            soy cliente</a></button>
                                 </div>
                             </div>
                         </div>

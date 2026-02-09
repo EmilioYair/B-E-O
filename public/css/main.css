@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+/* =========================================
+   HEADER STYLES
+   ========================================= */
+
+/* Contenedor principal del encabezado
+   - Sticky para mantenerse arriba
+   - Flexbox para distribuir logo, busqueda y nav
+*/
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    border-bottom: 1px solid #e8f2f3;
+    padding: 1.25rem 2.5rem;
+    /* px-10 py-5 */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: white;
+}
+
+/* Estilos para modo oscuro del header */
+.dark .app-header {
+    background-color: #102216;
+    /* bg-background-dark */
+    border-color: rgba(17, 113, 120, 0.2);
+    /* border-primary/20 */
+}
+
+/* =========================================
+   LOGO & BRANDING
+   ========================================= */
+
+/* Texto del logo "B E O" */
+.app-logo-text {
+    color: #117178;
+    /* text-primary */
+    font-size: 1.25rem;
+    /* text-xl */
+    font-weight: 700;
+    /* font-bold */
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+}
+
+/* =========================================
+   SEARCH BAR
+   ========================================= */
+
+/* Contenedor de la barra de búsqueda */
+.app-search-container {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    align-items: stretch;
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    height: 100%;
+}
+
+/* Icono de búsqueda (lupa) a la izquierda */
+.app-search-icon-wrapper {
+    display: flex;
+    background-color: #e8f2f3;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    border-top-left-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+    color: #509295;
+}
+
+.dark .app-search-icon-wrapper {
+    background-color: rgba(17, 113, 120, 0.1);
+}
+
+/* Input de texto para búsqueda */
+.app-search-input {
+    width: 100%;
+    min-width: 0;
+    flex: 1;
+    resize: none;
+    overflow: hidden;
+    border-top-right-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    color: #0e1a1b;
+    background-color: #e8f2f3;
+    border: none;
+    height: 100%;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.dark .app-search-input {
+    color: white;
+    background-color: rgba(17, 113, 120, 0.1);
+}
+
+.app-search-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* =========================================
+   NAVIGATION LINK STYLES
+   ========================================= */
+
+/* Enlaces de navegación (Inicio, Encuentra, etc.) */
+.app-nav-link {
+    color: #0e1a1b;
+    /* Color texto default */
+    font-size: 1rem;
+    /* text-sm */
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.dark .app-nav-link {
+    color: #d1d5db;
+    /* text-gray-300 en modo oscuro */
+}
+
+/* Estado Hover: cambia a color primario */
+.app-nav-link:hover {
+    color: #117178;
+    /* text-primary */
+}
+
+/* Estado Activo: negrita y subrayado */
+.app-nav-link.active {
+    color: #117178;
+    font-weight: 700;
+    border-bottom: 2px solid #117178;
+    padding-bottom: 0.25rem;
+}
+
+/* =========================================
+   BUTTON STYLES
+   ========================================= */
+
+/* Botón principal (Postear servicio) */
+.app-btn-primary {
+    display: flex;
+    min-width: 84px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    height: 2.5rem;
+    /* h-10 */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #117178;
+    /* bg-primary */
+    color: white;
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 700;
+    line-height: normal;
+    transition: background-color 0.2s;
+}
+
+.app-btn-primary a {
+    color: white;
+    text-decoration: none;
+}
