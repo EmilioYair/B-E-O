@@ -12,7 +12,10 @@ app.set('views', path.join(__dirname, 'Views'));
 
 app.use('/images', express.static(path.join(__dirname, 'public/Images')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json()); // Middleware para parsear JSON
 
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes);
 app.use('/', rutasProyecto);
 
 app.use((err, req, res, next) => {
