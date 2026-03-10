@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const { app: firebaseApp, db } = require('./bd/bd');
 const rutasProyecto = require('./routes/rutas'); // Importamos el archivo de arriba
 
@@ -13,9 +14,14 @@ app.set('views', path.join(__dirname, 'Views'));
 app.use('/images', express.static(path.join(__dirname, 'public/Images')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json()); // Middleware para parsear JSON
+app.use(cookieParser()); // Middleware para manejar cookies de sesión
 
 const apiRoutes = require('./routes/api');
+const authRoutes = require('./routes/auth');
+const chatRoutes = require('./routes/chat');
 app.use('/api', apiRoutes);
+app.use('/auth', authRoutes);
+app.use('/chat', chatRoutes);
 app.use('/', rutasProyecto);
 
 app.use((err, req, res, next) => {

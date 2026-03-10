@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>B E O - Perfil Público del Profesional</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#117278",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112021",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <nav
+        class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="bg-primary text-white p-1.5 rounded-lg">
+                        <span class="material-icons text-xl leading-none">handyman</span>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight text-primary">B E O</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Explorar Oficios</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Cómo Funciona</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Mis Favoritos</a>
+                    <button class="bg-slate-100 dark:bg-slate-800 p-2 rounded-full">
+                        <span class="material-icons text-xl">notifications_none</span>
+                    </button>
+                    <div class="flex items-center gap-2 border-l pl-8 border-slate-200 dark:border-slate-800">
+                        <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+                            <img alt="Avatar Usuario" data-alt="User profile avatar circle"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1dECDeIj_CTzIQBekC_6qGlxSoPHLMRXWBQKdcJsP_PQdTA2utaXlRhN2i4vZhgc8kaZrhdpmRk1-rK9tl0S5xeaiaEUoEsN2E36I05qAFfXkMSk5dMf5VPU3g7OyYKrEZm0UnDA473OHwQVxEEyG8SGSBJ94rMo1OOcJf_yYYmQqubvFoBBFlNN-8Acn6kTTjIk-sTvEJXNSOi0FfVDj1mQTxwg_f6l-2UdCYR1V4W1fDwEUII0rmPCYN_aoPgCeOVrn-bSRjRY" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header Profile Card -->
+        <div
+            class="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden mb-8 border border-slate-100 dark:border-slate-800">
+            <div class="h-48 bg-gradient-to-r from-primary/20 to-primary/5 relative">
+                <div class="absolute -bottom-12 left-8 flex items-end gap-6">
+                    <div
+                        class="w-32 h-32 rounded-xl border-4 border-white dark:border-slate-900 overflow-hidden shadow-lg bg-white">
+                        <img alt="Roberto Méndez" class="w-full h-full object-cover"
+                            data-alt="Professional carpenter portrait smiling"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmJDWXt_lyHYCj4qY_Dv4exFKWY83I9YmwZKgFmRxUw-mykZK5x_hYtm7GQgihCE4qWQHGVPQFJfjZQRK5ZNqrzfpzUaSgL4ko3B4BQx3CW6axzYHdaNBnnFlOEsI-3KhOl2OhFipmhboMXlxwqSikxmpUzcnt03xUjEYiEWE7h8ECNL_e1OsRA0K6BXLVF3GMnEFcrNjOkl56caTCCAaN7HBbew5fkunJDXvrofE2wCaJ4g51jpoJgzuy7Qic4dG4805wDIrR4Kk" />
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center gap-3">
+                            <h1 class="text-3xl font-bold">Roberto Méndez</h1>
+                            <div
+                                class="flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/20">
+                                <span class="material-icons text-sm">verified</span>
+                                Verificado Nivel 2
+                            </div>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium text-lg">Maestro Carpintero y Ebanista
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-16 pb-6 px-8 flex justify-between items-center">
+                <div class="flex gap-8">
+                    <div class="flex flex-col">
+                        <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Ubicación</span>
+                        <span class="font-semibold flex items-center gap-1">
+                            <span class="material-icons text-sm text-primary">location_on</span>
+                            San Juan del Río, Qro.
+                        </span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Experiencia</span>
+                        <span class="font-semibold">12+ Años</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Estado</span>
+                        <span class="flex items-center gap-1.5 font-semibold text-emerald-600">
+                            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                            Disponible hoy
+                        </span>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-icons text-sm">share</span>
+                        Compartir
+                    </button>
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-icons text-sm text-red-500">favorite_border</span>
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Gallery and Reviews -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Before & After Gallery -->
+                <section>
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold flex items-center gap-2">
+                            <span class="material-icons text-primary">auto_awesome</span>
+                            Proyectos: Antes y Después
+                        </h2>
+                        <button class="text-primary font-bold text-sm hover:underline">Ver todo el portafolio</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Project Card 1 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+                            <div class="relative grid grid-cols-2 gap-2 mb-3">
+                                <div class="relative group">
+                                    <img alt="Antes" class="rounded-lg h-40 w-full object-cover"
+                                        data-alt="Old damaged kitchen cabinets before restoration"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxMmZUoDtsOFewPsgVG-zzjZl9A6PBEeo1DOp8c9l3R6WfHarPGgDhQ9fwBlHarExKvpdoYxQsK5MlAz84Q4zL5TzgfH-IH64ucTJIap3smZUrfHeR1kdaq0GxXdKk1jfYVTp4lUlt0DWwntsoIT8SYyJOJDZv2LS_uElb550_x-wOzgIWtNYfi4k5zftQxQStJnQKxEfhVZdWlbkaNydOnNyXC4gjLdDlRHbMil7lotEpA7Z9h0I_tFeZ4NVRHVOPaDI2U2rQeq4" />
+                                    <span
+                                        class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">ANTES</span>
+                                </div>
+                                <div class="relative group">
+                                    <img alt="Después" class="rounded-lg h-40 w-full object-cover"
+                                        data-alt="New modern white kitchen cabinets after renovation"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoe_hwZ4xxzKkrJltQJTugUcEdeykaSx6VaV1640ZMJH0PbpXpd3CmP2nKAlwsuJd57rzI3wzkKe7NXe9ppmHGmtUX9sfD1K7b2fQOKh83YxVgLQ46XSn8TbvaH1dD39zISs7DX48kWi9xdlY1IMNcsiiwebpeZzuT2NpGNafVeUs_BQAr7GU8o_-ZwoU9qf4SF5dfzCkssfa6jny48hm81rH5aMMm--pdEHvGMo75vSoj1o8T2TdsQSv1IaehRCsun2e0acYuuSU" />
+                                    <span
+                                        class="absolute top-2 left-2 bg-primary/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">DESPUÉS</span>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Remodelación Cocina Integral</h3>
+                            <p class="text-sm text-slate-500">Restauración de gabinetes y cambio de herrajes en Col.
+                                Centro.</p>
+                        </div>
+                        <!-- Project Card 2 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+                            <div class="relative grid grid-cols-2 gap-2 mb-3">
+                                <div class="relative group">
+                                    <img alt="Antes" class="rounded-lg h-40 w-full object-cover"
+                                        data-alt="Damaged wooden floor before sanding"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2XFDgzBg2eeYMO8mNwUXcml7HO2bQaIbJq66jVZB7zPW5W8ZC0mhtRUuTm8zUAArRzUwxWOjKvM6ysAlfNfRqphwqIslTu5wA3BF8Pt-4iGwOYQzurNmz6Sxh9tOHsxNxcMTRvIhwrvB-O2V5WkNEi8tYhs584qemfuO_5wfEpslLQWo2U1WijdP1QsjZjW6i5T67P5b0RrvXEbWhRSrVE35U0fa5nRbEi87QBPOy4uDz0c1h-YZ2pCkA1wjv8IIPUsOr57u2Dds" />
+                                    <span
+                                        class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">ANTES</span>
+                                </div>
+                                <div class="relative group">
+                                    <img alt="Después" class="rounded-lg h-40 w-full object-cover"
+                                        data-alt="Polished dark wood flooring after finish"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSPUeITZP8g5EY__ebMjJoHy3xsyaCSq6DJ64c-xepPYOAIgREm3dhjM8tOaqNwa9qbNiJ-D6GfUfKedp53h6IztEjoEiyuHSDXqdgUjQX6WYoy6SRNmj5p6ct0B04XqBzczGPRytd2-qNm1RnML5woa3uklhKHraSPxgLc3hK7ByqJndevvojVngEy4msk7IaI3zHJIO9dhOzz6UumV8YWnv49dQ-M9avTISp_hfsZ5DrjbC7R9DKEahEeAXo_Bsjc5SJEO_ykAI" />
+                                    <span
+                                        class="absolute top-2 left-2 bg-primary/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">DESPUÉS</span>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Barnizado de Duela</h3>
+                            <p class="text-sm text-slate-500">Pulido y barnizado marino en recámara principal, La Rueda.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <!-- Reviews Section -->
+                <section>
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold flex items-center gap-2">
+                            <span class="material-icons text-primary">groups</span>
+                            Reseñas de Vecinos
+                        </h2>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-medium text-slate-500">Ordenar por:</span>
+                            <select
+                                class="text-sm bg-transparent border-none font-bold text-primary focus:ring-0 cursor-pointer">
+                                <option>Cercanía (San Juan del Río)</option>
+                                <option>Más recientes</option>
+                                <option>Mejor calificación</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Review Item 1 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-bold text-primary">
+                                        MA</div>
+                                    <div>
+                                        <h4 class="font-bold">María Auxilio G.</h4>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight">Col.
+                                                La Rueda</span>
+                                            <span class="text-slate-300">•</span>
+                                            <span class="text-xs text-slate-400">Hace 2 semanas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex text-amber-400">
+                                    <span class="material-icons text-lg">star</span>
+                                    <span class="material-icons text-lg">star</span>
+                                    <span class="material-icons text-lg">star</span>
+                                    <span class="material-icons text-lg">star</span>
+                                    <span class="material-icons text-lg">star</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                                "Excelente trabajo con el clóset de mi hija. Roberto es muy puntual y dejó todo muy
+                                limpio al terminar. Súper recomendado para los que vivimos en La Rueda."
+                            </p>
+                        </div>
+                        <!-- Review Item 2 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-bold text-primary">
+                                        JL</div>
+                                    <div>
+                                        <h4 class="font-bold">Juan Luis T.</h4>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight">Zona
+                                                Centro</span>
+                                            <span class="text-slate-300">•</span>
+                                            <span class="text-xs text-slate-400">Hace 1 mes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex text-amber-400">
+                                    <span class="material-icons text-lg">star</span>
+                                    <span class="material-icons text-lg">star</span>
+                                    <span class="material-icons text-lg">star</span>
+                                    <span class="material-icons text-lg">star</span>
+                                    <span class="material-icons text-lg">star_half</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                                "Muy buen ebanista. Arregló una mesa de comedor antigua que dábamos por perdida. El
+                                precio fue justo y la calidad del acabado es impecable."
+                            </p>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full mt-6 py-3 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl text-slate-400 font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        Ver 24 reseñas más
+                    </button>
+                </section>
+            </div>
+            <!-- Right Column: Action Sidebar -->
+            <div class="space-y-6">
+                <!-- Main CTA Card -->
+                <div
+                    class="bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-100 dark:border-slate-800 p-6 sticky top-24">
+                    <div class="text-center mb-6">
+                        <div class="text-5xl font-bold text-slate-900 dark:text-white mb-1">4.9</div>
+                        <div class="flex justify-center text-amber-400 mb-2">
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                        </div>
+                        <p class="text-sm text-slate-500 font-medium">Calificación promedio basada en 26 trabajos</p>
+                    </div>
+                    <div class="space-y-4 mb-8">
+                        <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Servicios Ofrecidos</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Carpintería
+                                Fina</span>
+                            <span
+                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Reparación
+                                de Muebles</span>
+                            <span
+                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Barnizado
+                                y Lacado</span>
+                            <span
+                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Puertas
+                                y Clósets</span>
+                            <span
+                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Ebanistería</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <button
+                            class="w-full bg-primary hover:bg-[#0d5d62] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all shadow-lg shadow-primary/20">
+                            <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24">
+                                <path
+                                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.748-2.874-2.526-2.961-2.642-.087-.116-.708-.941-.708-1.797 0-.856.448-1.274.607-1.446.16-.171.347-.214.464-.214.116 0 .234.002.336.006.107.005.252-.04.395.302.144.347.491 1.197.533 1.284.043.087.071.188.014.303-.057.115-.087.188-.173.289-.087.101-.183.226-.261.303-.087.087-.177.182-.076.355.101.173.448.736.96 1.192.659.588 1.215.771 1.388.857.173.087.274.072.376-.043.101-.116.433-.505.548-.678.115-.173.231-.144.39-.087.159.058 1.011.477 1.184.563.173.087.289.13.332.202.045.072.045.419-.099.824z">
+                                </path>
+                            </svg>
+                            Contactar por WhatsApp
+                        </button>
+                        <button
+                            class="w-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                            <span class="material-icons text-xl">event_available</span>
+                            Solicitar Cotización
+                        </button>
+                    </div>
+                    <p class="mt-6 text-[10px] text-center text-slate-400 uppercase font-bold tracking-widest">
+                        Respuesta promedio: <span class="text-primary">15 minutos</span>
+                    </p>
+                </div>
+                <!-- Verification Info -->
+                <div class="bg-primary/5 border border-primary/20 rounded-xl p-6">
+                    <h4 class="font-bold text-primary flex items-center gap-2 mb-3">
+                        <span class="material-icons">shield</span>
+                        Compromiso B E O
+                    </h4>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
+                            <span class="material-icons text-primary text-sm">check_circle</span>
+                            <span>Identidad oficial validada con INE.</span>
+                        </li>
+                        <li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
+                            <span class="material-icons text-primary text-sm">check_circle</span>
+                            <span>Comprobante de domicilio reciente en SJR.</span>
+                        </li>
+                        <li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
+                            <span class="material-icons text-primary text-sm">check_circle</span>
+                            <span>Referencias de 5 clientes locales confirmadas.</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Map Section (Simple Representation) -->
+                <div
+                    class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 p-4">
+                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">Área de Cobertura</h4>
+                    <div class="rounded-lg overflow-hidden h-32 relative bg-slate-200">
+                        <img alt="Mapa San Juan del Río" class="w-full h-full object-cover opacity-60"
+                            data-alt="Stylized map showing San Juan del Rio area" data-location="San Juan del Río"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuChlwc-IlwJwYT3Rfk1WAOEfpP72B16W9MRXASW2F_emEU_0iyl1xSDqDhmo1MOuZBMTMkwaCv-xHYtH18OWNhc08P-U0hvEs796RkrrRMXvf5Ne0lXkQF3P38mhJ0s1i59zlfqH26X2NQuBZ2TRgiSm2gxHP_DmHoH1TCAa2bzTXQ163fIgGssPnCJ-HJgwXNB8Cz5cGDNaJufhKTuhyVXDen5YMrMOUa2T9F5aoN9RvhnO2VS9-0LWy8BsHrPL7rvacay2fc7wyc" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="bg-primary w-4 h-4 rounded-full ring-4 ring-primary/30 animate-pulse"></div>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-xs text-slate-500 text-center">Toda la zona urbana de San Juan del Río y
+                        Tequisquiapan.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="bg-primary text-white p-1 rounded-lg">
+                        <span class="material-icons text-lg leading-none">handyman</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-primary">B E O</span>
+                </div>
+                <div class="flex gap-8 text-sm text-slate-500 font-medium">
+                    <a class="hover:text-primary transition-colors" href="#">Términos</a>
+                    <a class="hover:text-primary transition-colors" href="#">Privacidad</a>
+                    <a class="hover:text-primary transition-colors" href="#">Centro de Ayuda</a>
+                    <a class="hover:text-primary transition-colors" href="#">Registra tu Oficio</a>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 cursor-pointer hover:bg-primary hover:text-white transition-all">
+                        <span class="material-icons text-lg">facebook</span>
+                    </div>
+                    <div
+                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 cursor-pointer hover:bg-primary hover:text-white transition-all">
+                        <span class="material-icons text-lg">camera_alt</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 text-center">
+                <p class="text-xs text-slate-400">© 2024 B E O Plataforma Local. Orgullosamente en San Juan del Río,
+                    Qro.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -41,6 +41,21 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "<%= process.env.FIREBASE_API_KEY %>",
+            authDomain: "<%= process.env.FIREBASE_AUTH_DOMAIN %>",
+            projectId: "<%= process.env.FIREBASE_PROJECT_ID %>",
+            storageBucket: "<%= process.env.FIREBASE_STORAGE_BUCKET %>",
+            messagingSenderId: "<%= process.env.FIREBASE_MESSAGING_SENDER_ID %>",
+            appId: "<%= process.env.FIREBASE_APP_ID %>"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+    </script>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex">
@@ -49,17 +64,16 @@
         <!-- Left Side: Visual Tribute to San Juan del Río -->
         <div class="hidden md:flex md:w-1/2 lg:w-3/5 relative overflow-hidden bg-primary">
             <img alt="San Juan del Río Landscape" class="absolute inset-0 w-full h-full object-cover"
-                data-alt="Scenic historical bridge in San Juan del Rio"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtz9eLbtPiYu6JLjhZg0jZSI_R3T4qtO6OOavQ5XORlaT1mGeF4V9rbfy1yQcYskEt1grHDLLGrW6Bc4fC6rYuQvl-toeBqYVWrFJ_PTPa21h03G4i3M55sNEvF8RNH98IWU9NUTASPNCIKRfrLZGZI-_HISJ5G8h3FauPCfk6QfgchrwFSEZgMiYqZC8p8cq_9QN7HleHgJ7jUEYRCR0BPL0z6mQyjIJC03o5xHTJPLmzC4Uc60JDSwtE_7iIUWaZn1SzaJwCF5c" />
+                data-alt="Scenic historical bridge in San Juan del Rio" src="/images/LetreroSjr.png" />
             <!-- Dark Teal Overlay -->
-            <div class="absolute inset-0 bg-primary/60 dark:bg-primary/80 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
             <!-- Branding Overlay Content -->
             <div class="relative z-10 flex flex-col justify-end p-16 h-full text-white">
                 <h1 class="text-5xl font-bold tracking-widest mb-4">B E O</h1>
                 <p class="text-xl font-light opacity-90 max-w-md">Impulsando el comercio local en San Juan del Río.
                     Conectando talento, productos y servicios.</p>
                 <div class="mt-8 flex items-center gap-2">
-                    <span class="material-icons text-sm">location_on</span>
+                    <span class="material-symbols-outlined text-sm">location_on</span>
                     <span class="text-sm font-medium uppercase tracking-widest">San Juan del Río, QRO.</span>
                 </div>
             </div>
@@ -80,7 +94,7 @@
                         intercambios.</p>
                 </div>
                 <!-- Form -->
-                <form action="#" class="space-y-6">
+                <form id="loginForm" class="space-y-6">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                             for="email">Correo Electrónico</label>
@@ -154,7 +168,7 @@
                 <!-- Footer link -->
                 <p class="mt-12 text-center text-sm text-gray-600 dark:text-gray-400">
                     ¿No tienes una cuenta?
-                    <a class="text-primary font-bold hover:underline ml-1" href="#">Regístrate gratis</a>
+                    <a class="text-primary font-bold hover:underline ml-1" href="/registro">Regístrate gratis</a>
                 </p>
             </div>
             <!-- Simple localized footer info -->
@@ -165,6 +179,35 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // 1. Iniciar sesión en Firebase (Cliente)
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                const idToken = await userCredential.user.getIdToken();
+
+                // 2. Enviar el ID Token al servidor para crear la cookie de sesión
+                const response = await fetch('/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ idToken })
+                });
+
+                if (response.ok) {
+                    window.location.href = '/dashboard';
+                } else {
+                    alert('Error al sincronizar sesión con el servidor');
+                }
+            } catch (error) {
+                console.error('Error de login:', error);
+                alert('Credenciales incorrectas o error de conexión: ' + error.message);
+            }
+        });
+    </script>
 </body>
 
 </html>

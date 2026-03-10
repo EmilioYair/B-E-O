@@ -15,7 +15,7 @@ router.get('/dashboard', verifySession, (req, res) => res.render('Pages/logged/d
 router.get('/mensajes', verifySession, (req, res) => res.render('Pages/logged/mensajes'));
 router.get('/mis_servicios', verifySession, (req, res) => res.render('Pages/logged/mis_servicios'));
 router.get('/perfil', verifySession, (req, res) => res.render('Pages/logged/perfil'));
-router.get('/postear', verifySession, (req, res) => res.render('Pages/logged/postear'));
+router.get('/postear', verifySession, (req, res) => res.render('Pages/logged/crear-servicio'));
 router.get('/publicaciones', verifySession, (req, res) => res.render('Pages/logged/publicaciones'));
 router.get('/settings', verifySession, (req, res) => res.render('Pages/logged/settings'));
 

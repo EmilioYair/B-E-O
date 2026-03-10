@@ -109,16 +109,16 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                     <!-- Card 1 -->
                     <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
-                        href="#">
+                        href="/encuentra?categoria=Plomeria">
                         <div
                             class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
-                            <span class="material-symbols-outlined text-2xl"></span>
+                            <span class="material-symbols-outlined text-2xl">plumbing</span>
                         </div>
                         <h3 class="font-bold text-[#0d1b12] dark:text-gray-100">Plomeria</h3>
                     </a>
                     <!-- Card 2 -->
                     <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
-                        href="#">
+                        href="/encuentra?categoria=Electricidad">
                         <div
                             class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">electrical_services</span>
@@ -127,7 +127,7 @@
                     </a>
                     <!-- Card 3 -->
                     <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
-                        href="#">
+                        href="/encuentra?categoria=Carpinteria">
                         <div
                             class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">carpenter</span>
@@ -136,7 +136,7 @@
                     </a>
                     <!-- Card 4 -->
                     <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
-                        href="#">
+                        href="/encuentra?categoria=Limpieza">
                         <div
                             class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">cleaning_services</span>
@@ -145,7 +145,7 @@
                     </a>
                     <!-- Card 5 -->
                     <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
-                        href="#">
+                        href="/encuentra?categoria=Mudanza">
                         <div
                             class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">local_shipping</span>
@@ -154,7 +154,7 @@
                     </a>
                     <!-- Card 6 -->
                     <a class="group flex flex-col items-center p-6 rounded-xl bg-white dark:bg-[#1a2e22] border border-[#cfe7d7] dark:border-[#2d4a36] hover:border-primary dark:hover:border-primary hover:shadow-lg transition-all text-center"
-                        href="#">
+                        href="/encuentra?categoria=Jardineria">
                         <div
                             class="size-12 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">yard</span>
@@ -366,33 +366,25 @@
                                 <div
                                     class="absolute -bottom-1 -right-1 bg-primary text-[#0d1b12] text-[10px] font-bold px-2 py-0.5 rounded-full border border-white">
                                     VERIFIED</div>
+                                <h2 class="text-3xl font-bold text-[#0d1b12] dark:text-white mb-2">Servicios Populares
+                                </h2>
+                                <p class="text-gray-600 dark:text-gray-400">Descubre los servicios más solicitados en tu
+                                    área.</p>
                             </div>
-                            <div>
-                                <h3 class="font-bold text-lg text-[#0d1b12] dark:text-white">Miguel A.</h3>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Carpintero</p>
-                                <div class="flex items-center gap-1 mt-1 text-sm font-medium text-amber-500">
-                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
-                                    4.8 <span class="text-gray-400 font-normal text-xs ml-1">(56 reviews)</span>
-                                </div>
+                            <a href="/publicaciones"
+                                class="hidden sm:flex items-center gap-2 text-primary font-bold hover:text-green-600 transition-colors">
+                                Ver Todos
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </a>
+                        </div>
+                        <!-- Jobs List -->
+                        <div id="popularServices" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <!-- Se cargarán dinámicamente -->
+                            <div class="col-span-full text-center py-12">
+                                <p class="text-gray-500 italic">Descubriendo los mejores servicios para ti...</p>
                             </div>
                         </div>
-                        <div class="flex gap-2 mb-4">
-                            <span
-                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Muebles</span>
-                            <span
-                                class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">Reparación</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-5">
-                            Muebles personalizados y reparaciones. Devolviendo vida a la madera con técnicas
-                            tradicionales.
-                        </p>
-                        <button
-                            class="w-full h-10 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-[#0d1b12] transition-colors">
-                            View Profile
-                        </button>
                     </div>
-                </div>
-            </div>
         </section>
         <!-- Call to Action for Workers -->
         <section class="py-20 bg-background-light dark:bg-background-dark">
@@ -412,48 +404,32 @@
                         </p>
                     </div>
                     <div class="relative z-10 shrink-0">
-                        <button
-                            class="bg-[#0d1b12] text-white hover:bg-gray-900 px-8 py-4 rounded-xl font-bold text-lg transition-transform hover:scale-105 shadow-xl">
+                        <a href="/registro"
+                            class="inline-block bg-[#0d1b12] text-white hover:bg-gray-900 px-8 py-4 rounded-xl font-bold text-lg transition-transform hover:scale-105 shadow-xl">
                             Únete como Profesional
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Footer -->
-        <footer class="bg-white dark:bg-[#0c1a11] border-t border-gray-200 dark:border-gray-800 pt-16 pb-8">
+        <footer class="bg-background-light dark:bg-[#0c1a11] py-12 border-t border-gray-100 dark:border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-                    <div class="col-span-2 md:col-span-1">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="size-0 rounded bg-primary flex items-center justify-center text-[#0d1b12]">
-                            </div>
-                            <span class="text-[#0d1b12] dark:text-white font-bold">B E O</span>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center gap-3 text-primary mb-6">
+                            <h2 class="text-2xl font-black tracking-tighter">B E O</h2>
                         </div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                            Conectando talentos locales con vecinos que necesitan ayuda. Rapido y Seguro
+                        <p class="text-gray-500 dark:text-gray-400 max-w-sm">
+                            La plataforma líder para conectar talento local con necesidades reales en San Juan del Río.
                         </p>
-                        <div class="flex gap-4">
-                            <a class="text-gray-400 hover:text-primary" href="#"><span
-                                    class="material-symbols-outlined">public</span></a> <!-- abstract social icon -->
-                            <a class="text-gray-400 hover:text-primary" href="#"><span
-                                    class="material-symbols-outlined">alternate_email</span></a>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-[#0d1b12] dark:text-white mb-4">Para Clientes</h4>
-                        <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                            <li><a class="hover:text-primary" href="/encuentra">Encuentra a un Profesional</a></li>
-                            <li><a class="hover:text-primary" href="/como_funciona">Cómo Funciona</a></li>
-                            <li><a class="hover:text-primary" href="/ayuda">Seguridad y Confianza</a></li>
-                        </ul>
                     </div>
                     <div>
                         <h4 class="font-bold text-[#0d1b12] dark:text-white mb-4">Para Profesionales</h4>
                         <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
                             <li><a class="hover:text-primary" href="/registro">Únete Ahora</a></li>
-                            <li><a class="hover:text-primary" href="#">Historias de Éxito</a></li>
-                            <li><a class="hover:text-primary" href="#">Recursos</a></li>
+                            <li><a class="hover:text-primary" href="/exitos">Historias de Éxito</a></li>
+                            <li><a class="hover:text-primary" href="/recursos">Recursos</a></li>
                         </ul>
                     </div>
                     <div>
@@ -467,7 +443,7 @@
                 </div>
                 <div
                     class="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="text-xs text-gray-400">© 2026 San Juan Trades. Todos los derechos reservados.</p>
+                    <p class="text-xs text-gray-400">© 2026 B E O Marketplace. Todos los derechos reservados.</p>
                     <div class="flex items-center gap-2 text-xs text-gray-400">
                         <span class="material-symbols-outlined text-sm">language</span>
                         <span>Español (MX)</span>
@@ -475,6 +451,9 @@
                 </div>
             </div>
         </footer>
+</body>
+
+</html>
 
 
 

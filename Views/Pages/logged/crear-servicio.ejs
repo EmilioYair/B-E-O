@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEO - Ofrece un Servicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+    <%- include('../../Partials/header') %>
+
+        <main class="max-w-3xl mx-auto py-12 px-6">
+            <h1 class="text-4xl font-black text-primary mb-8">Ofrece tu Servicio</h1>
+
+            <form id="serviceForm"
+                class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col gap-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2">Título de tu anuncio</label>
+                    <input type="text" name="titulo" placeholder="Ej: Electricista certificado 24/7"
+                        class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none"
+                        required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold mb-2">Categoría</label>
+                    <select name="categoria"
+                        class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none"
+                        required>
+                        <option value="Plomeria">Plomería</option>
+                        <option value="Electricidad">Electricidad</option>
+                        <option value="Limpieza">Limpieza</option>
+                        <option value="Carpinteria">Carpintería</option>
+                        <option value="Albañileria">Albañilería</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold mb-2">Descripción detallada</label>
+                    <textarea name="descripcion" rows="4"
+                        placeholder="Describe qué ofreces, tu experiencia y lo que te distingue..."
+                        class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none"
+                        required></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Precio base (MXN)</label>
+                        <input type="number" name="precioBase" placeholder="Ej: 350"
+                            class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Ubicación principal en SJR</label>
+                        <select name="ubicacion"
+                            class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none">
+                            <option value="Centro">Centro</option>
+                            <option value="Zona Oriente">Zona Oriente</option>
+                            <option value="San Cayetano">San Cayetano</option>
+                            <option value="Pedregoso">Pedregoso</option>
+                            <option value="Lomas">Lomas de San Juan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold mb-2">Imagen del servicio (Opcional)</label>
+                    <input type="file" id="serviceImage"
+                        class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg shadow-green-500/20 mt-4">
+                    Publicar Servicio
+                </button>
+            </form>
+        </main>
+
+        <script>
+            document.getElementById('serviceForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const imageFile = document.getElementById('serviceImage').files[0];
+
+                if (imageFile) {
+                    formData.append('imagen', imageFile);
+                }
+
+                try {
+                    const response = await fetch('/api/services', {
+                        method: 'POST',
+                        body: formData // Usamos FormData para enviar el archivo
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert('¡Servicio publicado con éxito!');
+                        window.location.href = '/publicaciones';
+                    } else {
+                        alert('Error: ' + (result.error || 'No se pudo publicar'));
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Ocurrió un error en el servidor');
+                }
+            });
+        </script>
+</body>
+
+</html>
