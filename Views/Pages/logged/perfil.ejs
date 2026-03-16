@@ -13,6 +13,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -35,33 +41,7 @@
 
 <body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen">
     <!-- Navigation Bar -->
-    <nav
-        class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-2">
-                    <div class="bg-primary text-white p-1.5 rounded-lg">
-                        <span class="material-icons text-xl leading-none">handyman</span>
-                    </div>
-                    <span class="text-2xl font-bold tracking-tight text-primary">B E O</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Explorar Oficios</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Cómo Funciona</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Mis Favoritos</a>
-                    <button class="bg-slate-100 dark:bg-slate-800 p-2 rounded-full">
-                        <span class="material-icons text-xl">notifications_none</span>
-                    </button>
-                    <div class="flex items-center gap-2 border-l pl-8 border-slate-200 dark:border-slate-800">
-                        <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
-                            <img alt="Avatar Usuario" data-alt="User profile avatar circle"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1dECDeIj_CTzIQBekC_6qGlxSoPHLMRXWBQKdcJsP_PQdTA2utaXlRhN2i4vZhgc8kaZrhdpmRk1-rK9tl0S5xeaiaEUoEsN2E36I05qAFfXkMSk5dMf5VPU3g7OyYKrEZm0UnDA473OHwQVxEEyG8SGSBJ94rMo1OOcJf_yYYmQqubvFoBBFlNN-8Acn6kTTjIk-sTvEJXNSOi0FfVDj1mQTxwg_f6l-2UdCYR1V4W1fDwEUII0rmPCYN_aoPgCeOVrn-bSRjRY" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <%- include('../../Partials/header') %>
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Header Profile Card -->
         <div

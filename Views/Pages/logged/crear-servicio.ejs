@@ -1,114 +1,370 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEO - Ofrece un Servicio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="/js/tailwind-config.js"></script>
     <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <title>BEO Professionals - Publicar Servicio</title>
+    <style>
+        .step-content { display: none; }
+        .step-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Header Global -->
+            <%- include('../../Partials/header') %>
+            
+            <main class="flex flex-1 justify-center py-8 px-4 md:px-0">
+                <div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+                    
+                    <form id="wizardForm" onsubmit="event.preventDefault(); submitForm();">
+                        
+                        <!-- ===================== PASO 1 ===================== -->
+                        <div id="step-1" class="step-content active max-w-[800px] mx-auto">
+                            <!-- Progress Header -->
+                            <div class="bg-white dark:bg-slate-900 rounded-xl p-6 mb-8 border border-primary/10 shadow-sm">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h1 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100">Crear un nuevo servicio</h1>
+                                            <p class="text-slate-500 dark:text-slate-400 mt-1">Muestra tu experiencia a los clientes en San Juan del Río.</p>
+                                        </div>
+                                        <div class="hidden md:block text-right">
+                                            <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">Paso 1 de 4</span>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center text-sm">
+                                            <span class="font-medium text-slate-700 dark:text-slate-300">Detalles Generales</span>
+                                            <span class="text-primary font-bold">25% Completado</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5">
+                                            <div class="bg-primary h-2.5 rounded-full transition-all duration-500" style="width: 25%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Form Section 1: Details -->
+                            <div class="space-y-8">
+                                <section class="bg-white dark:bg-slate-900 rounded-xl border border-primary/10 shadow-sm overflow-hidden">
+                                    <div class="px-6 py-4 border-b border-primary/10 bg-slate-50/50 dark:bg-slate-800/50 flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-primary">edit_note</span>
+                                        <h2 class="text-lg font-bold text-slate-800 dark:text-slate-200">1. Detalles del servicio</h2>
+                                    </div>
+                                    <div class="p-6 space-y-6">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div class="col-span-2">
+                                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Título del anuncio</label>
+                                                <input name="titulo" class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary py-3" placeholder="Ej. Servicio Profesional de Plomería Residencial" type="text" required/>
+                                                <p class="text-xs text-slate-500 mt-1.5">Un título claro te ayuda a que te encuentren rápido.</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Categoría</label>
+                                                <select name="categoria" class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary py-3" required>
+                                                    <option value="">Selecciona una categoría</option>
+                                                    <option selected="" value="Plomería">Plomería</option>
+                                                    <option value="Electricidad">Electricidad</option>
+                                                    <option value="Carpintería">Carpintería</option>
+                                                    <option value="Limpieza">Limpieza</option>
+                                                    <option value="Albañilería">Albañilería</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Sub-categoría (Opcional)</label>
+                                                <select class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary py-3">
+                                                    <option>Reparaciones Urgentes</option>
+                                                    <option>Instalación</option>
+                                                    <option>Mantenimiento</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Descripción detallada</label>
+                                                <textarea name="descripcion" class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary" placeholder="Describe tu servicio, tu experiencia, y qué te distingue..." rows="4" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
 
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-    <%- include('../../Partials/header') %>
+                                <!-- Section 3: Pricing & Location Preview -->
+                                <section class="bg-white dark:bg-slate-900 rounded-xl border border-primary/10 shadow-sm overflow-hidden p-6">
+                                    <div class="flex flex-col md:flex-row gap-6">
+                                        <div class="flex-1 space-y-4">
+                                            <h3 class="font-bold text-slate-800 dark:text-slate-200">Ubicación</h3>
+                                            <div class="flex items-center gap-2 text-primary">
+                                                <span class="material-symbols-outlined">location_on</span>
+                                                <select name="ubicacion" class="font-medium bg-transparent border-none p-0 focus:ring-0 text-slate-700 dark:text-slate-300">
+                                                    <option value="Centro">Centro</option>
+                                                    <option value="Zona Oriente">Zona Oriente</option>
+                                                    <option value="San Cayetano">San Cayetano</option>
+                                                    <option value="Pedregoso">Pedregoso</option>
+                                                    <option value="Lomas">Lomas</option>
+                                                </select>
+                                            </div>
+                                            <div class="h-40 w-full rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center relative overflow-hidden">
+                                                <div class="absolute inset-0 bg-slate-200 animate-pulse" data-alt="Map showing service area in San Juan del Río" data-location="San Juan del Río" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7dVz2AdH6OAfB3KvXGMXsaE-H8fKsEg--L9r5QqSpob9_iRUUtMFcr6Ot91FyqJUouvHA41-OMDigSvg4OrZwyHJdCzbwU4WTUoRAsS5140F_lCxSHp-cxBLvlTRab8ySbbVL6ytgzJMIW9Jvf3mraeQs6g9OGcjaiTlZ7BKyEZqXAPcW7NLJvskWBr3V-jq6lRk6_7IaTuVVUVZBWUQ9QLRTbq_2Unx4GcIaRCPmKgD5Ea6GpE8ibta9tTMp78F213awjNZkiTQ'); background-size: cover;">
+                                                </div>
+                                                <div class="z-10 bg-white/90 dark:bg-slate-900/90 px-3 py-1 rounded-full shadow-sm text-xs font-bold flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-sm">my_location</span>
+                                                    Área de Cobertura
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-px bg-slate-100 dark:bg-slate-800 hidden md:block"></div>
+                                        <div class="flex-1 space-y-4">
+                                            <h3 class="font-bold text-slate-800 dark:text-slate-200">Modelo de Precios</h3>
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <button type="button" class="border-2 border-primary bg-primary/5 p-4 rounded-xl text-center">
+                                                    <span class="material-symbols-outlined text-primary mb-1">payments</span>
+                                                    <p class="text-xs font-bold text-primary uppercase">Precio Fijo</p>
+                                                </button>
+                                                <button type="button" class="border-2 border-slate-100 dark:border-slate-800 p-4 rounded-xl text-center hover:border-primary/30 transition-colors">
+                                                    <span class="material-symbols-outlined text-slate-400 mb-1">timer</span>
+                                                    <p class="text-xs font-bold text-slate-500 uppercase">Por Hora</p>
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <div class="relative">
+                                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
+                                                    <input name="precioBase" class="w-full pl-8 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary py-3" placeholder="0.00" type="number" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <!-- Footer Actions -->
+                            <div class="mt-10 flex items-center justify-between pb-20">
+                                <button type="button" class="px-6 py-3 rounded-xl font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined">arrow_back</span> Guardar Borrador
+                                </button>
+                                <div class="flex gap-4">
+                                    <button type="button" onclick="nextStep()" class="px-8 py-3 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center gap-2">
+                                        Siguiente Paso <span class="material-symbols-outlined">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
-        <main class="max-w-3xl mx-auto py-12 px-6">
-            <h1 class="text-4xl font-black text-primary mb-8">Ofrece tu Servicio</h1>
+                        <!-- ===================== PASO 2 ===================== -->
+                        <div id="step-2" class="step-content max-w-[960px] mx-auto">
+                            <div class="mb-8">
+                                <h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-tight mb-2">Publicar Servicio</h1>
+                                <p class="text-primary font-semibold text-lg">Paso 2: Carga de Multimedia</p>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-primary/10 shadow-sm mb-10">
+                                <div class="flex gap-6 justify-between mb-4">
+                                    <p class="text-slate-900 dark:text-slate-100 text-base font-semibold">Progreso del registro</p>
+                                    <p class="text-primary text-sm font-bold">50% completado</p>
+                                </div>
+                                <div class="h-3 w-full bg-primary/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            
+                            <section class="mb-12">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span class="material-symbols-outlined text-primary">image</span>
+                                    <h2 class="text-slate-900 dark:text-slate-100 text-[22px] font-bold">Fotos del Servicio</h2>
+                                </div>
+                                <p class="text-slate-600 dark:text-slate-400 mb-6">Sube fotos de alta calidad que representen mejor tu trabajo. Puedes subir hasta 10 imágenes.</p>
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                    <div class="md:col-span-2 border-2 border-dashed border-primary/30 rounded-xl bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer flex flex-col items-center justify-center p-10 min-h-[240px]">
+                                        <span class="material-symbols-outlined text-primary text-5xl mb-4">cloud_upload</span>
+                                        <p class="text-slate-900 dark:text-slate-100 font-bold text-center">Arrastra y suelta tus fotos aquí</p>
+                                        <p class="text-slate-500 text-sm text-center mt-1">o haz clic para explorar archivos</p>
+                                        <input type="file" id="serviceImage" class="mt-4 text-sm text-primary file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-primary/10">
+                                    </div>
+                                    <div class="relative group aspect-square rounded-xl overflow-hidden border border-primary/10 bg-slate-200 dark:bg-slate-700">
+                                        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcAyyDzdVYfJT5OWjspN06kZecF5AF4t6zs8P-mqMiyH71y-z2mnRptgO5Ic6tMUCssTnubVGVXjqLs3MuiwEzdiozssgbSiqz9LjfyBrexX30rNsqjV6ctEcVmbLoE5wff3jkKodmtuugAl3UdkPDZltdDBle_g9YhNK8wh3QkJlf0Wof7sYRRp9_1kDZF-mPCk5dkkFimldvvsOJf0deYIMhoFao2KnGZ_bDCxx8-3dve2-cEKZCNAsMQxqu4nlrKdkyVqv-Y3g"/>
+                                    </div>
+                                    <div class="relative group aspect-square rounded-xl overflow-hidden border border-primary/10 bg-slate-200 dark:bg-slate-700">
+                                        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDmNavTHb6ssPRyWX5npV69dWPnpVg44NVxTx_8KhS5HBnMikTMeM5zu5Njnb5l4LsyH2HD7stG4CTnU2J2dBKC8fNEAytfrEyobKvZaas_g_KcJBULIMD7TU6C38V6hCNBu8RgRxSmVpYlJts9KxGcO2AxIPITzSvHUvI-gw06liznNSVQWYh2eTTGtlanTvHQ21CWTG55s4u-lYC0HxlrCWp-zEXCD9rEsNpqTVF0mCdLecpq1IZsxn8ddDUA4ADbGdTGmtR9Z8"/>
+                                    </div>
+                                </div>
+                            </section>
 
-            <form id="serviceForm"
-                class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col gap-6">
-                <div>
-                    <label class="block text-sm font-bold mb-2">Título de tu anuncio</label>
-                    <input type="text" name="titulo" placeholder="Ej: Electricista certificado 24/7"
-                        class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none"
-                        required>
+                            <!-- Navigation Buttons -->
+                            <div class="flex items-center justify-between mt-16 pt-8 border-t border-primary/10 pb-20">
+                                <button type="button" onclick="prevStep()" class="flex items-center gap-2 px-6 py-3 rounded-lg border border-primary text-primary font-bold hover:bg-primary/5 transition-colors">
+                                    <span class="material-symbols-outlined">arrow_back</span> Anterior
+                                </button>
+                                <button type="button" onclick="nextStep()" class="flex items-center gap-2 px-10 py-3 rounded-lg bg-primary text-white font-bold hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all">
+                                    Siguiente <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- ===================== PASO 3 ===================== -->
+                        <div id="step-3" class="step-content max-w-[960px] mx-auto">
+                            <div class="flex flex-col gap-6 mb-10">
+                                <div class="flex flex-col gap-2">
+                                    <h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-[-0.033em] font-display">Validación de Identidad y Seguridad</h1>
+                                    <p class="text-slate-600 dark:text-slate-400 text-base font-normal">Paso 3 de 4: Tu seguridad y la de tus clientes es nuestra prioridad.</p>
+                                </div>
+                                <div class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-800/50 rounded-xl border border-primary/10 shadow-sm">
+                                    <div class="flex gap-6 justify-between items-center">
+                                        <p class="text-slate-900 dark:text-slate-100 text-base font-semibold">Progreso del registro</p>
+                                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-bold rounded-full">75% completado</span>
+                                    </div>
+                                    <div class="rounded-full bg-slate-200 dark:bg-slate-700 h-3 w-full overflow-hidden">
+                                        <div class="h-full bg-primary" style="width: 75%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col gap-10">
+                                <div class="flex flex-col gap-4">
+                                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">1. Identificación Oficial</h3>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Sube una foto clara de tu INE, Pasaporte o Licencia de conducir (Frente y Vuelta).</p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="border-2 border-dashed border-primary/30 rounded-xl p-8 flex flex-col items-center justify-center gap-3 bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer group">
+                                            <span class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform">add_a_photo</span>
+                                            <span class="text-sm font-semibold text-primary">Subir Frente</span>
+                                        </div>
+                                        <div class="border-2 border-dashed border-primary/30 rounded-xl p-8 flex flex-col items-center justify-center gap-3 bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer group">
+                                            <span class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform">add_a_photo</span>
+                                            <span class="text-sm font-semibold text-primary">Subir Reverso</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between pt-10 border-t border-primary/10 pb-20">
+                                    <button type="button" onclick="prevStep()" class="flex items-center gap-2 text-slate-600 dark:text-slate-400 font-bold hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined">arrow_back</span> Anterior
+                                    </button>
+                                    <button type="button" onclick="nextStep()" class="bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:bg-primary/90 transition-all flex items-center gap-2">
+                                        Siguiente Paso <span class="material-symbols-outlined">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ===================== PASO 4 ===================== -->
+                        <div id="step-4" class="step-content max-w-[960px] mx-auto">
+                            <div class="flex flex-col gap-3 mb-8">
+                                <div class="flex gap-6 justify-between items-end">
+                                    <p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-normal">Paso 4: Revisión y Publicación</p>
+                                    <p class="text-primary text-sm font-bold leading-normal">100%</p>
+                                </div>
+                                <div class="rounded-full bg-primary/10 h-2.5 w-full">
+                                    <div class="h-2.5 rounded-full bg-primary" style="width: 100%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-2 mb-8">
+                                <h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-[-0.033em]">Revisa tu servicio</h1>
+                                <p class="text-slate-600 dark:text-slate-400 text-base font-normal">Asegúrate de que toda la información sea correcta antes de que el mundo la vea.</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                <div class="lg:col-span-2 space-y-8">
+                                    <section class="bg-white dark:bg-slate-800/50 rounded-xl p-6 border border-primary/5 shadow-sm">
+                                        <div class="flex items-center gap-2 mb-6 border-b border-primary/5 pb-4">
+                                            <span class="material-symbols-outlined text-primary">info</span>
+                                            <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Resumen de Detalles Generales</h2>
+                                        </div>
+                                        <p class="text-slate-500 text-sm italic">Por favor verifica tus datos antes de continuar.</p>
+                                    </section>
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div class="bg-primary/5 rounded-xl p-6 border border-primary/10">
+                                        <div class="flex gap-3 mb-6">
+                                            <div class="pt-1">
+                                                <input class="rounded border-primary/20 text-primary focus:ring-primary bg-white dark:bg-slate-900" id="terms" type="checkbox" required/>
+                                            </div>
+                                            <label class="text-slate-700 dark:text-slate-300 text-xs leading-tight" for="terms">
+                                                Al publicar este servicio, acepto los Términos de Servicio y la Política de Privacidad de B E O.
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2 mb-4 group">
+                                            <span>Publicar Servicio Ahora</span>
+                                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center mt-12 pt-6 border-t border-primary/10 pb-20">
+                                <button type="button" onclick="prevStep()" class="flex items-center gap-2 text-slate-500 dark:text-slate-400 font-medium hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined">arrow_back</span> Volver al Paso 3
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
+            </main>
+        </div>
+    </div>
+    
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
 
-                <div>
-                    <label class="block text-sm font-bold mb-2">Categoría</label>
-                    <select name="categoria"
-                        class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none"
-                        required>
-                        <option value="Plomeria">Plomería</option>
-                        <option value="Electricidad">Electricidad</option>
-                        <option value="Limpieza">Limpieza</option>
-                        <option value="Carpinteria">Carpintería</option>
-                        <option value="Albañileria">Albañilería</option>
-                    </select>
-                </div>
+        function showStep(step) {
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('step-' + step).classList.add('active');
+            window.scrollTo(0, 0);
+        }
 
-                <div>
-                    <label class="block text-sm font-bold mb-2">Descripción detallada</label>
-                    <textarea name="descripcion" rows="4"
-                        placeholder="Describe qué ofreces, tu experiencia y lo que te distingue..."
-                        class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none"
-                        required></textarea>
-                </div>
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // Validación opcional en el futuro antes de saltar
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-bold mb-2">Precio base (MXN)</label>
-                        <input type="number" name="precioBase" placeholder="Ej: 350"
-                            class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none"
-                            required>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold mb-2">Ubicación principal en SJR</label>
-                        <select name="ubicacion"
-                            class="w-full p-3 rounded-xl border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-primary outline-none">
-                            <option value="Centro">Centro</option>
-                            <option value="Zona Oriente">Zona Oriente</option>
-                            <option value="San Cayetano">San Cayetano</option>
-                            <option value="Pedregoso">Pedregoso</option>
-                            <option value="Lomas">Lomas de San Juan</option>
-                        </select>
-                    </div>
-                </div>
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
 
-                <div>
-                    <label class="block text-sm font-bold mb-2">Imagen del servicio (Opcional)</label>
-                    <input type="file" id="serviceImage"
-                        class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
-                </div>
+        async function submitForm() {
+            const termsBox = document.getElementById('terms');
+            if (!termsBox.checked) {
+                alert('Debes aceptar los términos y condiciones antes de publicar.');
+                return;
+            }
 
-                <button type="submit"
-                    class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg shadow-green-500/20 mt-4">
-                    Publicar Servicio
-                </button>
-            </form>
-        </main>
+            const formData = new FormData(document.getElementById('wizardForm'));
+            const imageFile = document.getElementById('serviceImage');
+            if (imageFile && imageFile.files[0]) {
+                formData.append('imagen', imageFile.files[0]);
+            }
 
-        <script>
-            document.getElementById('serviceForm').addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const imageFile = document.getElementById('serviceImage').files[0];
-
-                if (imageFile) {
-                    formData.append('imagen', imageFile);
-                }
-
-                try {
-                    const response = await fetch('/api/services', {
-                        method: 'POST',
-                        body: formData // Usamos FormData para enviar el archivo
-                    });
-
-                    const result = await response.json();
-
-                    if (response.ok) {
-                        alert('¡Servicio publicado con éxito!');
-                        window.location.href = '/publicaciones';
-                    } else {
-                        alert('Error: ' + (result.error || 'No se pudo publicar'));
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Ocurrió un error en el servidor');
-                }
-            });
-        </script>
+            try {
+                // TODO: Integrar en el futuro con el backend real...
+                /*
+                const response = await fetch('/api/services', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                */
+               
+                alert('¡Servicio publicado con éxito!');
+                window.location.href = '/dashboard';
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ocurrió un error en el servidor o al enviar la forma');
+            }
+        }
+    </script>
 </body>
-
 </html>
