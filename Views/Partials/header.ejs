@@ -22,14 +22,21 @@
             <a class="app-nav-link active" href="/">Inicio</a>
             <a class="app-nav-link" href="/encuentra">Encuentra</a>
             <a class="app-nav-link" href="/como_funciona">Como Funciona</a>
-            <a class="app-nav-link" href="/login">Iniciar Sesion</a>
-            <a class="app-nav-link" href="/registro">Registrarse</a>
+            
+            <% if (user) { %>
+                <a class="app-nav-link" href="/dashboard">Dashboard</a>
+            <% } else { %>
+                <a class="app-nav-link" href="/login">Iniciar Sesion</a>
+                <a class="app-nav-link" href="/registro">Registrarse</a>
+            <% } %>
         </nav>
 
         <!-- Botón de acción principal -->
-        <a href="/postear" class="app-btn-primary">
-            Postear un servicio
-        </a>
+        <% if (user) { %>
+            <a href="/postear" class="app-btn-primary">
+                Postear un servicio
+            </a>
+        <% } %>
     </div>
 
     <!-- SECCIÓN DERECHA: LOGO Y BUSQUEDA (Invertido) -->
@@ -47,15 +54,33 @@
         </label>
 
         <!-- Foto de perfil del usuario -->
-        <a href="/perfil">
-            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-primary/20"
-                data-alt="Worker profile photo"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAs20LOijB4uMa2D1T5mP26QEVkL7sDqTJ8RWqjgWfAz6amdERip0996nnZUlUuXJBbR6_J_2tdR4hpU1kPFn_OsgV7-sZhC7U3J8zmEJ8zHT5DEXYHAH5-fldaSO4pG3CEwBpIDZGqW035BnmQ6EVsD8cWjJ7e8TBnCZ4vMH6luYVBqhtRpJNJvam9X-Xv-D83AKpcD26ZvuMeq0gbHeC86uD7rYH-K4bPetjXGeqSwyC-rnF8RIKmiin636pW5-YX0XFnOAa5H3E");'>
-            </div>
-        </a>
-
-
-
+        <% if (user) { %>
+            <a href="/perfil" title="Ir a mi perfil">
+                <div id="headerProfileImage" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-primary/20"
+                    data-alt="Worker profile photo"
+                    style="background-image: url('<%= user.picture ? user.picture : \"/images/DefaultProfile.png\" %>');"
+                </div>
+            </a>
+            <form action="/auth/logout" method="POST" class="ml-3">
+                <button type="submit" class="px-3 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition">Cerrar Sesión</button>
+            </form>
+        <% } %>
 
     </div>
 </header>
+
+<script>
+    // Corrección del bloque if para evitar errores de sintaxis
+    const userId = '<%= user ? user.uid : "" %>';
+    if (userId && document.getElementById('headerProfileImage')) {
+        fetch(`/api/profile/${userId}/image-url`)
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                const avatarEL = document.getElementById('headerProfileImage');
+                if (avatarEL && data.url) {
+                    avatarEL.style.backgroundImage = `url("${data.url}")`;
+                }
+            })
+            .catch(err => console.log('Avatar no encontrado, usando default'));
+    }
+</script>

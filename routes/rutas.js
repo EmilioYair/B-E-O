@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const verifySession = require('../middlewares/authMiddleware');
+const { verifySession } = require('../middlewares/authMiddleware');
 
 // GUEST
 

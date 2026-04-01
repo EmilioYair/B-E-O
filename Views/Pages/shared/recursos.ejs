@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Recursos - B E O Professional Services</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-tint": "#117278",
+                        "on-surface-variant": "#64748b",
+                        "surface-container-highest": "#e0e3e3",
+                        "surface-bright": "#ffffff",
+                        "secondary": "#476366",
+                        "on-secondary-fixed": "#012022",
+                        "inverse-surface": "#112021",
+                        "error": "#ba1a1a",
+                        "background": "#f6f8f8",
+                        "surface-container-high": "#e6e9e9",
+                        "surface": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#117278",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#83d3da",
+                        "secondary-fixed-dim": "#aeccce",
+                        "tertiary-fixed-dim": "#ffb68b",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#c9e8eb",
+                        "tertiary": "#78411b",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4b4e",
+                        "on-primary-fixed": "#002022",
+                        "surface-dim": "#d7dbda",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#4d696c",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-fixed-variant": "#6e3913",
+                        "surface-variant": "#f8fafc",
+                        "on-tertiary-fixed": "#321300",
+                        "on-surface": "#0f172a",
+                        "primary-container": "#1172781a",
+                        "inverse-primary": "#83d3da",
+                        "inverse-on-surface": "#f6f8f8",
+                        "tertiary-fixed": "#ffdbc8",
+                        "tertiary-container": "#955830",
+                        "surface-container-low": "#f6f8f8",
+                        "on-background": "#0f172a",
+                        "on-tertiary-container": "#ffe1d1",
+                        "outline": "#117278",
+                        "primary-fixed": "#9ff0f6",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#ebeeee",
+                        "outline-variant": "#e2e8f0",
+                        "primary": "#117278",
+                        "secondary-container": "#c9e8eb"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="bg-background text-on-background antialiased">
+    <%- include('../../Partials/header') %>
+    <main class="pt-24 pb-20">
+        <!-- Hero Section / Header -->
+        <section class="max-w-7xl mx-auto px-6 mb-16">
+            <div
+                class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant pb-8">
+                <div class="max-w-2xl">
+                    <span class="text-primary font-bold text-xs tracking-widest uppercase mb-3 block">Recursos y
+                        Guías</span>
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-on-background mb-4">
+                        Consejos de expertos para tu hogar y negocio.
+                    </h1>
+                    <p class="text-on-surface-variant text-lg max-w-xl">
+                        Explora nuestra biblioteca de artículos diseñados para ayudarte a tomar mejores decisiones y
+                        profesionalizar tus servicios.
+                    </p>
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="p-2 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all">
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </button>
+                    <button
+                        class="p-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all">
+                        <span class="material-symbols-outlined">filter_list</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Blog Grid -->
+        <section class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <article
+                    class="group bg-surface rounded-xl overflow-hidden border border-primary/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img alt="Plomero trabajando"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Professional plumber in uniform fixing a sink with specialized tools in a clean modern kitchen setting, bright natural light."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzTUWDgZFPwYUoIctLxJsM6xMQ7t8H7E1IWblnpvbKp3UzNvEG6zKMPnC5u6fnEzziiv4gqBLt4H30SLtRm7OsldQV7uT6q8UyYa3LkphxT907NTph7hUfPJEW9DqGLQY8wrM8p9mG3BN6zudUE_PGC4hDdJFeGTdHZSiWuCzFImFM5C-CYtUFqGVRkRf5PDk08zXHi7b4goyL53027QzWilNZAkk8Wnvl8UxStt46qJHE4bunMViA-10CskUEoAvmk2N6fH0E78c" />
+                        <div class="absolute top-4 left-4">
+                            <span
+                                class="bg-white/90 backdrop-blur-sm text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2
+                            class="text-xl font-bold text-on-background mb-3 leading-tight group-hover:text-primary transition-colors">
+                            Consejos para contratar un buen plomero
+                        </h2>
+                        <p class="text-on-surface-variant text-sm mb-6 flex-grow">
+                            No arriesgues la integridad de tu hogar. Aprende a identificar las certificaciones y
+                            referencias clave antes de una reparación mayor.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/50">
+                            <span class="text-xs text-on-surface-variant font-medium">5 min de lectura</span>
+                            <a class="flex items-center gap-1 text-primary font-bold text-sm hover:gap-2 transition-all"
+                                href="#">
+                                Leer más
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 2 -->
+                <article
+                    class="group bg-surface rounded-xl overflow-hidden border border-primary/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img alt="Estrategia de servicios"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Modern office meeting room with diverse professionals discussing strategies on a digital board, soft teal accents in decor."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXGXgR_yCsCx-IQUQ4uFJyoQ2TLrOMZCW1FAoyuS6FJ9LBSpGbOk-qPf7zcylA6Q7IKnUPrfUboDFwpbJU3wFDQbLMJ3S-AttcB7hI9C5GqoouXuzMDkzLFUajkhGmGL2-WVHpxhrH27hjWi0wP3cmybh2s856Xh2yoNjRHLijH7k1qxDDl45lrK7heXlN-8vFi8Kwp6fMJIW_gwViiiVNaINj-p4CSooauWgDvadms2DVRBhHC_IuUPWb2Bkppj7CS_WSUZ549EY" />
+                        <div class="absolute top-4 left-4">
+                            <span
+                                class="bg-white/90 backdrop-blur-sm text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Profesionalismo</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2
+                            class="text-xl font-bold text-on-background mb-3 leading-tight group-hover:text-primary transition-colors">
+                            Cómo destacar tus servicios
+                        </h2>
+                        <p class="text-on-surface-variant text-sm mb-6 flex-grow">
+                            En un mercado competitivo, la diferenciación es clave. Descubre cómo presentar tu portafolio
+                            para atraer a los mejores clientes.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/50">
+                            <span class="text-xs text-on-surface-variant font-medium">8 min de lectura</span>
+                            <a class="flex items-center gap-1 text-primary font-bold text-sm hover:gap-2 transition-all"
+                                href="#">
+                                Leer más
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 3 -->
+                <article
+                    class="group bg-surface rounded-xl overflow-hidden border border-primary/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img alt="Seguridad hogar"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Close up of a smart home security system keypad on a minimalist wall with soft lighting and elegant shadows."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZZukfBIIlgI63OJMmOfCmKnj8kP8-1xM6Ao-Y0fDfhDxHNveKw1GOWo1PdLTpxt3xyStgVBWweQaREnfMUqCeS_lKaoCdWIKvkCui2hDq-tlLKL6EVuDHcNzy2CAvD0nlO3LSo2am6VuFw-W2-DYT32N9N09rtdv_GSO6cwPl2V9dWwHs9_K7ewnvGyHp9CWu2oHV2Iw9P7GjmlbWUFODlakB9Pdimgwh72et9u5d6ZJEnrQRo2MCy1WYiH-RvdADOJgbqzGdhBU" />
+                        <div class="absolute top-4 left-4">
+                            <span
+                                class="bg-white/90 backdrop-blur-sm text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bienestar</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2
+                            class="text-xl font-bold text-on-background mb-3 leading-tight group-hover:text-primary transition-colors">
+                            Seguridad en tu hogar
+                        </h2>
+                        <p class="text-on-surface-variant text-sm mb-6 flex-grow">
+                            Checklist esencial para proteger a tu familia. Desde cerraduras inteligentes hasta
+                            protocolos preventivos contra accidentes.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/50">
+                            <span class="text-xs text-on-surface-variant font-medium">6 min de lectura</span>
+                            <a class="flex items-center gap-1 text-primary font-bold text-sm hover:gap-2 transition-all"
+                                href="#">
+                                Leer más
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 4 -->
+                <article
+                    class="group bg-surface rounded-xl overflow-hidden border border-primary/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img alt="Mantenimiento preventivo"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Engineering tools and blueprints on a wooden desk, symbolizing precise maintenance planning, industrial artisan aesthetic."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIMzAtUGQBMYKjEVtDkTb7i82HrxvEJQKQy12QQy11zxl9msvafNHvxj_uHm2b-CZn4Ezy4gHDC4FV4AtN7xHCndpFiEYgXMsdQr-p7bmMqV4_CTVaxPzgh4gV1kl-prjtIVr9A4KSuc9mUGW8lXVnkrS6h2rrGBcL9GDej9Hl5lheWRxKuk5zyijs72nV3cs9L0zBRNn8El0bx-Of8BXofh33losZMiNSoEIhGRHA_RbrhkWep_Ig_XjcVXtNvR-tdbAIWYB-L4M" />
+                        <div class="absolute top-4 left-4">
+                            <span
+                                class="bg-white/90 backdrop-blur-sm text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2
+                            class="text-xl font-bold text-on-background mb-3 leading-tight group-hover:text-primary transition-colors">
+                            Mantenimiento preventivo
+                        </h2>
+                        <p class="text-on-surface-variant text-sm mb-6 flex-grow">
+                            Ahorra miles de pesos evitando reparaciones de emergencia. Una guía estacional para cuidar
+                            las instalaciones de tu inmueble.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/50">
+                            <span class="text-xs text-on-surface-variant font-medium">10 min de lectura</span>
+                            <a class="flex items-center gap-1 text-primary font-bold text-sm hover:gap-2 transition-all"
+                                href="#">
+                                Leer más
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- CTA Card (Special Asymmetric Bento Style) -->
+                <article
+                    class="lg:col-span-2 bg-primary text-on-primary rounded-xl overflow-hidden p-8 md:p-12 relative flex items-center shadow-lg">
+                    <div class="relative z-10 max-w-lg">
+                        <h2 class="text-3xl font-bold mb-4">¿Quieres compartir tu experiencia?</h2>
+                        <p class="text-on-primary/80 mb-8">
+                            Buscamos a los mejores profesionales en San Juan del Río para colaborar en nuestro blog.
+                            Comparte tus conocimientos con la comunidad.
+                        </p>
+                        <button
+                            class="bg-white text-primary px-6 py-3 rounded-lg font-bold shadow-sm hover:bg-slate-50 active:scale-95 transition-all">
+                            Enviar Propuesta
+                        </button>
+                    </div>
+                    <!-- Abstract Background Pattern -->
+                    <div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 pointer-events-none overflow-hidden">
+                        <span class="material-symbols-outlined text-[300px] leading-none select-none"
+                            style="font-variation-settings: 'FILL' 1;">edit_note</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- Newsletter Section -->
+        <section class="mt-24 bg-surface-container-low py-16">
+            <div class="max-w-3xl mx-auto px-6 text-center">
+                <span class="text-primary font-bold text-xs tracking-widest uppercase mb-4 block">Newsletter</span>
+                <h3 class="text-2xl font-bold text-on-background mb-4">Recibe los mejores consejos en tu correo</h3>
+                <p class="text-on-surface-variant mb-8">Únete a más de 1,000 profesionales y propietarios que reciben
+                    nuestras guías exclusivas semanalmente.</p>
+                <form class="flex flex-col sm:flex-row gap-3">
+                    <input
+                        class="flex-grow rounded-lg border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary px-4 py-3 bg-surface"
+                        placeholder="tu@email.com" type="email" />
+                    <button
+                        class="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold shadow-lg hover:brightness-110 transition-all"
+                        type="submit">
+                        Suscribirme
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <%- include('../../Partials/footer') %>
+</body>
+
+</html>

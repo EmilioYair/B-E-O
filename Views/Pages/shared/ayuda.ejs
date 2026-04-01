@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-low": "#f6f8f8",
+                        "surface-container-highest": "#e0e3e3",
+                        "on-tertiary-container": "#ffe1d1",
+                        "on-surface-variant": "#64748b",
+                        "secondary-fixed": "#c9e8eb",
+                        "primary-fixed": "#9ff0f6",
+                        "on-tertiary-fixed-variant": "#6e3913",
+                        "surface-tint": "#117278",
+                        "tertiary-container": "#955830",
+                        "surface-dim": "#d7dbda",
+                        "primary-container": "#1172781a",
+                        "on-primary-fixed": "#002022",
+                        "surface-variant": "#f8fafc",
+                        "on-background": "#0f172a",
+                        "surface-container-high": "#e6e9e9",
+                        "outline": "#117278",
+                        "surface": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4b4e",
+                        "error": "#ba1a1a",
+                        "primary": "#117278",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#83d3da",
+                        "background": "#f6f8f8",
+                        "on-secondary-fixed": "#012022",
+                        "secondary-fixed-dim": "#aeccce",
+                        "secondary": "#476366",
+                        "on-secondary-container": "#4d696c",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbc8",
+                        "primary-fixed-dim": "#83d3da",
+                        "outline-variant": "#e2e8f0",
+                        "surface-bright": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container": "#ebeeee",
+                        "on-surface": "#0f172a",
+                        "inverse-on-surface": "#f6f8f8",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#78411b",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#321300",
+                        "secondary-container": "#c9e8eb",
+                        "tertiary-fixed-dim": "#ffb68b",
+                        "on-primary-container": "#117278",
+                        "inverse-surface": "#112021"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+    <%- include('../../Partials/header') %>
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative py-20 px-6 bg-surface overflow-hidden">
+            <div class="absolute inset-0 opacity-5 pointer-events-none">
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-64 h-64 bg-secondary rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/2">
+                </div>
+            </div>
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-8">¿Cómo podemos
+                    ayudarte?</h1>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+                    </div>
+                    <input
+                        class="w-full pl-12 pr-6 py-5 bg-surface-container-low border-none rounded-xl shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary transition-all text-lg outline-none"
+                        placeholder="Busca artículos, guías o soluciones..." type="text" />
+                </div>
+                <p class="mt-6 text-on-surface-variant font-medium">Temas populares: Configurar cuenta, Métodos de pago,
+                    Verificación de identidad</p>
+            </div>
+        </section>
+        <!-- Category Grid -->
+        <section class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Category Card 1 -->
+                <div
+                    class="bg-surface p-8 rounded-xl border border-primary/10 shadow-sm hover:shadow-md transition-all group cursor-pointer">
+                    <div
+                        class="w-14 h-14 bg-primary-container rounded-lg flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-3xl"
+                            style="font-variation-settings: 'FILL' 1;">account_circle</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Problemas con mi cuenta</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed mb-4">Gestiona tu contraseña,
+                        configuración de seguridad y privacidad de perfil.</p>
+                    <span class="text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                        Ver artículos <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </span>
+                </div>
+                <!-- Category Card 2 -->
+                <div
+                    class="bg-surface p-8 rounded-xl border border-primary/10 shadow-sm hover:shadow-md transition-all group cursor-pointer">
+                    <div
+                        class="w-14 h-14 bg-primary-container rounded-lg flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-3xl"
+                            style="font-variation-settings: 'FILL' 1;">payments</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pagos y reembolsos</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed mb-4">Información sobre facturación,
+                        estados de pago y políticas de cancelación.</p>
+                    <span class="text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                        Ver artículos <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </span>
+                </div>
+                <!-- Category Card 3 -->
+                <div
+                    class="bg-surface p-8 rounded-xl border border-primary/10 shadow-sm hover:shadow-md transition-all group cursor-pointer">
+                    <div
+                        class="w-14 h-14 bg-primary-container rounded-lg flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-3xl"
+                            style="font-variation-settings: 'FILL' 1;">assignment_ind</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Guía para profesionales</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed mb-4">Aprende a maximizar tu perfil,
+                        gestionar clientes y escalar tu negocio en B E O.</p>
+                    <span class="text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                        Ver artículos <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ Accordion -->
+        <section class="bg-surface-container-low py-20">
+            <div class="max-w-3xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Preguntas Frecuentes</h2>
+                    <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+                </div>
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <details
+                        class="group bg-surface rounded-xl border border-outline-variant/50 open:ring-1 open:ring-primary overflow-hidden transition-all">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-slate-800">¿Cómo me registro como profesional en B E O?</span>
+                            <span
+                                class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                            Para registrarte como profesional, haz clic en el botón "Convertirme en socio" en el menú
+                            superior. Deberás completar tu perfil con certificaciones, experiencia y una identificación
+                            válida para pasar nuestro proceso de verificación.
+                        </div>
+                    </details>
+                    <!-- FAQ Item 2 -->
+                    <details
+                        class="group bg-surface rounded-xl border border-outline-variant/50 open:ring-1 open:ring-primary overflow-hidden transition-all">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-slate-800">¿Qué métodos de pago son aceptados?</span>
+                            <span
+                                class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                            Aceptamos todas las tarjetas de crédito y débito principales (Visa, Mastercard, American
+                            Express), así como pagos vía transferencia bancaria y billeteras digitales seleccionadas
+                            según tu región.
+                        </div>
+                    </details>
+                    <!-- FAQ Item 3 -->
+                    <details
+                        class="group bg-surface rounded-xl border border-outline-variant/50 open:ring-1 open:ring-primary overflow-hidden transition-all">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-slate-800">¿Cómo funciona la garantía de servicio?</span>
+                            <span
+                                class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                            Todos los servicios contratados a través de B E O cuentan con nuestra garantía de
+                            satisfacción. Si el servicio no cumple con lo acordado, retenemos el pago hasta que el
+                            conflicto se resuelva satisfactoriamente para ambas partes.
+                        </div>
+                    </details>
+                    <!-- FAQ Item 4 -->
+                    <details
+                        class="group bg-surface rounded-xl border border-outline-variant/50 open:ring-1 open:ring-primary overflow-hidden transition-all">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-slate-800">¿Cómo puedo cancelar un servicio programado?</span>
+                            <span
+                                class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                            Puedes cancelar desde tu panel de "Mis Servicios". Las cancelaciones realizadas con más de
+                            24 horas de antelación son gratuitas. Para cancelaciones de último minuto, se podría aplicar
+                            una pequeña tarifa de gestión.
+                        </div>
+                    </details>
+                </div>
+                <div
+                    class="mt-12 p-8 bg-primary/5 rounded-xl border border-dashed border-primary/30 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-900">¿Aún tienes dudas?</h4>
+                        <p class="text-on-surface-variant text-sm">Nuestro equipo de soporte humano está disponible
+                            24/7.</p>
+                    </div>
+                    <button
+                        class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold shadow-lg hover:opacity-90 transition-all">Contactar
+                        Soporte</button>
+                </div>
+            </div>
+        </section>
+        <!-- Helpful Guides / Articles (Asymmetric Layout) -->
+        <section class="max-w-7xl mx-auto px-6 py-20">
+            <h2 class="text-2xl font-extrabold text-slate-900 mb-10 tracking-tight">Artículos destacados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div
+                    class="md:col-span-8 bg-surface rounded-xl overflow-hidden shadow-sm border border-primary/10 group cursor-pointer">
+                    <div class="h-64 bg-slate-200 relative">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="professional workspace with minimalist design, wooden table and modern laptop with warm evening lighting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrAEe1ZwSj6pwem78bcpmPi4cvfqmaICqNFVitcYf8K4cs-p0VTWFe3qwmqc8-fSCyH1alU0Qbt5vaoGdmTynM4uSJXxu_p0P3MWMr_Eb_UEOYubEfFMFYGdyQYgv5JzlvN9LOS5viUQpCkkeUThfWq3EXy3aWMGCXpX0P06u4kEodpNGwr4kaZzX4skvNLhLE-tHCKWnvcQ04CmBJpKL7SE6wf_rhlB9s7FnUUn486nqsEx2-lVn6Yt5Ul58JsIezDZK-lyU7pzc" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <span
+                                class="bg-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Nuevo</span>
+                            <h3 class="text-2xl font-bold mt-2">Guía Maestra: Cómo destacar tu negocio en la plataforma
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-on-surface-variant text-sm mb-4">Descubre los secretos de los profesionales con
+                            mejor puntuación para atraer más clientes y fidelizar a los actuales usando nuestras
+                            herramientas de marketing integradas.</p>
+                        <div class="flex items-center gap-4">
+                            <div class="flex -space-x-2">
+                                <div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-300"></div>
+                                <div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-400"></div>
+                            </div>
+                            <span class="text-xs text-on-surface-variant font-medium">+1.2k leídos esta semana</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-4 flex flex-col gap-6">
+                    <div
+                        class="flex-1 bg-surface p-6 rounded-xl border border-primary/10 shadow-sm flex flex-col justify-between group cursor-pointer">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4"
+                                style="font-variation-settings: 'FILL' 1;">security</span>
+                            <h4 class="font-bold text-slate-900 mb-2">Tu seguridad es prioridad</h4>
+                            <p class="text-xs text-on-surface-variant">Conoce nuestras nuevas medidas de encriptación y
+                                verificación facial.</p>
+                        </div>
+                        <span class="text-primary text-xs font-bold mt-4">Leer más →</span>
+                    </div>
+                    <div
+                        class="flex-1 bg-surface p-6 rounded-xl border border-primary/10 shadow-sm flex flex-col justify-between group cursor-pointer">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4"
+                                style="font-variation-settings: 'FILL' 1;">stars</span>
+                            <h4 class="font-bold text-slate-900 mb-2">Sistema de Recompensas</h4>
+                            <p class="text-xs text-on-surface-variant">Ahorra en tu próximo servicio completando
+                                misiones y ganando insignias.</p>
+                        </div>
+                        <span class="text-primary text-xs font-bold mt-4">Leer más →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('../../Partials/footer') %>
+</body>
+
+</html>

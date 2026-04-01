@@ -50,20 +50,20 @@
                 <div class="absolute -bottom-12 left-8 flex items-end gap-6">
                     <div
                         class="w-32 h-32 rounded-xl border-4 border-white dark:border-slate-900 overflow-hidden shadow-lg bg-white">
-                        <img alt="Roberto Méndez" class="w-full h-full object-cover"
+                        <img id="profileImagePreview" alt="Foto de perfil" class="w-full h-full object-cover"
                             data-alt="Professional carpenter portrait smiling"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmJDWXt_lyHYCj4qY_Dv4exFKWY83I9YmwZKgFmRxUw-mykZK5x_hYtm7GQgihCE4qWQHGVPQFJfjZQRK5ZNqrzfpzUaSgL4ko3B4BQx3CW6axzYHdaNBnnFlOEsI-3KhOl2OhFipmhboMXlxwqSikxmpUzcnt03xUjEYiEWE7h8ECNL_e1OsRA0K6BXLVF3GMnEFcrNjOkl56caTCCAaN7HBbew5fkunJDXvrofE2wCaJ4g51jpoJgzuy7Qic4dG4805wDIrR4Kk" />
+                            src="<%= user && user.picture ? user.picture : '/images/DefaultProfile.png' %>" />
                     </div>
                     <div class="mb-4">
                         <div class="flex items-center gap-3">
-                            <h1 class="text-3xl font-bold">Roberto Méndez</h1>
+                            <h1 id="profileNameDisplay" class="text-3xl font-bold">Cargando...</h1>
                             <div
                                 class="flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/20">
                                 <span class="material-icons text-sm">verified</span>
                                 Verificado Nivel 2
                             </div>
                         </div>
-                        <p class="text-slate-500 dark:text-slate-400 font-medium text-lg">Maestro Carpintero y Ebanista
+                        <p id="profileDescDisplay" class="text-slate-500 dark:text-slate-400 font-medium text-lg">Profesional
                         </p>
                     </div>
                 </div>
@@ -72,21 +72,18 @@
                 <div class="flex gap-8">
                     <div class="flex flex-col">
                         <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Ubicación</span>
-                        <span class="font-semibold flex items-center gap-1">
+                        <span id="profileUbicacionDisplay" class="font-semibold flex items-center gap-1">
                             <span class="material-icons text-sm text-primary">location_on</span>
-                            San Juan del Río, Qro.
+                            No especificada
                         </span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Experiencia</span>
-                        <span class="font-semibold">12+ Años</span>
+                        <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Edad</span>
+                        <span id="profileEdadDisplay" class="font-semibold">No especificada</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Estado</span>
-                        <span class="flex items-center gap-1.5 font-semibold text-emerald-600">
-                            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                            Disponible hoy
-                        </span>
+                        <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Teléfono</span>
+                        <span id="profileTelefonoDisplay" class="font-semibold">No especificado</span>
                     </div>
                 </div>
                 <div class="flex gap-3">
@@ -100,6 +97,65 @@
                         <span class="material-icons text-sm text-red-500">favorite_border</span>
                         Guardar
                     </button>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 dark:border-slate-800 p-6 bg-slate-50 dark:bg-slate-900 rounded-b-xl mt-4">
+                <div class="space-y-6">
+                    <!-- Sección de subida de foto -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">Actualizar foto de perfil</h3>
+                        <form id="profileImageForm" class="flex flex-col sm:flex-row items-start sm:items-center gap-3" enctype="multipart/form-data">
+                            <input id="profileImageInput" name="avatar" type="file" accept="image/*" class="px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700" required />
+                            <button id="profileImageUploadBtn" type="submit" class="bg-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-[#0d5d62] transition">Subir foto</button>
+                            <span id="profileImageStatus" class="text-sm text-slate-500"></span>
+                        </form>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="border-t border-slate-200 dark:border-slate-700"></div>
+
+                    <!-- Sección de información del perfil -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">Rellenar información</h3>
+                        <form id="profileInfoForm" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Nombre completo</label>
+                                    <input id="profileNombre" name="nombre" type="text" placeholder="Tu nombre" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Edad</label>
+                                    <input id="profileEdad" name="edad" type="number" placeholder="Tu edad" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Teléfono</label>
+                                    <input id="profileTelefono" name="telefono" type="tel" placeholder="Tu teléfono" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Ubicación</label>
+                                    <input id="profileUbicacion" name="ubicacion" type="text" placeholder="Tu ubicación" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Biografía/Descripción</label>
+                                <textarea id="profileBiografia" name="biografia" placeholder="Cuéntanos sobre ti..." rows="3" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white"></textarea>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Especialidades (separadas por coma)</label>
+                                <input id="profileEspecialidades" name="especialidades" type="text" placeholder="Ej: Carpintería, Reparación, Barnizado" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
+                            </div>
+
+                            <div class="flex gap-3">
+                                <button id="profileInfoSubmitBtn" type="submit" class="bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-[#0d5d62] transition">Guardar información</button>
+                                <span id="profileInfoStatus" class="text-sm text-slate-500 flex items-center"></span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,14 +179,14 @@
                                 <div class="relative group">
                                     <img alt="Antes" class="rounded-lg h-40 w-full object-cover"
                                         data-alt="Old damaged kitchen cabinets before restoration"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxMmZUoDtsOFewPsgVG-zzjZl9A6PBEeo1DOp8c9l3R6WfHarPGgDhQ9fwBlHarExKvpdoYxQsK5MlAz84Q4zL5TzgfH-IH64ucTJIap3smZUrfHeR1kdaq0GxXdKk1jfYVTp4lUlt0DWwntsoIT8SYyJOJDZv2LS_uElb550_x-wOzgIWtNYfi4k5zftQxQStJnQKxEfhVZdWlbkaNydOnNyXC4gjLdDlRHbMil7lotEpA7Z9h0I_tFeZ4NVRHVOPaDI2U2rQeq4" />
+                                        src="/images/FrijolitoPP.png" />
                                     <span
                                         class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">ANTES</span>
                                 </div>
                                 <div class="relative group">
                                     <img alt="Después" class="rounded-lg h-40 w-full object-cover"
                                         data-alt="New modern white kitchen cabinets after renovation"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoe_hwZ4xxzKkrJltQJTugUcEdeykaSx6VaV1640ZMJH0PbpXpd3CmP2nKAlwsuJd57rzI3wzkKe7NXe9ppmHGmtUX9sfD1K7b2fQOKh83YxVgLQ46XSn8TbvaH1dD39zISs7DX48kWi9xdlY1IMNcsiiwebpeZzuT2NpGNafVeUs_BQAr7GU8o_-ZwoU9qf4SF5dfzCkssfa6jny48hm81rH5aMMm--pdEHvGMo75vSoj1o8T2TdsQSv1IaehRCsun2e0acYuuSU" />
+                                        src="/images/FrijolitoPP.png" />
                                     <span
                                         class="absolute top-2 left-2 bg-primary/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">DESPUÉS</span>
                                 </div>
@@ -146,14 +202,14 @@
                                 <div class="relative group">
                                     <img alt="Antes" class="rounded-lg h-40 w-full object-cover"
                                         data-alt="Damaged wooden floor before sanding"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2XFDgzBg2eeYMO8mNwUXcml7HO2bQaIbJq66jVZB7zPW5W8ZC0mhtRUuTm8zUAArRzUwxWOjKvM6ysAlfNfRqphwqIslTu5wA3BF8Pt-4iGwOYQzurNmz6Sxh9tOHsxNxcMTRvIhwrvB-O2V5WkNEi8tYhs584qemfuO_5wfEpslLQWo2U1WijdP1QsjZjW6i5T67P5b0RrvXEbWhRSrVE35U0fa5nRbEi87QBPOy4uDz0c1h-YZ2pCkA1wjv8IIPUsOr57u2Dds" />
+                                        src="/images/FrijolitoPP.png" />
                                     <span
                                         class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">ANTES</span>
                                 </div>
                                 <div class="relative group">
                                     <img alt="Después" class="rounded-lg h-40 w-full object-cover"
                                         data-alt="Polished dark wood flooring after finish"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSPUeITZP8g5EY__ebMjJoHy3xsyaCSq6DJ64c-xepPYOAIgREm3dhjM8tOaqNwa9qbNiJ-D6GfUfKedp53h6IztEjoEiyuHSDXqdgUjQX6WYoy6SRNmj5p6ct0B04XqBzczGPRytd2-qNm1RnML5woa3uklhKHraSPxgLc3hK7ByqJndevvojVngEy4msk7IaI3zHJIO9dhOzz6UumV8YWnv49dQ-M9avTISp_hfsZ5DrjbC7R9DKEahEeAXo_Bsjc5SJEO_ykAI" />
+                                        src="/images/FrijolitoPP.png" />
                                     <span
                                         class="absolute top-2 left-2 bg-primary/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">DESPUÉS</span>
                                 </div>
@@ -347,38 +403,200 @@
             </div>
         </div>
     </main>
-    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="flex items-center gap-2">
-                    <div class="bg-primary text-white p-1 rounded-lg">
-                        <span class="material-icons text-lg leading-none">handyman</span>
-                    </div>
-                    <span class="text-xl font-bold tracking-tight text-primary">B E O</span>
-                </div>
-                <div class="flex gap-8 text-sm text-slate-500 font-medium">
-                    <a class="hover:text-primary transition-colors" href="#">Términos</a>
-                    <a class="hover:text-primary transition-colors" href="#">Privacidad</a>
-                    <a class="hover:text-primary transition-colors" href="#">Centro de Ayuda</a>
-                    <a class="hover:text-primary transition-colors" href="#">Registra tu Oficio</a>
-                </div>
-                <div class="flex gap-4">
-                    <div
-                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 cursor-pointer hover:bg-primary hover:text-white transition-all">
-                        <span class="material-icons text-lg">facebook</span>
-                    </div>
-                    <div
-                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 cursor-pointer hover:bg-primary hover:text-white transition-all">
-                        <span class="material-icons text-lg">camera_alt</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 text-center">
-                <p class="text-xs text-slate-400">© 2024 B E O Plataforma Local. Orgullosamente en San Juan del Río,
-                    Qro.</p>
-            </div>
-        </div>
-    </footer>
+    <script>
+        // Cargar imagen de perfil y información al iniciar
+        async function loadProfileData() {
+            const profileImage = document.getElementById('profileImagePreview');
+            
+            try {
+                // Cargar imagen
+                if (profileImage) {
+                    const imgResponse = await fetch('/api/profile/<%= user.uid %>/image-url');
+                    if (imgResponse.ok) {
+                        const imgData = await imgResponse.json();
+                        profileImage.src = imgData.url;
+                    }
+                }
+
+                // Cargar información del perfil
+                const infoResponse = await fetch('/api/profile/<%= user.uid %>/info');
+                if (infoResponse.ok) {
+                    const userData = await infoResponse.json();
+                    
+                    // Actualizar datos en la página
+                    if (userData.nombre) {
+                        document.getElementById('profileNameDisplay').textContent = userData.nombre;
+                    }
+                    if (userData.biografia) {
+                        document.getElementById('profileDescDisplay').textContent = userData.biografia;
+                    }
+                    if (userData.ubicacion) {
+                        document.getElementById('profileUbicacionDisplay').textContent = userData.ubicacion;
+                    }
+                    if (userData.edad) {
+                        document.getElementById('profileEdadDisplay').textContent = userData.edad + ' años';
+                    }
+                    if (userData.telefono) {
+                        document.getElementById('profileTelefonoDisplay').textContent = userData.telefono;
+                    }
+
+                    // Llenar formulario con datos existentes
+                    if (userData.nombre) document.getElementById('profileNombre').value = userData.nombre;
+                    if (userData.edad) document.getElementById('profileEdad').value = userData.edad;
+                    if (userData.telefono) document.getElementById('profileTelefono').value = userData.telefono;
+                    if (userData.biografia) document.getElementById('profileBiografia').value = userData.biografia;
+                    if (userData.ubicacion) document.getElementById('profileUbicacion').value = userData.ubicacion;
+                    if (userData.especialidades && Array.isArray(userData.especialidades)) {
+                        document.getElementById('profileEspecialidades').value = userData.especialidades.join(', ');
+                    }
+                }
+            } catch (error) {
+                console.error('Error al cargar datos del perfil:', error);
+            }
+        }
+
+        // Cargar datos al iniciar página
+        document.addEventListener('DOMContentLoaded', function () {
+            loadProfileData();
+
+            const form = document.getElementById('profileImageForm');
+            const fileInput = document.getElementById('profileImageInput');
+            const statusText = document.getElementById('profileImageStatus');
+            const profileImage = document.getElementById('profileImagePreview');
+            const submitBtn = document.getElementById('profileImageUploadBtn');
+
+            if (!form) return;
+
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                if (!fileInput.files.length) {
+                    statusText.textContent = 'Selecciona una imagen primero.';
+                    return;
+                }
+
+                const file = fileInput.files[0];
+                const formData = new FormData();
+                formData.append('avatar', file);
+
+                submitBtn.disabled = true;
+                statusText.textContent = 'Subiendo...';
+
+                try {
+                    const response = await fetch('/api/profile/image', {
+                        method: 'PUT',
+                        credentials: 'include', // IMPORTANTE: enviar cookies de sesión
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        const error = await response.json().catch(() => ({ error: 'Error desconocido' }));
+                        throw new Error(error.error || 'No se pudo subir la imagen');
+                    }
+
+                    statusText.textContent = 'Obteniendo URL...';
+
+                    // Obtener URL firmada para mostrar en preview
+                    const urlResponse = await fetch('/api/profile/<%= user.uid %>/image-url');
+                    if (!urlResponse.ok) {
+                        throw new Error('No se pudo obtener la URL de la imagen');
+                    }
+
+                    const urlData = await urlResponse.json();
+                    profileImage.src = urlData.url;
+                    statusText.textContent = 'Foto actualizada correctamente';
+                    fileInput.value = '';
+                } catch (error) {
+                    console.error(error);
+                    statusText.textContent = 'Error: ' + (error.message || 'No se pudo subir la imagen');
+                } finally {
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Manejar formulario de información del perfil
+            const infoForm = document.getElementById('profileInfoForm');
+            const infoSubmitBtn = document.getElementById('profileInfoSubmitBtn');
+            const infoStatusText = document.getElementById('profileInfoStatus');
+
+            if (infoForm) {
+                infoForm.addEventListener('submit', async function (event) {
+                    event.preventDefault();
+
+                    const nombre = document.getElementById('profileNombre').value;
+                    const edad = document.getElementById('profileEdad').value;
+                    const telefono = document.getElementById('profileTelefono').value;
+                    const biografia = document.getElementById('profileBiografia').value;
+                    const ubicacion = document.getElementById('profileUbicacion').value;
+                    const especialidades = document.getElementById('profileEspecialidades').value;
+
+                    if (!nombre && !edad && !telefono && !biografia && !ubicacion && !especialidades) {
+                        infoStatusText.textContent = 'Rellena al menos un campo.';
+                        return;
+                    }
+
+                    infoSubmitBtn.disabled = true;
+                    infoStatusText.textContent = 'Guardando...';
+
+                    try {
+                        const response = await fetch('/api/profile/info', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            credentials: 'include', // IMPORTANTE: enviar cookies de sesión
+                            body: JSON.stringify({
+                                nombre: nombre || undefined,
+                                edad: edad || undefined,
+                                telefono: telefono || undefined,
+                                biografia: biografia || undefined,
+                                ubicacion: ubicacion || undefined,
+                                especialidades: especialidades ? especialidades.split(',').map(e => e.trim()) : undefined
+                            })
+                        });
+
+                        console.log('Response status:', response.status);
+                        console.log('Response headers:', response.headers.get('content-type'));
+
+                        // Leer el response una sola vez como texto
+                        const responseText = await response.text();
+                        console.log('Response text:', responseText.substring(0, 500));
+
+                        let responseData;
+                        try {
+                            responseData = JSON.parse(responseText);
+                        } catch (jsonError) {
+                            console.error('Error parsing JSON:', jsonError);
+                            throw new Error(`Error ${response.status}: La respuesta no es JSON válido. Primeros 200 caracteres: ${responseText.substring(0, 200)}`);
+                        }
+
+                        if (!response.ok) {
+                            throw new Error(responseData.error || `Error ${response.status}: ${responseData.details || 'Error desconocido'}`);
+                        }
+
+                        infoStatusText.textContent = 'Información guardada correctamente';
+                        console.log('Respuesta del servidor:', responseData);
+                        
+                        // Recargar los datos mostrados
+                        setTimeout(() => {
+                            loadProfileData();
+                            infoStatusText.textContent = '';
+                        }, 1500);
+                    } catch (error) {
+                        console.error('Error completo:', error);
+                        const errorMsg = error.message || 'Error al guardar la información';
+                        infoStatusText.textContent = 'Error: ' + errorMsg;
+                        
+                        // Mostrar el error completo en un alert para que veas sin DevTools
+                        alert('🔴 ERROR DETECTADO:\n\n' + errorMsg + '\n\nRevisa la página para más detalles.');
+                    } finally {
+                        infoSubmitBtn.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+    <%- include('../../Partials/footer') %>
 </body>
 
 </html>

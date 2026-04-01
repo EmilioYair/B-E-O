@@ -1,6 +1,5 @@
-const { db, admin, bucket } = require('../bd/bd');
-const { collection, addDoc, serverTimestamp } = require("firebase/firestore");
-const { v4: uuidv4 } = require('uuid'); // Necesitaremos uuid para nombres únicos
+const { v4: uuidv4 } = require('uuid');
+const { admin, bucket } = require('../bd/bd');
 
 /**
  * Crea un nuevo servicio en la colección 'servicios'
@@ -8,39 +7,43 @@ const { v4: uuidv4 } = require('uuid'); // Necesitaremos uuid para nombres únic
 const createService = async (req, res) => {
     try {
         const { titulo, categoria, descripcion, precioBase, ubicacion } = req.body;
-        const workerId = req.user.uid; // Obtenido del middleware de sesión
+        const workerId = req.user.uid;
 
         if (!titulo || !categoria || !descripcion || !precioBase) {
             return res.status(400).json({ error: 'Faltan campos obligatorios' });
         }
 
-        let imagenUrl = "/images/DefaultService.png";
+        let imagenPath = null;
 
-        // Lógica de subida a Firebase Storage
         if (req.file) {
-            const fileName = `services/${uuidv4()}_${req.file.originalname}`;
-            const file = bucket.file(fileName);
+            try {
+                const fileName = `services/${workerId}/${uuidv4()}-${req.file.originalname}`;
+                const file = bucket.file(fileName);
 
-            await file.save(req.file.buffer, {
-                metadata: { contentType: req.file.mimetype }
-            });
+                await file.save(req.file.buffer, {
+                    metadata: {
+                        contentType: req.file.mimetype,
+                    }
+                });
 
-            // Hacer el archivo público (o generar URL firmada, aquí simplificamos)
-            await file.makePublic();
-            imagenUrl = `https://storage.googleapis.com/${bucket.name}/${fileName}`;
+                imagenPath = fileName;
+            } catch (uploadError) {
+                console.warn('Error al subir imagen a Firebase Storage:', uploadError.message);
+                imagenPath = null;
+            }
         }
 
-        const docRef = await addDoc(collection(db, "servicios"), {
+        const docRef = await admin.firestore().collection("servicios").add({
             titulo,
             categoria,
             descripcion,
             precioBase: parseFloat(precioBase),
             ubicacion,
-            imagenUrl,
+            imagenPath,
             workerId,
             activo: true,
-            createdAt: serverTimestamp(),
-            updatedAt: serverTimestamp()
+            createdAt: admin.firestore.FieldValue.serverTimestamp(),
+            updatedAt: admin.firestore.FieldValue.serverTimestamp()
         });
 
         res.status(201).json({
@@ -82,4 +85,62 @@ const getServices = async (req, res) => {
     }
 };
 
-module.exports = { createService, getServices };
+/**
+ * Obtiene los servicios del usuario actual
+ */
+const getMyServices = async (req, res) => {
+    try {
+        const workerId = req.user.uid;
+        const snapshot = await admin.firestore().collection("servicios")
+            .where("workerId", "==", workerId)
+            .get();
+
+        const services = [];
+        snapshot.forEach(doc => {
+            services.push({ id: doc.id, ...doc.data() });
+        });
+
+        // Sort locally in descending order by createdAt to avoid Firestore index requirement
+        services.sort((a, b) => {
+            const dateA = a.createdAt && a.createdAt.toDate ? a.createdAt.toDate() : (a.createdAt ? new Date(a.createdAt) : new Date(0));
+            const dateB = b.createdAt && b.createdAt.toDate ? b.createdAt.toDate() : (b.createdAt ? new Date(b.createdAt) : new Date(0));
+            return dateB - dateA;
+        });
+
+        res.status(200).json(services);
+    } catch (error) {
+        console.error("Error al obtener mis servicios:", error);
+        res.status(500).json({ error: 'Error al obtener tus servicios' });
+    }
+};
+
+/**
+ * Genera URL firmada para acceder a la imagen de un servicio
+ */
+const getServiceImageUrl = async (req, res) => {
+    try {
+        const { serviceId } = req.params;
+
+        const serviceDoc = await admin.firestore().collection('servicios').doc(serviceId).get();
+
+        if (!serviceDoc.exists || !serviceDoc.data().imagenPath) {
+            return res.status(404).json({ error: 'Imagen no encontrada' });
+        }
+
+        const imagenPath = serviceDoc.data().imagenPath;
+        const file = bucket.file(imagenPath);
+
+        const [url] = await file.getSignedUrl({
+            version: 'v4',
+            action: 'read',
+            expires: Date.now() + 60 * 60 * 1000, // 1 hora
+        });
+
+        res.status(200).json({ url });
+    } catch (error) {
+        console.error('Error al generar URL de imagen:', error);
+        res.status(500).json({ error: 'Error al obtener imagen: ' + error.message });
+    }
+};
+
+module.exports = { createService, getServices, getMyServices, getServiceImageUrl };

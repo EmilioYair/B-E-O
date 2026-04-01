@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contáctanos - B E O</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-low": "#f6f8f8",
+                        "surface-container-highest": "#e0e3e3",
+                        "on-tertiary-container": "#ffe1d1",
+                        "on-surface-variant": "#64748b",
+                        "secondary-fixed": "#c9e8eb",
+                        "primary-fixed": "#9ff0f6",
+                        "on-tertiary-fixed-variant": "#6e3913",
+                        "surface-tint": "#117278",
+                        "tertiary-container": "#955830",
+                        "surface-dim": "#d7dbda",
+                        "primary-container": "#1172781a",
+                        "on-primary-fixed": "#002022",
+                        "surface-variant": "#f8fafc",
+                        "on-background": "#0f172a",
+                        "surface-container-high": "#e6e9e9",
+                        "outline": "#117278",
+                        "surface": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4b4e",
+                        "error": "#ba1a1a",
+                        "primary": "#117278",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#83d3da",
+                        "background": "#f6f8f8",
+                        "on-secondary-fixed": "#012022",
+                        "secondary-fixed-dim": "#aeccce",
+                        "secondary": "#476366",
+                        "on-secondary-container": "#4d696c",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbc8",
+                        "primary-fixed-dim": "#83d3da",
+                        "outline-variant": "#e2e8f0",
+                        "surface-bright": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container": "#ebeeee",
+                        "on-surface": "#0f172a",
+                        "inverse-on-surface": "#f6f8f8",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#78411b",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#321300",
+                        "secondary-container": "#c9e8eb",
+                        "tertiary-fixed-dim": "#ffb68b",
+                        "on-primary-container": "#117278",
+                        "inverse-surface": "#112021"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+    <%- include('../../Partials/header') %>
+    <main class="flex-grow flex items-center py-12 px-6">
+        <div class="max-w-7xl mx-auto w-full">
+            <div
+                class="bg-surface rounded-xl shadow-sm border border-primary/10 overflow-hidden flex flex-col md:flex-row min-h-[600px]">
+                <!-- Left Side: Company Information -->
+                <div class="w-full md:w-1/2 bg-slate-50 p-8 md:p-16 flex flex-col justify-between">
+                    <div>
+                        <h1 class="text-3xl font-extrabold text-teal-800 tracking-tight mb-4">Construyamos algo
+                            profesional juntos</h1>
+                        <p class="text-on-surface-variant text-base mb-12 leading-relaxed">Tanto si tienes dudas sobre
+                            nuestro directorio de servicios como si necesitas asistencia técnica, nuestro equipo de
+                            especialistas está listo para ayudarte a optimizar tu experiencia en la plataforma B E O.
+                        </p>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <span class="material-symbols-outlined text-primary">mail</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-teal-800 text-sm uppercase tracking-wider">Support Email
+                                    </h3>
+                                    <p class="text-on-surface">soporte@beo.platform.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <span class="material-symbols-outlined text-primary">schedule</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-teal-800 text-sm uppercase tracking-wider">Office Hours
+                                    </h3>
+                                    <p class="text-on-surface">Lunes — Viernes: 9:00 AM - 6:00 PM</p>
+                                    <p class="text-on-surface-variant text-xs">CST (San Juan del Río Time)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <span class="material-symbols-outlined text-primary">location_on</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-teal-800 text-sm uppercase tracking-wider">Headquarters
+                                    </h3>
+                                    <p class="text-on-surface">Centro Profesional del Centro</p>
+                                    <p class="text-on-surface">San Juan del Río, QRO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-12 pt-12 border-t border-teal-700/10">
+                        <h3 class="font-bold text-teal-800 text-xs uppercase tracking-widest mb-4">SIGUE NUESTRO TRABAJO
+                        </h3>
+                        <div class="flex gap-4">
+                            <a class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm hover:shadow-lg transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined text-xl">share</span>
+                            </a>
+                            <a class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm hover:shadow-lg transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined text-xl">group</span>
+                            </a>
+                            <a class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm hover:shadow-lg transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined text-xl">public</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Side: Contact Form -->
+                <div class="w-full md:w-1/2 bg-surface p-8 md:p-16">
+                    <div class="max-w-md mx-auto">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-8">Envíanos un mensaje</h2>
+                        <form action="#" class="space-y-6">
+                            <div class="space-y-2">
+                                <label class="block text-xs font-bold text-teal-800 uppercase tracking-wider"
+                                    for="name">NOMBRE COMPLETO</label>
+                                <input
+                                    class="w-full px-4 py-3 rounded-xl border-outline-variant bg-surface-variant focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm outline-none border"
+                                    id="name" name="name" placeholder="John Doe" type="text" />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-xs font-bold text-teal-800 uppercase tracking-wider"
+                                    for="email">CORREO PROFESIONAL</label>
+                                <input
+                                    class="w-full px-4 py-3 rounded-xl border-outline-variant bg-surface-variant focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm outline-none border"
+                                    id="email" name="email" placeholder="john@company.com" type="email" />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-xs font-bold text-teal-800 uppercase tracking-wider"
+                                    for="subject">ASUNTO</label>
+                                <select
+                                    class="w-full px-4 py-3 rounded-xl border-outline-variant bg-surface-variant focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm outline-none border"
+                                    id="subject" name="subject">
+                                    <option value="">Selecciona una categoría</option>
+                                    <option value="support">Soporte Técnico</option>
+                                    <option value="partnership">Programa de Socios</option>
+                                    <option value="billing">Consulta de Facturación</option>
+                                    <option value="other">Comentarios Generales</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-xs font-bold text-teal-800 uppercase tracking-wider"
+                                    for="message">MENSAJE</label>
+                                <textarea
+                                    class="w-full px-4 py-3 rounded-xl border-outline-variant bg-surface-variant focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm outline-none border resize-none"
+                                    id="message" name="message"
+                                    placeholder="Cuéntanos cómo podemos ayudar a tu negocio..." rows="5"></textarea>
+                            </div>
+                            <button
+                                class="w-full bg-primary text-on-primary py-4 rounded-xl font-bold text-sm uppercase tracking-widest shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2"
+                                type="submit">ENVIAR MENSAJE <span
+                                    class="material-symbols-outlined text-lg">send</span></button>
+                        </form>
+                        <p class="mt-8 text-center text-xs text-on-surface-variant leading-relaxed">Al enviar este
+                            formulario, aceptas nuestra <a class="text-teal-700 underline font-medium" href="#">Política
+                                de Privacidad</a> respecto al manejo de tus datos profesionales.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom decorative section / Office Preview -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="relative h-48 rounded-xl overflow-hidden shadow-sm border border-primary/10">
+                    <img class="w-full h-full object-cover"
+                        data-alt="modern minimalist office interior with teal accents and glass walls in soft natural daylight"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxwrh4OZtHcepajPAUxIrFJ6FXfmAFaWTk8HuCwiCeR39ZFnYdJO9bisot-z8Q5ETiGJbfzeqVMxNJiAwjUex-hSIaiIIB3SPl-FFbRIMlrvYCWqo_tEYy-uuiD85wcERERbYdb5AKV6y5MRAGd5qwC3I5ryr8B5s5ED2XrEHBxwlW6G9VtQOpApJTU-i_v5vo1xzoBy-zS7tNQjcDz9j8e_VbCkRyk1ICyARFe0tdu38mLNyKRBpSL9u-7jDOfsJ64M78KScEwug" />
+                    <div class="absolute inset-0 bg-teal-900/20 backdrop-blur-[1px]"></div>
+                </div>
+                <div class="relative h-48 rounded-xl overflow-hidden shadow-sm border border-primary/10">
+                    <img class="w-full h-full object-cover"
+                        data-alt="professional team collaborating around a wooden table in a brightly lit industrial style workspace"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiieqcL47QvGPC2s9HiekUllIgzFfUHXyIm-jYpGstyAQZ32WnkfByrrtEeKYTqCBQAQhrissgks-4BLLKq324v9J3pTznzmsRS5CcZ4T3BQBZMn7iqf_LPX0wXUvUFRkQgSjvxhV9IhVvmPpjFU-H6GLUDR4BA8NfxJNk63zOYJzZNUINdK611oJoOFBVIRFapQi1xnlMzuN-IcIHnKyRZ02SFMFuTCl7yFRThv9F-_lXEM3rtje-A7ePE_dv65Mb1ZUXdoGPans" />
+                    <div class="absolute inset-0 bg-teal-900/20 backdrop-blur-[1px]"></div>
+                </div>
+                <div class="relative h-48 rounded-xl overflow-hidden shadow-sm border border-primary/10">
+                    <div
+                        class="w-full h-full bg-primary flex flex-col items-center justify-center text-on-primary p-6 text-center">
+                        <span class="material-symbols-outlined text-4xl mb-2">map</span>
+                        <h4 class="font-bold text-sm">Encuéntranos en el mapa</h4>
+                        <p class="text-xs opacity-80">San Juan del Río, México</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('../../Partials/footer') %>
+</body>
+
+</html>

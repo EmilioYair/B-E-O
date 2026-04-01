@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#002022",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#012022",
+                        "on-primary-container": "#117278",
+                        "tertiary-fixed-dim": "#ffb68b",
+                        "background": "#f6f8f8",
+                        "primary": "#117278",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#955830",
+                        "primary-fixed": "#9ff0f6",
+                        "primary-container": "#1172781a",
+                        "tertiary": "#78411b",
+                        "surface-container-low": "#f6f8f8",
+                        "surface-container": "#ebeeee",
+                        "secondary-fixed-dim": "#aeccce",
+                        "on-surface": "#0f172a",
+                        "surface-dim": "#d7dbda",
+                        "on-tertiary-container": "#ffe1d1",
+                        "surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6e3913",
+                        "surface-container-highest": "#e0e3e3",
+                        "on-secondary-container": "#4d696c",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#83d3da",
+                        "inverse-on-surface": "#f6f8f8",
+                        "surface-variant": "#f8fafc",
+                        "secondary": "#476366",
+                        "on-surface-variant": "#64748b",
+                        "on-secondary-fixed-variant": "#2f4b4e",
+                        "surface-bright": "#ffffff",
+                        "surface-tint": "#117278",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e9e9",
+                        "on-background": "#0f172a",
+                        "secondary-fixed": "#c9e8eb",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#83d3da",
+                        "secondary-container": "#c9e8eb",
+                        "on-tertiary-fixed": "#321300",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#112021",
+                        "outline-variant": "#e2e8f0",
+                        "outline": "#117278",
+                        "tertiary-fixed": "#ffdbc8"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+    <%- include('../../Partials/header') %>
+    <main class="flex-grow pt-24 pb-12 px-6 max-w-screen-2xl mx-auto w-full">
+        <!-- Page Header & Action -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 mb-2">Mis Publicaciones</h1>
+                <p class="text-on-surface-variant max-w-2xl">Administra tus servicios activos, proyectos en curso y el
+                    historial de trabajos finalizados con precisión industrial.</p>
+            </div>
+            <button
+                class="flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all w-full md:w-auto">
+                <span class="material-symbols-outlined">add_circle</span>
+                Create New Publication
+            </button>
+        </div>
+        <!-- Filters Section -->
+        <section class="bg-surface border border-primary/10 rounded-xl p-4 mb-8 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mr-2">Filtrar por:</span>
+                    <button
+                        class="px-4 py-1.5 rounded-full bg-primary text-on-primary text-xs font-semibold">Todas</button>
+                    <button
+                        class="px-4 py-1.5 rounded-full bg-primary-container text-primary text-xs font-semibold hover:bg-primary/10 transition-colors">Activas</button>
+                    <button
+                        class="px-4 py-1.5 rounded-full bg-primary-container text-primary text-xs font-semibold hover:bg-primary/10 transition-colors">En
+                        Progreso</button>
+                    <button
+                        class="px-4 py-1.5 rounded-full bg-primary-container text-primary text-xs font-semibold hover:bg-primary/10 transition-colors">Completadas</button>
+                </div>
+                <div class="relative w-full md:w-64">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+                    <input
+                        class="w-full pl-10 pr-4 py-2 bg-background border border-outline-variant rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        placeholder="Buscar publicación..." type="text" />
+                </div>
+            </div>
+        </section>
+        <!-- Publications Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="myPublicationsGrid">
+            <!-- Se llenará dinámicamente con JS -->
+        </div>
+    </main>
+    <%- include('../../Partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('myPublicationsGrid');
+            if(!container) return;
+            
+            try {
+                container.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-slate-500 italic">Cargando tus publicaciones...</p></div>';
+                
+                const response = await fetch('/api/my-services');
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const services = await response.json();
+                
+                if (services.length === 0) {
+                    container.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-slate-500 font-medium mb-4">No tienes publicaciones activas.</p>
+                            <a href="/postear" class="inline-block bg-primary text-white px-6 py-2 rounded-lg font-bold">¡Crea una nueva!</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                container.innerHTML = services.map(service => `
+                    <div class="group bg-surface border border-primary/10 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">
+                        <div class="h-48 w-full overflow-hidden relative">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${service.imagenUrl || '/images/DefaultService.png'}" alt="${service.titulo}" />
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider shadow-sm">Activo</span>
+                            </div>
+                        </div>
+                        <div class="p-5 flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-bold text-slate-900 leading-tight group-hover:text-primary transition-colors">${service.titulo}</h3>
+                                <span class="text-xs font-medium text-slate-400">#${service.id.substring(0,6).toUpperCase()}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-500 text-xs mb-4">
+                                <span class="material-symbols-outlined text-sm">calendar_today</span>
+                                <span>Categoría: ${service.categoria}</span>
+                            </div>
+                            <p class="text-on-surface-variant text-sm line-clamp-2 mb-6">${service.descripcion}</p>
+                        </div>
+                        <div class="px-5 py-4 bg-slate-50 flex items-center justify-between border-t border-teal-500/5">
+                            <div class="flex items-center gap-3">
+                                <button class="flex items-center gap-1 text-teal-700 font-semibold text-sm hover:underline underline-offset-4 transition-all active:scale-95">
+                                    <span class="material-symbols-outlined text-base">edit</span>
+                                    Edit
+                                </button>
+                            </div>
+                            <button class="text-slate-400 hover:text-error transition-colors p-2 rounded-lg hover:bg-error-container/30 active:scale-90">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                `).join('') + `
+                <!-- Add New Placeholder -->
+                <a href="/postear" class="group border-2 border-dashed border-teal-500/20 rounded-xl flex flex-col items-center justify-center p-12 hover:bg-teal-50/30 hover:border-primary/40 transition-all active:scale-[0.98]">
+                    <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-primary group-hover:scale-110 transition-transform mb-4">
+                        <span class="material-symbols-outlined text-4xl">add</span>
+                    </div>
+                    <span class="text-slate-900 font-bold text-lg">Nueva Publicación</span>
+                    <span class="text-slate-500 text-sm mt-2">Crea un nuevo listado de servicio</span>
+                </a>
+                `;
+            } catch (error) {
+                console.error('Error fetching my services:', error);
+                container.innerHTML = '<div class="col-span-full text-center py-12 text-error font-medium">Error al cargar publicaciones. Verifica tu conexión a internet o sesión.</div>';
+            }
+        });
+    </script>
+</body>
+</html>

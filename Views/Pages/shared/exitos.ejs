@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4b4e",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d7dbda",
+                        "surface-container-high": "#f1f4f4",
+                        "on-background": "#0f172a",
+                        "on-error-container": "#991b1b",
+                        "outline": "#cbd5e1",
+                        "inverse-surface": "#112021",
+                        "surface-bright": "#ffffff",
+                        "surface-container-highest": "#ebeeee",
+                        "tertiary-fixed-dim": "#ffb68b",
+                        "tertiary-fixed": "#ffdbc8",
+                        "error": "#ef4444",
+                        "primary-fixed": "#9ff0f6",
+                        "surface-tint": "#117278",
+                        "outline-variant": "#e2e8f0",
+                        "on-tertiary-fixed-variant": "#6e3913",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#4d696c",
+                        "inverse-primary": "#83d3da",
+                        "secondary-fixed-dim": "#aeccce",
+                        "tertiary-container": "#955830",
+                        "surface": "#f6f8f8",
+                        "on-tertiary-container": "#ffe1d1",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#476366",
+                        "primary": "#117278",
+                        "surface-variant": "#ffffff",
+                        "on-secondary-fixed": "#012022",
+                        "background": "#f6f8f8",
+                        "secondary-fixed": "#c9e8eb",
+                        "on-surface": "#0f172a",
+                        "on-tertiary-fixed": "#321300",
+                        "on-error": "#ffffff",
+                        "error-container": "#fee2e2",
+                        "inverse-on-surface": "#f1f5f9",
+                        "on-surface-variant": "#64748b",
+                        "primary-fixed-dim": "#83d3da",
+                        "on-primary-fixed": "#002022",
+                        "surface-container": "#ffffff",
+                        "secondary-container": "#c9e8eb",
+                        "on-primary-container": "#083b3e",
+                        "tertiary": "#78411b",
+                        "primary-container": "#e7f1f2",
+                        "surface-container-low": "#f6f8f8"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="bg-background text-on-background min-h-screen">
+    <!-- TopNavBar -->
+    <%- include('../../Partials/header') %>
+    <div class="flex max-w-screen-2xl mx-auto">
+        <!-- SideNavBar -->
+        <aside
+            class="hidden lg:flex flex-col p-4 gap-2 h-[calc(100vh-64px)] w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 sticky top-16">
+            <div class="px-4 py-6 mb-2">
+                <h2 class="text-xl font-bold text-teal-700 dark:text-teal-300 font-sans">B E O</h2>
+                <p class="text-xs text-slate-500 font-semibold">San Juan del Río</p>
+            </div>
+            <nav class="flex-1 space-y-1">
+                <a class="flex items-center gap-3 px-4 py-3 bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-xl font-sans text-sm font-semibold hover:translate-x-1 transition-transform"
+                    href="#">
+                    <span class="material-symbols-outlined">storefront</span>
+                    <span>Marketplace</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-xl font-sans text-sm font-semibold hover:translate-x-1 transition-transform"
+                    href="#">
+                    <span class="material-symbols-outlined">chat_bubble</span>
+                    <span>Messages</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-xl font-sans text-sm font-semibold hover:translate-x-1 transition-transform"
+                    href="#">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                    <span>Bookings</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-xl font-sans text-sm font-semibold hover:translate-x-1 transition-transform"
+                    href="#">
+                    <span class="material-symbols-outlined">bookmark</span>
+                    <span>Saved</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-xl font-sans text-sm font-semibold hover:translate-x-1 transition-transform"
+                    href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="mt-auto p-4 bg-teal-600 rounded-2xl text-white text-center shadow-lg shadow-teal-900/10">
+                <p class="text-xs font-medium mb-3 opacity-90">¿Eres profesional?</p>
+                <button
+                    class="w-full py-2 bg-white text-teal-700 rounded-lg text-sm font-bold transition-all active:scale-95">
+                    List your service
+                </button>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 p-6 md:p-10">
+            <!-- Hero / Category Section -->
+            <section class="mb-12">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+                    <div>
+                        <h1 class="text-4xl font-extrabold tracking-tight text-on-background mb-2">Explorar Servicios
+                        </h1>
+                        <p class="text-on-surface-variant max-w-md">Encuentra a los mejores profesionales certificados
+                            en San Juan del Río para tus proyectos del hogar.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest rounded-full text-sm font-semibold hover:bg-outline-variant transition-colors">
+                            <span class="material-symbols-outlined text-base">filter_list</span>
+                            Filtrar
+                        </button>
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest rounded-full text-sm font-semibold hover:bg-outline-variant transition-colors">
+                            <span class="material-symbols-outlined text-base">sort</span>
+                            Relevancia
+                        </button>
+                    </div>
+                </div>
+                <!-- Bento Category Filters -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button
+                        class="group relative overflow-hidden h-32 rounded-3xl bg-primary-container flex flex-col items-center justify-center gap-2 transition-all hover:ring-2 hover:ring-primary">
+                        <span class="material-symbols-outlined text-3xl text-primary"
+                            style="font-variation-settings: 'FILL' 1;">architecture</span>
+                        <span class="text-sm font-bold text-on-primary-container">Construcción</span>
+                        <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </button>
+                    <button
+                        class="group relative overflow-hidden h-32 rounded-3xl bg-secondary-container flex flex-col items-center justify-center gap-2 transition-all hover:ring-2 hover:ring-secondary">
+                        <span class="material-symbols-outlined text-3xl text-secondary"
+                            style="font-variation-settings: 'FILL' 1;">build</span>
+                        <span class="text-sm font-bold text-on-secondary-container">Mantenimiento</span>
+                        <div
+                            class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </button>
+                    <button
+                        class="group relative overflow-hidden h-32 rounded-3xl bg-tertiary-fixed flex flex-col items-center justify-center gap-2 transition-all hover:ring-2 hover:ring-tertiary">
+                        <span class="material-symbols-outlined text-3xl text-tertiary"
+                            style="font-variation-settings: 'FILL' 1;">cleaning_services</span>
+                        <span class="text-sm font-bold text-on-tertiary-fixed-variant">Doméstico</span>
+                        <div
+                            class="absolute inset-0 bg-tertiary/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </button>
+                    <button
+                        class="group relative overflow-hidden h-32 rounded-3xl bg-surface-container-highest flex flex-col items-center justify-center gap-2 transition-all hover:ring-2 hover:ring-outline">
+                        <span class="material-symbols-outlined text-3xl text-on-surface-variant"
+                            style="font-variation-settings: 'FILL' 1;">park</span>
+                        <span class="text-sm font-bold text-on-surface-variant">Jardinería</span>
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </button>
+                </div>
+            </section>
+            <!-- Services Grid -->
+            <section>
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-bold text-on-background">Profesionales destacados</h3>
+                    <span class="text-sm text-on-surface-variant">128 resultados encontrados</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <!-- Service Card 1 -->
+                    <div
+                        class="group bg-surface-container rounded-[2rem] p-5 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary-container">
+                        <div class="relative mb-4">
+                            <img class="w-full h-48 object-cover rounded-2xl"
+                                data-alt="Professional plumber working on a sink"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc0gCv7V4MXcvOVH5gCxYsNJMgc_HOlgZ_aFFZ-30O2uiT-96b6kB_OJ-LwELxHLqz7YFXyp9XwLAbPgZSkPHinTjMIrpAG8wNJZkw1hI0CrLzN48KbafNG3qBu_r6QBVG3YeUHxsGLLM0xSWSwo3xCw8_8rhWDtLgn0XT4WAuJsEgBldURcKghe_TNr2FCf_M64nSrjqmlYNW_4iTs32goimkcYEI9Czyyo2EDOXvna9vHWeKw8kZ8Im_gE8jhR3mYJvRTGwoGuI" />
+                            <div
+                                class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-primary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm"
+                                    style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.9 (124)
+                            </div>
+                        </div>
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h4
+                                    class="font-bold text-lg leading-tight text-on-background group-hover:text-primary transition-colors">
+                                    Plomería General Express</h4>
+                                <p class="text-sm text-on-surface-variant">Ricardo Méndez • Maestro Plomero</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-bold text-on-surface-variant block uppercase">Desde</span>
+                                <span class="text-xl font-black text-primary">$350</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-6 flex-wrap">
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Urgencias
+                                24/7</span>
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Garantizado</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex-1 py-3 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">Ver
+                                Perfil</button>
+                            <button
+                                class="p-3 bg-secondary-container text-on-secondary-container rounded-xl hover:bg-secondary transition-all hover:text-white active:scale-95">
+                                <span class="material-symbols-outlined">chat</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div
+                        class="group bg-surface-container rounded-[2rem] p-5 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary-container">
+                        <div class="relative mb-4">
+                            <img class="w-full h-48 object-cover rounded-2xl"
+                                data-alt="Architect or construction manager at site"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLZwoNPmdiWTll4RRqvX-Vv9ySJ2HCkpYv_LoKHBM7ibjV0SqJe7aw7-VEdUlu6J2vy74ma2wMvfnzOC4eHTw4omomQra_EVzVZ-znoesi15clxnUyLiS0dq1fwFDl6pN-sOLkHWubil42V7JS6aV7KY9sFWqw7KLjCokRGBDCCwgsbRqcFPQ3M-slGXoLPwSqkxIXQotYrLaBQt_XxRQeRfyk9FG4ktkAq4QStTgZ5haMAuRsjshXvth6QcSNhbqQ9wmj1PP3iAw" />
+                            <div
+                                class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-primary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm"
+                                    style="font-variation-settings: 'FILL' 1;">star</span>
+                                5.0 (89)
+                            </div>
+                        </div>
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h4
+                                    class="font-bold text-lg leading-tight text-on-background group-hover:text-primary transition-colors">
+                                    Maestro Albañil &amp; Acabados</h4>
+                                <p class="text-sm text-on-surface-variant">Juan Carlos Pérez • Contratista</p>
+                            </div>
+                            <div class="text-right">
+                                <span
+                                    class="text-xs font-bold text-on-surface-variant block uppercase">Cotización</span>
+                                <span class="text-xl font-black text-primary">Gratis</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-6 flex-wrap">
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Obra
+                                Civil</span>
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Remodelación</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex-1 py-3 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">Ver
+                                Perfil</button>
+                            <button
+                                class="p-3 bg-secondary-container text-on-secondary-container rounded-xl hover:bg-secondary transition-all hover:text-white active:scale-95">
+                                <span class="material-symbols-outlined">chat</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div
+                        class="group bg-surface-container rounded-[2rem] p-5 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary-container">
+                        <div class="relative mb-4">
+                            <img class="w-full h-48 object-cover rounded-2xl"
+                                data-alt="Gardener professional trimming bushes"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0v-zDjm6EugYxU1_QeNh6yVO-TYalN4RWPEteJDqtCT398MfyB5kEqgEAzvPHbs7BzwDekhsPvTPpuJ6RVk-F9K7obz6E91_iUoktxywICP7nVblNZ8hbnxJe9BSd8frWh9i-DB-gd05DJ6RPDStsN4rUnvsm3FUfS-5cjNFH8awk3AmapkeIKvTPbJBYixF1tpIl06VxA2p2gmOP4TEpiE_LzqzVZlacyx5qdqst-n1pMKOzMXPNEFH0P2v0diIzYPbSvzxq1fw" />
+                            <div
+                                class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-primary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm"
+                                    style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.7 (56)
+                            </div>
+                        </div>
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h4
+                                    class="font-bold text-lg leading-tight text-on-background group-hover:text-primary transition-colors">
+                                    Jardinería y Paisajismo SJR</h4>
+                                <p class="text-sm text-on-surface-variant">Elena Silva • Especialista</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-bold text-on-surface-variant block uppercase">Visita</span>
+                                <span class="text-xl font-black text-primary">$200</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-6 flex-wrap">
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Poda
+                                Estética</span>
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Sistemas
+                                de Riego</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex-1 py-3 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">Ver
+                                Perfil</button>
+                            <button
+                                class="p-3 bg-secondary-container text-on-secondary-container rounded-xl hover:bg-secondary transition-all hover:text-white active:scale-95">
+                                <span class="material-symbols-outlined">chat</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div
+                        class="group bg-surface-container rounded-[2rem] p-5 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary-container">
+                        <div class="relative mb-4">
+                            <img class="w-full h-48 object-cover rounded-2xl"
+                                data-alt="Electrician repairing electrical panel"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmAURxL6lB99w653o8CF1d4DrpdJH1Zl5laxEz96tH2OXMDw8wP2DnW2V24ggfXzeDf3d5EQp7DjEmAKiWdaaeeEcjArS4xuL1-cVMhan0aZOhh8X0fAIKZDl9G55rqqb6C_bTDMy_PIbOjf04bsOa2z7Pzuj6ndBu9O7YfF2fAt4xdsDRC_zgPON0L2D2pJA_N8ZcpCU3JCdDtU7ZRajL97lxzqTpfnfVGxbZKRWx3JEkdh_Kxs0LU6pmTJztjk_c4GMOQxCygDE" />
+                            <div
+                                class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-primary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm"
+                                    style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.8 (212)
+                            </div>
+                        </div>
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h4
+                                    class="font-bold text-lg leading-tight text-on-background group-hover:text-primary transition-colors">
+                                    Electricista Certificado</h4>
+                                <p class="text-sm text-on-surface-variant">Marcos Téllez • Ing. Electricista</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-bold text-on-surface-variant block uppercase">Por Hora</span>
+                                <span class="text-xl font-black text-primary">$450</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-6 flex-wrap">
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Fallas
+                                Eléctricas</span>
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Certificación</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex-1 py-3 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">Ver
+                                Perfil</button>
+                            <button
+                                class="p-3 bg-secondary-container text-on-secondary-container rounded-xl hover:bg-secondary transition-all hover:text-white active:scale-95">
+                                <span class="material-symbols-outlined">chat</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Service Card 5 -->
+                    <div
+                        class="group bg-surface-container rounded-[2rem] p-5 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary-container">
+                        <div class="relative mb-4">
+                            <img class="w-full h-48 object-cover rounded-2xl"
+                                data-alt="Clean living room professional cleaning"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcYSktLdxAIrSJa4DvQiNnHE9XlDbMtjXYIWSwB9QIcpD1LwKO_tGkM1VARR_AJ8Odxwxi0Ri87kd8AKItoBKNw3olRng8QD0ApYl4DxrAEAgTyjWliQ-qc5GYUaq-I43UL7OROiLc58uhytYyHdsDaAuzJeJUZOcJcIGvr5rUt_VD6sFpLDjFNzD1pjSUpGvlzvSL1fq6nzw-0nN3d8retBDavdoZ8UMdcnjciPTuOc1NDAxVvkq0mpU3O7jOyxkeTkma7NdGoHo" />
+                            <div
+                                class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-primary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm"
+                                    style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.9 (43)
+                            </div>
+                        </div>
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h4
+                                    class="font-bold text-lg leading-tight text-on-background group-hover:text-primary transition-colors">
+                                    Limpieza Profunda Doméstica</h4>
+                                <p class="text-sm text-on-surface-variant">Servicios Limpia+ • Equipo Profesional</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-bold text-on-surface-variant block uppercase">Jornada</span>
+                                <span class="text-xl font-black text-primary">$600</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mb-6 flex-wrap">
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Desinfección</span>
+                            <span
+                                class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">Hogar/Oficina</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex-1 py-3 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">Ver
+                                Perfil</button>
+                            <button
+                                class="p-3 bg-secondary-container text-on-secondary-container rounded-xl hover:bg-secondary transition-all hover:text-white active:scale-95">
+                                <span class="material-symbols-outlined">chat</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Service Card 6 (Bento style highlight) -->
+                    <div
+                        class="group bg-teal-900 rounded-[2rem] p-5 shadow-lg relative overflow-hidden transition-all hover:scale-[1.02]">
+                        <div class="absolute top-0 right-0 p-8 opacity-10">
+                            <span class="material-symbols-outlined text-9xl text-white">verified_user</span>
+                        </div>
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <span
+                                    class="px-3 py-1 bg-teal-500 text-white rounded-full text-[10px] font-black uppercase tracking-wider mb-4 inline-block">Recomendado</span>
+                                <h4 class="text-2xl font-black text-white mb-2">Mantenimiento Integral de Piscinas</h4>
+                                <p class="text-teal-100 text-sm mb-6">Expertos en balance químico y limpieza profunda
+                                    para residenciales.</p>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-teal-700 flex items-center justify-center border-2 border-teal-500">
+                                        <span class="material-symbols-outlined text-white">pool</span>
+                                    </div>
+                                    <span class="text-white font-bold">AquaSafe San Juan</span>
+                                </div>
+                                <button
+                                    class="w-full py-4 bg-white text-teal-900 rounded-xl font-black text-sm transition-all active:scale-95">RESERVAR
+                                    AHORA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <%- include('../../Partials/footer') %>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around items-center h-16 px-4 z-50">
+        <a class="flex flex-col items-center gap-1 text-teal-700" href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+            <span class="text-[10px] font-bold">Explorar</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="text-[10px] font-bold">Mensajes</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span class="text-[10px] font-bold">Citas</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+            <span class="material-symbols-outlined">account_circle</span>
+            <span class="text-[10px] font-bold">Perfil</span>
+        </a>
+    </nav>
+    <!-- FAB -->
+    <button
+        class="fixed bottom-20 md:bottom-10 right-6 md:right-10 w-14 h-14 bg-primary text-white rounded-2xl shadow-xl shadow-primary/30 flex items-center justify-center transition-all hover:scale-110 active:scale-90 z-40">
+        <span class="material-symbols-outlined text-2xl">add</span>
+    </button>
+</body>
+
+</html>

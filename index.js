@@ -10,19 +10,36 @@ const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'Views'));
+app.locals.process = { env: process.env };
 
 app.use('/images', express.static(path.join(__dirname, 'public/Images')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json()); // Middleware para parsear JSON
 app.use(cookieParser()); // Middleware para manejar cookies de sesión
 
+const { attachUser } = require('./middlewares/authMiddleware');
+app.use(attachUser); // Provee res.locals.user a todas las plantillas
+
 const apiRoutes = require('./routes/api');
 const authRoutes = require('./routes/auth');
 const chatRoutes = require('./routes/chat');
+
+console.log('Rutas API cargadas:', typeof apiRoutes);
+console.log('Métodos disponibles en apiRoutes:', Object.keys(apiRoutes));
+
 app.use('/api', apiRoutes);
 app.use('/auth', authRoutes);
 app.use('/chat', chatRoutes);
 app.use('/', rutasProyecto);
+
+// Middleware para manejar rutas no encontradas (404)
+app.use((req, res, next) => {
+    console.log('404 - Ruta no encontrada:', req.method, req.originalUrl);
+    if (req.originalUrl.startsWith('/api')) {
+        return res.status(404).json({ error: 'Ruta API no encontrada', path: req.originalUrl, method: req.method });
+    }
+    res.status(404).send('Página no encontrada');
+});
 
 app.use((err, req, res, next) => {
 	console.error(err.stack);

@@ -1,12 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const { db } = require('../bd/bd');
-const { collection, doc, setDoc } = require("firebase/firestore");
+const { admin } = require('../bd/bd');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
-const verifySession = require('../middlewares/authMiddleware');
-const { createService, getServices } = require('../controllers/serviceController');
+const { verifySession } = require('../middlewares/authMiddleware');
+const { createService, getServices, getMyServices, getServiceImageUrl } = require('../controllers/serviceController');
+const { updateProfileImage, getProfileImageUrl, updateProfileInfo, getProfileInfo } = require('../controllers/profileController');
 const { addReview } = require('../controllers/reviewController');
+
+// Test endpoint (debug)
+router.get('/test', (req, res) => {
+    res.json({ status: 'API working', timestamp: new Date().toISOString() });
+});
 
 // Reviews
 router.post('/reviews', verifySession, addReview);
@@ -17,11 +22,43 @@ router.post('/services', verifySession, upload.single('imagen'), createService);
 // Obtener Servicios (Público)
 router.get('/services', getServices);
 
-// Registro de Usuario - Stub UI
+// Obtener Servicios del Usuario (Protegido)
+router.get('/my-services', verifySession, getMyServices);
+
+// Actualizar Imagen de Perfil (Protegido)
+router.put('/profile/image', verifySession, upload.single('avatar'), updateProfileImage);
+
+// Obtener URL firmada de image de perfil (Público - la ruta está en Storage)
+router.get('/profile/:userId/image-url', getProfileImageUrl);
+// Obtener información del perfil del usuario
+router.get('/profile/:userId/info', getProfileInfo);
+// Obtener URL firmada de imagen de servicio (Público - la ruta está en Storage)
+router.get('/services/:serviceId/image-url', getServiceImageUrl);
+
+// Actualizar información del perfil (Protegido)
+router.post('/profile/info', verifySession, updateProfileInfo);
+
+// Registro de Usuario - Firestore Integration
 router.post('/register', async (req, res) => {
-    console.log("[STUB] Received registration request:", req.body);
-    // Simulamos éxito instantáneo
-    res.status(201).json({ message: 'Usuario registrado exitosamente (MODO UI)' });
+    try {
+        const { uid, nombre, email, esTrabajador } = req.body;
+        
+        if (!uid || !email) {
+            return res.status(400).json({ error: 'Faltan datos requeridos (uid, email)' });
+        }
+        
+        await admin.firestore().collection("users").doc(uid).set({
+            nombre: nombre || '',
+            email: email,
+            esTrabajador: esTrabajador || false,
+            createdAt: admin.firestore.FieldValue.serverTimestamp()
+        });
+        
+        res.status(201).json({ message: 'Usuario registrado exitosamente en Firestore' });
+    } catch (error) {
+        console.error('Error registry user to Firestore:', error);
+        res.status(500).json({ error: 'Error al registrar en la base de datos' });
+    }
 });
 
 module.exports = router;

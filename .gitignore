@@ -1,2 +1,19 @@
 node_modules/
 .env
+# Archivos y directorios adicionales a ignorar
+serviceAccountKey.json
+logs/
+*.log
+dist/
+build/
+.DS_Store
+.idea/
+.vscode/
+*.tmp
+*.cache
+*.bak
+*.swp
+*.env.local
+*.env.*.local
+coverage/
+

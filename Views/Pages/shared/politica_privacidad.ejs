@@ -5,36 +5,357 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>B E O - Login</title>
+    <title>Política de Privacidad - B E O</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <script src="/js/tailwind-config.js"></script>
-    <link rel="stylesheet" href="/css/main.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#117278",
+                        "tertiary-fixed": "#ffdbc8",
+                        "surface": "#f6f8f8",
+                        "inverse-primary": "#83d3da",
+                        "on-secondary-fixed-variant": "#2f4b4e",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#c9e8eb",
+                        "on-error-container": "#991b1b",
+                        "on-background": "#0f172a",
+                        "inverse-on-surface": "#f1f5f9",
+                        "on-tertiary-fixed-variant": "#6e3913",
+                        "surface-dim": "#d7dbda",
+                        "secondary-fixed-dim": "#aeccce",
+                        "primary-fixed": "#9ff0f6",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#c9e8eb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "tertiary-container": "#955830",
+                        "tertiary": "#78411b",
+                        "surface-variant": "#ffffff",
+                        "surface-container-low": "#f6f8f8",
+                        "secondary": "#476366",
+                        "tertiary-fixed-dim": "#ffb68b",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#012022",
+                        "on-primary-fixed": "#002022",
+                        "error": "#ef4444",
+                        "outline": "#cbd5e1",
+                        "on-primary-container": "#083b3e",
+                        "inverse-surface": "#112021",
+                        "surface-container-highest": "#ebeeee",
+                        "on-tertiary-container": "#ffe1d1",
+                        "primary-container": "#e7f1f2",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#117278",
+                        "on-surface": "#0f172a",
+                        "error-container": "#fee2e2",
+                        "surface-bright": "#ffffff",
+                        "primary-fixed-dim": "#83d3da",
+                        "on-surface-variant": "#64748b",
+                        "background": "#f6f8f8",
+                        "surface-container-high": "#f1f4f4",
+                        "outline-variant": "#e2e8f0",
+                        "on-secondary-container": "#4d696c",
+                        "surface-container": "#ffffff",
+                        "on-tertiary-fixed": "#321300"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
         }
-
+    </script>
+    <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
     </style>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-[#0e1a1b] dark:text-white transition-colors duration-300">
-    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-        <div class="layout-container flex h-full grow flex-col">
-            <!-- TopNavBar -->
-            <%- include('../../Partials/header') %>
+<body class="bg-surface text-on-surface antialiased">
+    <!-- Top Navigation (Shared Component) -->
+    <%- include('../../Partials/header') %>
+    <!-- Main Content Canvas -->
+    <main class="pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <!-- Hero Header -->
+        <section class="mb-16 text-center md:text-left">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-sm font-semibold mb-6">
+                <span class="material-symbols-outlined text-sm" data-icon="lock"
+                    style="font-variation-settings: 'FILL' 1;">lock</span>
+                Compromiso de Transparencia
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-primary mb-6">Política de Privacidad</h1>
+            <p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                En B E O, valoramos tu confianza por encima de todo. Este documento detalla cómo protegemos tu
+                información y garantizamos la seguridad de tus datos en cada interacción.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+                <div
+                    class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest rounded-lg border border-outline-variant">
+                    <span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Datos
+                        Protegidos</span>
+                </div>
+                <div
+                    class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest rounded-lg border border-outline-variant">
+                    <span class="material-symbols-outlined text-primary" data-icon="fingerprint">fingerprint</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Biometría
+                        Segura</span>
+                </div>
+            </div>
+        </section>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Sidebar Navigation (Anclas) -->
+            <aside class="lg:col-span-3">
+                <div class="sticky top-32 space-y-2">
+                    <p class="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant mb-4 px-4">
+                        Contenido</p>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-container text-on-primary-container font-bold transition-all"
+                        href="#recoleccion">
+                        <span class="material-symbols-outlined" data-icon="database">database</span>
+                        Recolección
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-medium transition-all group"
+                        href="#uso">
+                        <span class="material-symbols-outlined group-hover:text-primary"
+                            data-icon="insights">insights</span>
+                        Uso de Información
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-medium transition-all group"
+                        href="#seguridad">
+                        <span class="material-symbols-outlined group-hover:text-primary"
+                            data-icon="shield">shield</span>
+                        Seguridad
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-medium transition-all group"
+                        href="#derechos">
+                        <span class="material-symbols-outlined group-hover:text-primary"
+                            data-icon="person_check">person_check</span>
+                        Derechos del Usuario
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-medium transition-all group"
+                        href="#cookies">
+                        <span class="material-symbols-outlined group-hover:text-primary"
+                            data-icon="cookie">cookie</span>
+                        Cookies
+                    </a>
+                </div>
+            </aside>
+            <!-- Detailed Content Sections -->
+            <div class="lg:col-span-9 space-y-16">
+                <!-- Section: Recolección de Datos -->
+                <section class="scroll-mt-32" id="recoleccion">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 rounded-2xl bg-secondary-container">
+                            <span class="material-symbols-outlined text-primary text-3xl"
+                                data-icon="dataset">dataset</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-on-surface">Recolección de Datos</h2>
+                    </div>
+                    <div class="prose prose-slate max-w-none text-on-surface-variant space-y-4">
+                        <p class="leading-relaxed">Recopilamos información necesaria para proporcionar y mejorar
+                            nuestros servicios de oficios y plataforma profesional. Esto incluye:</p>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
+                            <li class="flex gap-3 p-4 bg-surface-container rounded-xl border border-outline-variant">
+                                <span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+                                <div>
+                                    <strong class="block text-on-surface">Información de Perfil</strong>
+                                    <span class="text-sm">Nombre completo, correo electrónico y número de
+                                        teléfono.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-3 p-4 bg-surface-container rounded-xl border border-outline-variant">
+                                <span class="material-symbols-outlined text-primary"
+                                    data-icon="location_on">location_on</span>
+                                <div>
+                                    <strong class="block text-on-surface">Ubicación</strong>
+                                    <span class="text-sm">Para conectar prestadores de servicios con clientes
+                                        cercanos.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- Section: Uso de Información -->
+                <section class="scroll-mt-32" id="uso">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 rounded-2xl bg-secondary-container">
+                            <span class="material-symbols-outlined text-primary text-3xl"
+                                data-icon="auto_graph">auto_graph</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-on-surface">Uso de Información</h2>
+                    </div>
+                    <div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant shadow-sm">
+                        <p class="mb-6 leading-relaxed text-on-surface-variant">Utilizamos tus datos para optimizar la
+                            experiencia B E O y garantizar la calidad del servicio:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-primary flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm"
+                                        data-icon="handshake">handshake</span>
+                                    Conectividad
+                                </h4>
+                                <p class="text-xs text-on-surface-variant">Facilitar el contacto entre profesionales y
+                                    usuarios finales de forma eficiente.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-primary flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm" data-icon="update">update</span>
+                                    Mejora Continua
+                                </h4>
+                                <p class="text-xs text-on-surface-variant">Analizar patrones de uso para implementar
+                                    nuevas funcionalidades y herramientas.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-primary flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm" data-icon="campaign">campaign</span>
+                                    Comunicación
+                                </h4>
+                                <p class="text-xs text-on-surface-variant">Enviar notificaciones críticas sobre
+                                    servicios solicitados o actualizaciones de cuenta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: Seguridad -->
+                <section class="scroll-mt-32" id="seguridad">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 rounded-2xl bg-secondary-container">
+                            <span class="material-symbols-outlined text-primary text-3xl"
+                                data-icon="health_and_safety">health_and_safety</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-on-surface">Seguridad y Biometría</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="p-6 rounded-3xl bg-primary text-on-primary">
+                            <span class="material-symbols-outlined text-4xl mb-4"
+                                data-icon="face_unlock">face_unlock</span>
+                            <h3 class="text-xl font-bold mb-2">Datos Biométricos</h3>
+                            <p class="text-sm opacity-90 leading-relaxed">Utilizamos reconocimiento facial y huella
+                                dactilar únicamente para validación de identidad en el acceso. Estos datos nunca se
+                                almacenan en nuestros servidores; se procesan de forma local en tu dispositivo mediante
+                                encriptación de nivel bancario.</p>
+                        </div>
+                        <div class="p-6 rounded-3xl bg-surface-container-highest border border-outline-variant">
+                            <div class="flex gap-4 mb-4">
+                                <div
+                                    class="w-12 h-12 rounded bg-white flex items-center justify-center border border-outline shadow-sm">
+                                    <span class="material-symbols-outlined text-primary" data-icon="verified"
+                                        style="font-variation-settings: 'FILL' 1;">verified</span>
+                                </div>
+                                <div
+                                    class="w-12 h-12 rounded bg-white flex items-center justify-center border border-outline shadow-sm">
+                                    <span class="material-symbols-outlined text-primary" data-icon="gpp_good"
+                                        style="font-variation-settings: 'FILL' 1;">gpp_good</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface mb-2">Trust Badges</h3>
+                            <p class="text-sm text-on-surface-variant leading-relaxed">B E O cuenta con certificaciones
+                                internacionales de ciberseguridad. Implementamos SSL de 256 bits y auditorías constantes
+                                para asegurar que cada transacción y mensaje esté blindado.</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: Derechos -->
+                <section class="scroll-mt-32" id="derechos">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 rounded-2xl bg-secondary-container">
+                            <span class="material-symbols-outlined text-primary text-3xl" data-icon="gavel">gavel</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-on-surface">Derechos del Usuario</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div
+                            class="group p-4 rounded-2xl border border-outline-variant hover:border-primary transition-colors">
+                            <summary class="flex items-center justify-between cursor-pointer list-none">
+                                <div class="flex items-center gap-4">
+                                    <span class="material-symbols-outlined text-primary"
+                                        data-icon="edit_square">edit_square</span>
+                                    <span class="font-bold text-on-surface">Acceso y Rectificación</span>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-transform">chevron_right</span>
+                            </summary>
+                        </div>
+                        <div
+                            class="group p-4 rounded-2xl border border-outline-variant hover:border-primary transition-colors">
+                            <summary class="flex items-center justify-between cursor-pointer list-none">
+                                <div class="flex items-center gap-4">
+                                    <span class="material-symbols-outlined text-primary"
+                                        data-icon="delete_forever">delete_forever</span>
+                                    <span class="font-bold text-on-surface">Derecho al Olvido</span>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-transform">chevron_right</span>
+                            </summary>
+                        </div>
+                        <div
+                            class="group p-4 rounded-2xl border border-outline-variant hover:border-primary transition-colors">
+                            <summary class="flex items-center justify-between cursor-pointer list-none">
+                                <div class="flex items-center gap-4">
+                                    <span class="material-symbols-outlined text-primary"
+                                        data-icon="file_download">file_download</span>
+                                    <span class="font-bold text-on-surface">Portabilidad de Datos</span>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-transform">chevron_right</span>
+                            </summary>
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: Cookies -->
+                <section class="scroll-mt-32" id="cookies">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 rounded-2xl bg-secondary-container">
+                            <span class="material-symbols-outlined text-primary text-3xl"
+                                data-icon="cookie">cookie</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-on-surface">Política de Cookies</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6 rounded-3xl bg-surface-container border border-outline-variant">
+                            <div class="flex items-center gap-2 text-primary font-bold mb-3">
+                                <span class="material-symbols-outlined text-sm" data-icon="task_alt">task_alt</span>
+                                Esenciales
+                            </div>
+                            <p class="text-sm text-on-surface-variant">Necesarias para que la plataforma funcione
+                                (sesiones, seguridad, preferencias de idioma).</p>
+                        </div>
+                        <div class="p-6 rounded-3xl bg-surface-container border border-outline-variant">
+                            <div class="flex items-center gap-2 text-primary font-bold mb-3">
+                                <span class="material-symbols-outlined text-sm" data-icon="monitoring">monitoring</span>
+                                Analíticas
+                            </div>
+                            <p class="text-sm text-on-surface-variant">Nos permiten entender cómo interactúas con la web
+                                para mejorar la navegación.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-    </div>
+    </main>
+    <!-- Footer (Shared Component) -->
+    <%- include('../../Partials/footer') %>
 </body>
-
 
 </html>

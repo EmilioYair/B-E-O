@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <title>BEO Professionals - Publicar Servicio</title>
+    <title>B E O - Publicar Servicio</title>
     <style>
         .step-content { display: none; }
         .step-content.active { display: block; animation: fadeIn 0.4s ease-out; }
@@ -349,17 +349,18 @@
             }
 
             try {
-                // TODO: Integrar en el futuro con el backend real...
-                /*
                 const response = await fetch('/api/services', {
                     method: 'POST',
                     body: formData
                 });
-                const result = await response.json();
-                */
-               
+                
+                if (!response.ok) {
+                    const errorMsg = await response.json();
+                    throw new Error(errorMsg.error || 'Error del servidor');
+                }
+                
                 alert('¡Servicio publicado con éxito!');
-                window.location.href = '/dashboard';
+                window.location.href = '/publicaciones';
             } catch (error) {
                 console.error('Error:', error);
                 alert('Ocurrió un error en el servidor o al enviar la forma');

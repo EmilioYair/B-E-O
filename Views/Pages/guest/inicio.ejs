@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>BEO - Servicios</title>
+    <title>B E O - Inicio</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -413,50 +413,51 @@
             </div>
         </section>
         <!-- Footer -->
-        <footer class="bg-background-light dark:bg-[#0c1a11] py-12 border-t border-gray-100 dark:border-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                    <div class="col-span-1 md:col-span-2">
-                        <div class="flex items-center gap-3 text-primary mb-6">
-                            <h2 class="text-2xl font-black tracking-tighter">B E O</h2>
+        <%- include('../../Partials/footer') %>
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                const container = document.getElementById('popularServices');
+                if(!container) return;
+                
+                try {
+                    const response = await fetch('/api/services');
+                    const services = await response.json();
+                    
+                    if (services.length === 0) {
+                        container.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-gray-500 italic">No hay servicios disponibles en este momento.</p></div>';
+                        return;
+                    }
+                    
+                    container.innerHTML = services.map(service => `
+                        <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col h-full border border-gray-100">
+                            <div class="relative h-48 overflow-hidden bg-gray-100">
+                                <img src="${service.imagenUrl || '/images/DefaultService.png'}" alt="${service.titulo}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-gray-800 shadow-sm uppercase tracking-wider">${service.categoria}</div>
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#117278] transition-colors">${service.titulo}</h3>
+                                <p class="text-gray-500 text-sm mb-4 line-clamp-2 flex-grow">${service.descripcion}</p>
+                                <div class="flex items-center gap-2 text-sm text-gray-500 mt-auto">
+                                    <span class="material-symbols-outlined text-[18px]">location_on</span>
+                                    <span>${service.ubicacion || 'San Juan del Río'}</span>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0 border-t border-gray-50 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">Precio Base</p>
+                                    <p class="text-[#117278] font-black text-lg">$${service.precioBase}</p>
+                                </div>
+                                <button class="bg-[#117278]/10 text-[#117278] hover:bg-[#117278] hover:text-white size-12 rounded-xl flex items-center justify-center transition-all">
+                                    <span class="material-symbols-outlined font-bold">arrow_forward</span>
+                                </button>
+                            </div>
                         </div>
-                        <p class="text-gray-500 dark:text-gray-400 max-w-sm">
-                            La plataforma líder para conectar talento local con necesidades reales en San Juan del Río.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-[#0d1b12] dark:text-white mb-4">Para Profesionales</h4>
-                        <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                            <li><a class="hover:text-primary" href="/registro">Únete Ahora</a></li>
-                            <li><a class="hover:text-primary" href="/exitos">Historias de Éxito</a></li>
-                            <li><a class="hover:text-primary" href="/recursos">Recursos</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-[#0d1b12] dark:text-white mb-4">Soporte</h4>
-                        <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                            <li><a class="hover:text-primary" href="/ayuda">Centro de Ayuda</a></li>
-                            <li><a class="hover:text-primary" href="/contactanos">Contáctanos</a></li>
-                            <li><a class="hover:text-primary" href="/terminos_condiciones">Términos de Servicio</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div
-                    class="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="text-xs text-gray-400">© 2026 B E O Marketplace. Todos los derechos reservados.</p>
-                    <div class="flex items-center gap-2 text-xs text-gray-400">
-                        <span class="material-symbols-outlined text-sm">language</span>
-                        <span>Español (MX)</span>
-                    </div>
-                </div>
-            </div>
-        </footer>
+                    `).join('');
+                } catch (error) {
+                    console.error('Error fetching services:', error);
+                    container.innerHTML = '<div class="col-span-full text-center py-12 text-red-500 font-bold">Error al cargar servicios. Verifica tu conexión o base de datos.</div>';
+                }
+            });
+        </script>
 </body>
-
-</html>
-
-
-
-</body>
-
 </html>

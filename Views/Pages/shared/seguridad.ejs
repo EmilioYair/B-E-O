@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Seguridad | B E O Professional Services</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-tint": "#117278",
+                        "on-surface-variant": "#64748b",
+                        "surface-container-highest": "#e0e3e3",
+                        "surface-bright": "#ffffff",
+                        "secondary": "#476366",
+                        "on-secondary-fixed": "#012022",
+                        "inverse-surface": "#112021",
+                        "error": "#ba1a1a",
+                        "background": "#f6f8f8",
+                        "surface-container-high": "#e6e9e9",
+                        "surface": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#117278",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#83d3da",
+                        "secondary-fixed-dim": "#aeccce",
+                        "tertiary-fixed-dim": "#ffb68b",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#c9e8eb",
+                        "tertiary": "#78411b",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4b4e",
+                        "on-primary-fixed": "#002022",
+                        "surface-dim": "#d7dbda",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#4d696c",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-fixed-variant": "#6e3913",
+                        "surface-variant": "#f8fafc",
+                        "on-tertiary-fixed": "#321300",
+                        "on-surface": "#0f172a",
+                        "primary-container": "#1172781a",
+                        "inverse-primary": "#83d3da",
+                        "inverse-on-surface": "#f6f8f8",
+                        "tertiary-fixed": "#ffdbc8",
+                        "tertiary-container": "#955830",
+                        "surface-container-low": "#f6f8f8",
+                        "on-background": "#0f172a",
+                        "on-tertiary-container": "#ffe1d1",
+                        "outline": "#117278",
+                        "primary-fixed": "#9ff0f6",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#ebeeee",
+                        "outline-variant": "#e2e8f0",
+                        "primary": "#117278",
+                        "secondary-container": "#c9e8eb"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .blueprint-border {
+            border: 1px solid rgba(17, 114, 120, 0.1);
+        }
+    </style>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="bg-background font-body text-on-surface">
+    <%- include('../../Partials/header') %>
+    <main class="pt-24 pb-20">
+        <!-- Hero Section -->
+        <header class="max-w-7xl mx-auto px-6 py-16 md:py-24 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-container text-primary mb-6">
+                <span class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+                <span class="text-xs font-bold tracking-wider uppercase">Compromiso de Seguridad</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tighter mb-6">
+                Tu confianza es nuestra <span class="text-primary">prioridad absoluta</span>.
+            </h1>
+            <p class="text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                En B E O, hemos diseñado cada proceso pensando en la protección de tu identidad, tu dinero y la calidad
+                del servicio profesional.
+            </p>
+        </header>
+        <!-- Garantías de Pago Seguro (Asymmetric Bento) -->
+        <section class="max-w-7xl mx-auto px-6 mb-32">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div
+                    class="md:col-span-7 bg-surface p-10 rounded-xl blueprint-border shadow-sm flex flex-col justify-center">
+                    <span class="material-symbols-outlined text-primary text-5xl mb-6">payments</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Garantías de Pago Seguro</h2>
+                    <p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Utilizamos tecnología de encriptación de nivel bancario para asegurar que cada transacción sea
+                        privada y protegida. El pago solo se libera al profesional una vez que confirmas la recepción
+                        satisfactoria del servicio.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                            <span class="text-sm font-medium">Sistema Escrow: Fondos retenidos de forma segura hasta la
+                                entrega.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                            <span class="text-sm font-medium">Cumplimiento con estándares PCI-DSS.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:col-span-5 h-[400px] md:h-auto relative overflow-hidden rounded-xl shadow-lg">
+                    <img alt="" class="absolute inset-0 w-full h-full object-cover"
+                        data-alt="close-up of a high-tech credit card chip with digital security overlay and soft teal glowing bokeh background"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJdwRtVi_ZLXQ4tlDXEhjtcFcq8ulr_wKgLuiMLcLERwmoA79DNPBcFG-7qNxJh_ivbaPH5evD0L448aLK-DJiMD-vKHO39BEgE0rzKQLT4tg1NQXksI0JRdg4xYZ00U9Ohiar-_evF3EnuAC63KBd63MjzdJsZqUSqcQo25vSuAFLn5Qo3z985hQuO-pw7UrKpTRxddaw3Ue77KfyY_az_EekvwYtIjeIRk6UeccrdBqvl6TfkRnq9245XxCB4NKIPKjcyqjyT1Q" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <p class="text-xs font-bold tracking-widest uppercase mb-1">Tecnología Stripe</p>
+                        <p class="text-xl font-medium">Infraestructura de pagos global</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Cómo se verifica a los profesionales (Trust Badges & Process) -->
+        <section class="bg-surface-container-low py-24 mb-32">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-xl">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Verificación Rigurosa</h2>
+                        <p class="text-on-surface-variant">Cada profesional en nuestra plataforma pasa por un proceso de
+                            curaduría de tres pasos antes de ser admitido en el directorio.</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div
+                            class="flex flex-col items-center bg-surface px-6 py-4 rounded-xl blueprint-border shadow-sm">
+                            <span class="material-symbols-outlined text-primary text-3xl mb-2" data-weight="fill"
+                                style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span
+                                class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Verificado</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center bg-surface px-6 py-4 rounded-xl blueprint-border shadow-sm">
+                            <span class="material-symbols-outlined text-primary text-3xl mb-2" data-weight="fill"
+                                style="font-variation-settings: 'FILL' 1;">license</span>
+                            <span
+                                class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Certificado</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-surface p-8 rounded-xl blueprint-border hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary">id_card</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">Identidad Oficial</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">Validamos documentos de identidad
+                            emitidos por el gobierno para asegurar que cada perfil corresponde a una persona real.</p>
+                    </div>
+                    <div
+                        class="bg-surface p-8 rounded-xl blueprint-border hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary">school</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">Credenciales y Títulos</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">Nuestro equipo revisa manualmente las
+                            certificaciones y títulos profesionales para garantizar la expertise declarada.</p>
+                    </div>
+                    <div
+                        class="bg-surface p-8 rounded-xl blueprint-border hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary">reviews</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">Historial de Calidad</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">Monitoreamos continuamente las
+                            reseñas de clientes. Mantenemos un estándar mínimo de 4.5 estrellas para la permanencia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Resolución de disputas (Clean / Authoritative) -->
+        <section class="max-w-7xl mx-auto px-6 mb-32">
+            <div class="bg-slate-900 rounded-xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
+                <div class="md:w-1/2 p-12 lg:p-16 flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold text-white mb-6 tracking-tight">Centro de Resolución de Disputas</h2>
+                    <p class="text-slate-400 mb-8 leading-relaxed">
+                        Aunque el 99% de nuestros servicios se completan sin incidentes, estamos aquí para cuando las
+                        cosas no salen como se planearon. Nuestro equipo de mediación actúa de forma imparcial para
+                        llegar a una solución justa.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-teal-900 flex items-center justify-center">
+                                <span class="text-xs font-bold text-teal-400">01</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm mb-1">Mediación Directa</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">Fomentamos la comunicación abierta
+                                    entre ambas partes para resolver malentendidos rápidamente.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-teal-900 flex items-center justify-center">
+                                <span class="text-xs font-bold text-teal-400">02</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm mb-1">Arbitraje B E O</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">Si no hay acuerdo, un experto de B E O
+                                    analiza las pruebas y emite una decisión vinculante.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative min-h-[300px]">
+                    <img alt="" class="absolute inset-0 w-full h-full object-cover grayscale opacity-50"
+                        data-alt="minimalist modern law office with clean white furniture, glass walls, and a professional atmosphere emphasizing clarity and justice"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSYSkWMwvknozS8ZPvZ_U9E2aRiaAUgOW-XuoFz0lSXWALevibfoXPuIOsMrT2UVguHnhkhLoETYylENwo10ghKEe29kgoMIwJ2z1SoeAEbZWJc6JdJ_aiygzvb5-4M69zDxWD4t7LL0x4DiQ7w5dlRfmQwlkv5MwnL_VDWZfHIwq-bQveuClCt1Md336llXR6qJT_LwsozOyoGSOQ_sVEuygZs8Lb1EfDxww0L_cb6eRTz6YclCRU3tMjsu6qq28bSqEUB7oX3v4" />
+                    <div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+                </div>
+            </div>
+        </section>
+        <!-- Políticas contra el fraude (Grid Layout) -->
+        <section class="max-w-7xl mx-auto px-6 mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Políticas Tolerancia Cero</h2>
+                <p class="text-on-surface-variant max-w-xl mx-auto text-sm">Protegemos nuestro ecosistema mediante el
+                    monitoreo proactivo y la aplicación estricta de nuestras normas comunitarias.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 bg-surface rounded-xl blueprint-border flex flex-col items-center text-center">
+                    <span class="material-symbols-outlined text-error mb-4">no_accounts</span>
+                    <h4 class="font-bold text-sm mb-2">Suplantación</h4>
+                    <p class="text-xs text-on-surface-variant">Baneo inmediato de cuentas que utilicen identidades
+                        falsas o robadas.</p>
+                </div>
+                <div class="p-6 bg-surface rounded-xl blueprint-border flex flex-col items-center text-center">
+                    <span class="material-symbols-outlined text-error mb-4">gpp_maybe</span>
+                    <h4 class="font-bold text-sm mb-2">Pagos Externos</h4>
+                    <p class="text-xs text-on-surface-variant">Prohibimos transacciones fuera de la plataforma para
+                        garantizar tu seguro de protección.</p>
+                </div>
+                <div class="p-6 bg-surface rounded-xl blueprint-border flex flex-col items-center text-center">
+                    <span class="material-symbols-outlined text-error mb-4">report_off</span>
+                    <h4 class="font-bold text-sm mb-2">Spam &amp; Phishing</h4>
+                    <p class="text-xs text-on-surface-variant">Filtros inteligentes bloquean intentos de captación de
+                        datos sensibles.</p>
+                </div>
+                <div class="p-6 bg-surface rounded-xl blueprint-border flex flex-col items-center text-center">
+                    <span class="material-symbols-outlined text-error mb-4">block</span>
+                    <h4 class="font-bold text-sm mb-2">Reseñas Falsas</h4>
+                    <p class="text-xs text-on-surface-variant">Tecnología de detección de patrones para eliminar
+                        manipulaciones de reputación.</p>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Final -->
+        <section class="max-w-7xl mx-auto px-6 mb-20">
+            <div class="bg-primary-container rounded-xl p-12 text-center border border-primary/20">
+                <h2 class="text-2xl font-bold text-primary mb-4">¿Tienes alguna duda sobre seguridad?</h2>
+                <p class="text-on-surface-variant mb-8 max-w-md mx-auto">Nuestro equipo de soporte está disponible 24/7
+                    para asistirte en cualquier inquietud.</p>
+                <button
+                    class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all">
+                    Contactar a Soporte
+                </button>
+            </div>
+        </section>
+    </main>
+    <%- include('../../Partials/footer') %>
+</body>
+
+</html>

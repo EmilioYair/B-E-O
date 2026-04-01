@@ -40,7 +40,6 @@ if (!admin.apps.length) {
         }
     } catch (error) {
         console.error("Warning: Firebase Admin initialization failed. Server-side auth and storage may not work.", error.message);
-        // No lanzamos error para permitir que el servidor inicie, pero las rutas protegidas fallarán
     }
 }
 
