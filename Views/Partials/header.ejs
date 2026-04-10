@@ -23,7 +23,7 @@
             <a class="app-nav-link" href="/encuentra">Encuentra</a>
             <a class="app-nav-link" href="/como_funciona">Como Funciona</a>
             
-            <% if (user) { %>
+            <% if (typeof user !== 'undefined' && user) { %>
                 <a class="app-nav-link" href="/dashboard">Dashboard</a>
             <% } else { %>
                 <a class="app-nav-link" href="/login">Iniciar Sesion</a>
@@ -32,7 +32,7 @@
         </nav>
 
         <!-- Botón de acción principal -->
-        <% if (user) { %>
+        <% if (typeof user !== 'undefined' && user) { %>
             <a href="/postear" class="app-btn-primary">
                 Postear un servicio
             </a>
@@ -54,11 +54,11 @@
         </label>
 
         <!-- Foto de perfil del usuario -->
-        <% if (user) { %>
+        <% if (typeof user !== 'undefined' && user) { %>
             <a href="/perfil" title="Ir a mi perfil">
                 <div id="headerProfileImage" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-primary/20"
                     data-alt="Worker profile photo"
-                    style="background-image: url('<%= user.picture ? user.picture : \"/images/DefaultProfile.png\" %>');"
+                    style="background-image: url('<%= user.picture ? user.picture : '/images/DefaultProfile.png' %>');">
                 </div>
             </a>
             <form action="/auth/logout" method="POST" class="ml-3">
@@ -71,7 +71,7 @@
 
 <script>
     // Corrección del bloque if para evitar errores de sintaxis
-    const userId = '<%= user ? user.uid : "" %>';
+    const userId = '<%= typeof user !== "undefined" && user ? user.uid : "" %>';
     if (userId && document.getElementById('headerProfileImage')) {
         fetch(`/api/profile/${userId}/image-url`)
             .then(res => res.ok ? res.json() : Promise.reject())

@@ -423,8 +423,8 @@
                     const response = await fetch('/api/services');
                     const services = await response.json();
                     
-                    if (services.length === 0) {
-                        container.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-gray-500 italic">No hay servicios disponibles en este momento.</p></div>';
+                    if (!Array.isArray(services) || services.length === 0) {
+                        container.innerHTML = `<div class="col-span-full text-center py-12"><p class="text-gray-500 italic">${!Array.isArray(services) ? 'Error al cargar servicios.' : 'No hay servicios disponibles en este momento.'}</p></div>`;
                         return;
                     }
                     

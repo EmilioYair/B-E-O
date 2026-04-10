@@ -71,11 +71,18 @@ const getServices = async (req, res) => {
             query = query.where("ubicacion", "==", ubicacion);
         }
 
-        const snapshot = await query.orderBy("createdAt", "desc").get();
+        const snapshot = await query.get();
 
         const services = [];
         snapshot.forEach(doc => {
             services.push({ id: doc.id, ...doc.data() });
+        });
+
+        // Sort locally in descending order by createdAt to avoid Firestore index requirement
+        services.sort((a, b) => {
+            const dateA = a.createdAt && a.createdAt.toDate ? a.createdAt.toDate() : (a.createdAt ? new Date(a.createdAt) : new Date(0));
+            const dateB = b.createdAt && b.createdAt.toDate ? b.createdAt.toDate() : (b.createdAt ? new Date(b.createdAt) : new Date(0));
+            return dateB - dateA;
         });
 
         res.status(200).json(services);
