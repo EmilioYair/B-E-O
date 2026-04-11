@@ -36,7 +36,29 @@ router.get('/profile/:userId/info', getProfileInfo);
 router.get('/services/:serviceId/image-url', getServiceImageUrl);
 
 // Actualizar información del perfil (Protegido)
-router.post('/profile/info', verifySession, updateProfileInfo);
+router.post('/profile/info', verifySession, async (req, res) => {
+    try {
+        const { nombre, edad, telefono, biografia, ubicacion, especialidades } = req.body;
+        const userId = req.session.userId; // O como obtengas el ID del usuario de la sesión
+
+        // AQUÍ VA TU LÓGICA DE BASE DE DATOS (Ejemplo con una DB imaginaria)
+        // await db.users.update(userId, { nombre, edad, telefono, biografia, ubicacion, especialidades });
+
+        // ESTO ES LO MÁS IMPORTANTE: La respuesta JSON que espera tu JavaScript
+        res.status(200).json({ 
+            success: true, 
+            message: 'Información guardada correctamente' 
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ 
+            success: false, 
+            error: 'Error interno del servidor', 
+            details: error.message 
+        });
+    }
+});
 
 // Registro de Usuario - Firestore Integration
 router.post('/register', async (req, res) => {

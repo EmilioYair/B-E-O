@@ -1,226 +1,211 @@
 <!DOCTYPE html>
-
 <html class="light" lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>B E O Job Search Board</title>
+    <title>B E O - Encuentra Servicios</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
     <script src="/js/tailwind-config.js"></script>
     <link rel="stylesheet" href="/css/main.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-        <!-- Top Navigation Bar -->
         <%- include('../../Partials/header') %>
-            <main class="flex-1 flex justify-center py-8">
-                <div class="flex w-full max-w-[1280px] px-6 gap-8">
-                    <!-- Sidebar Navigation (Filters) -->
-                    <aside class="w-64 flex flex-col shrink-0">
-                        <div
-                            class="flex flex-col gap-6 bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e8f2f3] dark:border-primary/20 shadow-sm">
-                            <div class="flex flex-col">
-                                <h1 class="text-[#0e1a1b] dark:text-white text-lg font-bold leading-normal">Filtros</h1>
-                                <p class="text-[#509295] text-sm font-normal leading-normal">Narrow your search</p>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <div
-                                    class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-[#e8f2f3] dark:hover:bg-primary/10 rounded-lg transition-colors group">
-                                    <span
-                                        class="material-symbols-outlined text-primary group-hover:scale-110">location_on</span>
-                                    <p class="text-[#0e1a1b] dark:text-gray-200 text-sm font-medium leading-normal">
-                                        Distancia de Mi</p>
-                                </div>
-                                <div
-                                    class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 border border-primary/20">
-                                    <span class="material-symbols-outlined text-primary">handyman</span>
-                                    <p class="text-primary text-sm font-bold leading-normal">Tipo de Servicio</p>
-                                </div>
-                                <div
-                                    class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-[#e8f2f3] dark:hover:bg-primary/10 rounded-lg transition-colors group">
-                                    <span
-                                        class="material-symbols-outlined text-primary group-hover:scale-110">payments</span>
-                                    <p class="text-[#0e1a1b] dark:text-gray-200 text-sm font-medium leading-normal">
-                                        Tarifa</p>
-                                </div>
-                                <div
-                                    class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-[#e8f2f3] dark:hover:bg-primary/10 rounded-lg transition-colors group">
-                                    <span
-                                        class="material-symbols-outlined text-primary group-hover:scale-110">alarm</span>
-                                    <p class="text-[#0e1a1b] dark:text-gray-200 text-sm font-medium leading-normal">
-                                        Nivel de Urgencia</p>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-[#e8f2f3] dark:border-primary/20">
-                                <p
-                                    class="text-[#0e1a1b] dark:text-white text-xs font-bold uppercase tracking-wider mb-3">
-                                    POPULAR TRADES</p>
-                                <div class="flex flex-col gap-2">
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input checked="" class="rounded text-primary focus:ring-primary h-4 w-4"
-                                            type="checkbox" />
-                                        <span class="text-sm text-[#0e1a1b] dark:text-gray-300">Plomería</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input class="rounded text-primary focus:ring-primary h-4 w-4"
-                                            type="checkbox" />
-                                        <span class="text-sm text-[#0e1a1b] dark:text-gray-300">Electricidad</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input class="rounded text-primary focus:ring-primary h-4 w-4"
-                                            type="checkbox" />
-                                        <span class="text-sm text-[#0e1a1b] dark:text-gray-300">Albañilería</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-                    <!-- Main Content Area -->
-                    <div class="flex-1 flex flex-col gap-4">
-                        <!-- Page Heading -->
-                        <div
-                            class="flex flex-wrap justify-between items-end gap-3 p-4 bg-white dark:bg-background-dark rounded-xl border border-[#e8f2f3] dark:border-primary/20 shadow-sm">
-                            <div class="flex min-w-72 flex-col gap-1">
-                                <p class="text-primary text-4xl font-black leading-tight tracking-[-0.033em]">Trabajos
-                                </p>
-                                <p class="text-[#509295] text-base font-normal leading-normal">Servicios Disponibles en San Juan del Rio</p>
-                            </div>
-                            <button
-                                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#e8f2f3] dark:bg-primary/10 text-primary text-sm font-bold leading-normal border border-primary/20">
-                                <span class="material-symbols-outlined text-sm mr-2">refresh</span>
-                                <span class="truncate">Refrescar</span>
+        
+        <main class="flex-1 flex justify-center py-8">
+            <div class="flex w-full max-w-[1280px] px-6 gap-8">
+                
+                <aside class="w-64 flex flex-col shrink-0">
+                    <div class="flex flex-col gap-6 bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e8f2f3] shadow-sm">
+                        <h2 class="text-[#0e1a1b] text-lg font-bold">Filtros</h2>
+                        
+                        <div class="flex flex-col gap-2">
+                            <button id="btnLocation" class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-[#e8f2f3] rounded-lg transition-colors group">
+                                <span class="material-symbols-outlined text-primary group-hover:scale-110">location_on</span>
+                                <p class="text-[#0e1a1b] text-sm font-medium">Filtrar por Ubicación</p>
                             </button>
-                        </div>
-                        <!-- Chips / Active Filters -->
-                        <div class="flex gap-3 px-4 py-2 flex-wrap items-center">
-                            <p class="text-[#509295] text-xs font-bold uppercase tracking-wider mr-2">ACTIVE:</p>
-                            <button
-                                class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/10 border border-primary/20 pl-4 pr-2 hover:bg-primary/20">
-                                <p class="text-primary text-sm font-medium">Plomería</p>
-                                <span class="material-symbols-outlined text-[18px] text-primary">close</span>
-                            </button>
-                            <button
-                                class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/10 border border-primary/20 pl-4 pr-2 hover:bg-primary/20">
-                                <p class="text-primary text-sm font-medium">San Cayetano</p>
-                                <span class="material-symbols-outlined text-[18px] text-primary">close</span>
-                            </button>
-                            <button
-                                class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/10 border border-primary/20 pl-4 pr-2 hover:bg-primary/20">
-                                <p class="text-primary text-sm font-medium">Urgent</p>
-                                <span class="material-symbols-outlined text-[18px] text-primary">close</span>
-                            </button>
-                            <button class="text-xs text-primary font-bold hover:underline ml-2">Clear all</button>
-                        </div>
-                        <!-- Jobs List -->
-                        <div id="servicesList" class="flex flex-col gap-6">
-                            <!-- Los servicios se cargarán aquí dinámicamente -->
-                            <div class="text-center py-12">
-                                <p class="text-gray-500">Cargando servicios disponibles...</p>
-                            </div>
                         </div>
 
-                        <!-- Pagination (Oculta por ahora en MVP) -->
+                        <div class="flex flex-col gap-2 border-t pt-4">
+                            <button id="btnPrice" class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-[#e8f2f3] rounded-lg transition-colors group">
+                                <span class="material-symbols-outlined text-primary group-hover:scale-110">payments</span>
+                                <p class="text-[#0e1a1b] text-sm font-medium">Precio Máximo</p>
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2 pl-2 border-t pt-4">
+                            <p class="text-xs font-bold text-gray-400 mb-2 uppercase">Oficios Populares</p>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input name="trade" value="Plomería" type="checkbox" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm text-[#0e1a1b]">Plomería</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input name="trade" value="Electricidad" type="checkbox" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm text-[#0e1a1b]">Electricidad</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input name="trade" value="Albañilería" type="checkbox" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm text-[#0e1a1b]">Albañilería</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input name="trade" value="Carpintería" type="checkbox" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm text-[#0e1a1b]">Carpintería</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input name="trade" value="Mecánica" type="checkbox" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm text-[#0e1a1b]">Mecánica</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input name="trade" value="Herrería" type="checkbox" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm text-[#0e1a1b]">Herrería</span>
+                            </label>
+                        </div>
                     </div>
+                </aside>
+
+                <div class="flex-1 flex flex-col gap-4">
+                    <div class="flex flex-wrap justify-between items-end gap-3 p-6 bg-white rounded-xl border border-[#e8f2f3] shadow-sm">
+                        <div>
+                            <p class="text-primary text-4xl font-black">Trabajos</p>
+                            <p class="text-[#509295] text-base">Servicios en San Juan del Río</p>
+                        </div>
+                        <button onclick="fetchServices()" class="flex items-center rounded-xl h-10 px-4 bg-[#e8f2f3] text-primary text-sm font-bold border border-primary/10">
+                            <span class="material-symbols-outlined text-sm mr-2">refresh</span> Refrescar
+                        </button>
+                    </div>
+
+                    <div id="activeFiltersSection" class="flex gap-3 px-4 py-2 flex-wrap items-center">
+                        <p class="text-[#509295] text-xs font-bold uppercase tracking-wider">ACTIVOS:</p>
+                        <div id="chipsContainer" class="flex gap-2"></div>
+                        <button onclick="clearAllFilters()" class="text-xs text-primary font-bold hover:underline">Limpiar todo</button>
+                    </div>
+
+                    <div id="servicesList" class="flex flex-col gap-6"></div>
                 </div>
-            </main>
+            </div>
+        </main>
     </div>
 
     <script>
-        async function fetchServices(filters = {}) {
+        let currentFilters = { categoria: '', ubicacion: '', precio: '' };
+
+        async function fetchServices() {
             const listContainer = document.getElementById('servicesList');
-            const searchParams = new URLSearchParams(filters);
+            const searchParams = new URLSearchParams();
+            
+            // Filtros básicos para el servidor
+            if (currentFilters.categoria) searchParams.append('categoria', currentFilters.categoria);
+            if (currentFilters.ubicacion) searchParams.append('ubicacion', currentFilters.ubicacion);
 
             try {
                 const response = await fetch(`/api/services?${searchParams.toString()}`);
-                const services = await response.json();
+                let services = await response.json();
+                renderChips();
+
+                // LÓGICA DE FILTRADO POR PRECIO
+                if (currentFilters.precio) {
+                    const max = parseFloat(currentFilters.precio);
+                    services = services.filter(s => parseFloat(s.precioBase) <= max);
+                }
 
                 if (services.length === 0) {
-                    listContainer.innerHTML = `
-                        <div class="text-center py-12 bg-white dark:bg-background-dark rounded-xl border border-gray-100">
-                            <p class="text-gray-500">No se encontraron servicios que coincidan con tu búsqueda.</p>
-                        </div>`;
+                    listContainer.innerHTML = `<p class="p-10 text-center text-gray-400">No se encontraron servicios con estos criterios.</p>`;
                     return;
                 }
 
-                listContainer.innerHTML = services.map(service => `
-                    <div class="@container">
-                        <div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start shadow-sm border border-[#e8f2f3] dark:border-primary/20 bg-white dark:bg-background-dark hover:shadow-md transition-shadow overflow-hidden">
-                            <div class="w-full @xl:w-64 bg-center bg-no-repeat aspect-video @xl:aspect-square bg-cover"
-                                style='background-image: url("${service.imagenUrl || "/images/DefaultService.png"}");'>
+                listContainer.innerHTML = services.map(service => {
+                    // Mantenemos la lógica de imagen que revisará tu amigo
+                    let imgUrl = service.imagenPath || 'https://placehold.co/600x400/e8f2f3/509295?text=BEO+Servicios';
+                    
+                    return `
+                        <div class="flex flex-col md:flex-row rounded-xl border border-[#e8f2f3] bg-white overflow-hidden shadow-sm mb-4">
+                            <div class="w-full md:w-80 h-56 md:h-auto bg-gray-100 flex-shrink-0">
+                                <img src="${imgUrl}" class="w-full h-full object-cover">
                             </div>
-                            <div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-3 py-6 px-6">
-                                <div class="flex justify-between items-start">
-                                    <div class="flex flex-col">
-                                        <p class="text-primary text-xs font-bold uppercase tracking-wider">Categoría: ${service.categoria}</p>
-                                        <p class="text-[#0e1a1b] dark:text-white text-xl font-black leading-tight tracking-[-0.015em]">${service.titulo}</p>
+                            <div class="flex-1 p-6 flex flex-col justify-between">
+                                <div>
+                                    <p class="text-primary text-[10px] font-bold uppercase tracking-widest">${service.categoria || 'GENERAL'}</p>
+                                    <h3 class="text-[#0e1a1b] text-2xl font-black mt-1">${service.titulo}</h3>
+                                    <div class="flex items-center gap-1 text-[#509295] mt-1">
+                                        <span class="material-symbols-outlined text-sm">location_on</span>
+                                        <span class="text-sm font-medium">${service.ubicacion || 'San Juan del Río'}</span>
                                     </div>
-                                    ${service.urgente ? '<span class="bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 px-3 py-1 rounded-full text-xs font-bold">URGENTE</span>' : ''}
+                                    <p class="text-gray-500 text-sm mt-4 line-clamp-2">${service.descripcion}</p>
                                 </div>
-                                <div class="flex items-center gap-2 text-[#509295]">
-                                    <span class="material-symbols-outlined text-sm">location_on</span>
-                                    <p class="text-sm font-medium">${service.ubicacion || 'San Juan del Río'}</p>
-                                </div>
-                                <p class="text-[#509295] dark:text-gray-400 text-base font-normal leading-relaxed line-clamp-2">${service.descripcion}</p>
-                                <div class="flex items-center justify-between mt-2 pt-4 border-t border-[#e8f2f3] dark:border-primary/20">
-                                    <div class="flex flex-col">
-                                        <p class="text-[#0e1a1b] dark:text-white text-lg font-bold leading-tight">$${service.precioBase} MXN</p>
-                                        <p class="text-[#509295] text-xs">Precio base</p>
-                                    </div>
-                                    <button class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold shadow-sm hover:bg-primary/90">
-                                        <span class="truncate">Contactar</span>
-                                    </button>
+                                <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-50">
+                                    <p class="text-[#0e1a1b] text-xl font-bold">$${service.precioBase} MXN</p>
+                                    <button class="bg-primary text-white px-8 h-11 rounded-xl text-sm font-bold">Contactar</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                `).join('');
+                        </div>`;
+                }).join('');
             } catch (error) {
-                console.error('Error fetching services:', error);
-                listContainer.innerHTML = '<p class="text-red-500 text-center">Error al cargar los servicios.</p>';
+                console.error('Error:', error);
             }
         }
 
-        // Inicializar
+        function renderChips() {
+            const container = document.getElementById('chipsContainer');
+            container.innerHTML = '';
+            Object.keys(currentFilters).forEach(key => {
+                if (currentFilters[key]) {
+                    let label = key === 'precio' ? `$${currentFilters[key]}` : currentFilters[key];
+                    container.innerHTML += `
+                        <div class="flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
+                            <span class="text-primary text-[11px] font-bold uppercase">${label}</span>
+                            <button onclick="removeFilter('${key}')" class="material-symbols-outlined text-xs text-primary">close</button>
+                        </div>`;
+                }
+            });
+        }
+
+        function removeFilter(type) {
+            currentFilters[type] = '';
+            if (type === 'categoria') {
+                document.querySelectorAll('input[name="trade"]').forEach(cb => cb.checked = false);
+            }
+            fetchServices();
+        }
+
+        function clearAllFilters() {
+            currentFilters = { categoria: '', ubicacion: '', precio: '' };
+            document.querySelectorAll('input[name="trade"]').forEach(cb => cb.checked = false);
+            fetchServices();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             fetchServices();
-
-            // Lógica de filtros
-            const filterCheckboxes = document.querySelectorAll('input[type="checkbox"]');
-            filterCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    const filters = {};
-
-                    // Obtener categoría seleccionada (asumiendo que los labels coinciden con los valores)
-                    const categoryChecked = Array.from(document.querySelectorAll('input[name="trade"]:checked')).map(c => c.nextElementSibling.innerText);
-                    if (categoryChecked.length > 0) filters.categoria = categoryChecked[0]; // Simplificado a una para el MVP
-
-                    // Obtener ubicación
-                    // (Aquí podrías añadir lógica para capturar ubicación si hay inputs dedicados)
-
-                    fetchServices(filters);
+            
+            document.querySelectorAll('input[name="trade"]').forEach(cb => {
+                cb.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        document.querySelectorAll('input[name="trade"]').forEach(other => { 
+                            if(other !== e.target) other.checked = false; 
+                        });
+                        currentFilters.categoria = e.target.value;
+                    } else {
+                        currentFilters.categoria = '';
+                    }
+                    fetchServices();
                 });
+            });
+
+            document.getElementById('btnLocation').addEventListener('click', () => {
+                const zona = prompt("¿Qué zona buscas?");
+                if (zona) { currentFilters.ubicacion = zona.trim(); fetchServices(); }
+            });
+
+            document.getElementById('btnPrice').addEventListener('click', () => {
+                const precio = prompt("Introduce el presupuesto máximo:");
+                if (precio && !isNaN(precio)) { 
+                    currentFilters.precio = precio.trim(); 
+                    fetchServices(); 
+                }
             });
         });
     </script>
 </body>
-
 </html>

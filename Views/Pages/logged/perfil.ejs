@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html class="light" lang="es">
 
 <head>
@@ -7,17 +6,12 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>B E O - Perfil Público del Profesional</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/main.css">
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     </style>
     <script id="tailwind-config">
         tailwind.config = {
@@ -29,9 +23,7 @@
                         "background-light": "#f6f8f8",
                         "background-dark": "#112021",
                     },
-                    fontFamily: {
-                        "display": ["Public Sans"]
-                    },
+                    fontFamily: { "display": ["Public Sans"] },
                     borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
                 },
             },
@@ -40,376 +32,175 @@
 </head>
 
 <body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen">
-    <!-- Navigation Bar -->
     <%- include('../../Partials/header') %>
+    
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Header Profile Card -->
-        <div
-            class="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden mb-8 border border-slate-100 dark:border-slate-800">
+        <div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden mb-8 border border-slate-100 dark:border-slate-800">
             <div class="h-48 bg-gradient-to-r from-primary/20 to-primary/5 relative">
                 <div class="absolute -bottom-12 left-8 flex items-end gap-6">
-                    <div
-                        class="w-32 h-32 rounded-xl border-4 border-white dark:border-slate-900 overflow-hidden shadow-lg bg-white">
+                    <div class="w-32 h-32 rounded-xl border-4 border-white dark:border-slate-900 overflow-hidden shadow-lg bg-white">
                         <img id="profileImagePreview" alt="Foto de perfil" class="w-full h-full object-cover"
-                            data-alt="Professional carpenter portrait smiling"
                             src="<%= user && user.picture ? user.picture : '/images/DefaultProfile.png' %>" />
                     </div>
                     <div class="mb-4">
                         <div class="flex items-center gap-3">
                             <h1 id="profileNameDisplay" class="text-3xl font-bold">Cargando...</h1>
-                            <div
-                                class="flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/20">
-                                <span class="material-icons text-sm">verified</span>
-                                Verificado Nivel 2
+                            <div class="flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/20">
+                                <span class="material-icons text-sm">verified</span> Verificado
                             </div>
                         </div>
-                        <p id="profileDescDisplay" class="text-slate-500 dark:text-slate-400 font-medium text-lg">Profesional
-                        </p>
+                        <p id="profileDescDisplay" class="text-slate-500 dark:text-slate-400 font-medium text-lg italic">Sin descripción disponible</p>
                     </div>
                 </div>
             </div>
+            
             <div class="pt-16 pb-6 px-8 flex justify-between items-center">
                 <div class="flex gap-8">
                     <div class="flex flex-col">
                         <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Ubicación</span>
                         <span id="profileUbicacionDisplay" class="font-semibold flex items-center gap-1">
-                            <span class="material-icons text-sm text-primary">location_on</span>
-                            No especificada
+                            <span class="material-icons text-sm text-primary">location_on</span> No especificada
                         </span>
                     </div>
                     <div class="flex flex-col">
                         <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Edad</span>
-                        <span id="profileEdadDisplay" class="font-semibold">No especificada</span>
+                        <span id="profileEdadDisplay" class="font-semibold">-- años</span>
                     </div>
                     <div class="flex flex-col">
                         <span class="text-slate-400 text-xs uppercase tracking-widest font-bold">Teléfono</span>
                         <span id="profileTelefonoDisplay" class="font-semibold">No especificado</span>
                     </div>
                 </div>
-                <div class="flex gap-3">
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                        <span class="material-icons text-sm">share</span>
-                        Compartir
-                    </button>
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                        <span class="material-icons text-sm text-red-500">favorite_border</span>
-                        Guardar
-                    </button>
-                </div>
+                <button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 font-semibold hover:bg-slate-50 transition-colors">
+                    <span class="material-icons text-sm">share</span> Compartir
+                </button>
             </div>
-            <div class="border-t border-slate-200 dark:border-slate-800 p-6 bg-slate-50 dark:bg-slate-900 rounded-b-xl mt-4">
+
+            <div class="border-t border-slate-200 dark:border-slate-800 p-6 bg-slate-50 dark:bg-slate-900 rounded-b-xl">
                 <div class="space-y-6">
-                    <!-- Sección de subida de foto -->
                     <div>
                         <h3 class="text-lg font-semibold mb-3">Actualizar foto de perfil</h3>
-                        <form id="profileImageForm" class="flex flex-col sm:flex-row items-start sm:items-center gap-3" enctype="multipart/form-data">
-                            <input id="profileImageInput" name="avatar" type="file" accept="image/*" class="px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700" required />
-                            <button id="profileImageUploadBtn" type="submit" class="bg-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-[#0d5d62] transition">Subir foto</button>
-                            <span id="profileImageStatus" class="text-sm text-slate-500"></span>
+                        <form id="profileImageForm" class="flex flex-col sm:flex-row items-center gap-3">
+                            <input id="profileImageInput" type="file" accept="image/*" class="px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800" required />
+                            <button type="submit" id="profileImageUploadBtn" class="bg-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-[#0d5d62]">Subir foto</button>
+                            <span id="profileImageStatus" class="text-sm font-medium"></span>
                         </form>
                     </div>
 
-                    <!-- Divider -->
                     <div class="border-t border-slate-200 dark:border-slate-700"></div>
 
-                    <!-- Sección de información del perfil -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-3">Rellenar información</h3>
+                        <h3 class="text-lg font-semibold mb-3">Información Personal</h3>
                         <form id="profileInfoForm" class="space-y-4">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium mb-1">Nombre completo</label>
-                                    <input id="profileNombre" name="nombre" type="text" placeholder="Tu nombre" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium mb-1">Edad</label>
-                                    <input id="profileEdad" name="edad" type="number" placeholder="Tu edad" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
-                                </div>
+                                <input id="profileNombre" type="text" placeholder="Nombre completo" class="w-full px-3 py-2 border rounded-lg dark:bg-slate-800" />
+                                <input id="profileEdad" type="number" placeholder="Edad" class="w-full px-3 py-2 border rounded-lg dark:bg-slate-800" />
                             </div>
-
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium mb-1">Teléfono</label>
-                                    <input id="profileTelefono" name="telefono" type="tel" placeholder="Tu teléfono" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium mb-1">Ubicación</label>
-                                    <input id="profileUbicacion" name="ubicacion" type="text" placeholder="Tu ubicación" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
-                                </div>
+                                <input id="profileTelefono" type="tel" placeholder="Teléfono" class="w-full px-3 py-2 border rounded-lg dark:bg-slate-800" />
+                                <input id="profileUbicacion" type="text" placeholder="Ubicación (Ciudad/Colonia)" class="w-full px-3 py-2 border rounded-lg dark:bg-slate-800" />
                             </div>
-
-                            <div>
-                                <label class="block text-sm font-medium mb-1">Biografía/Descripción</label>
-                                <textarea id="profileBiografia" name="biografia" placeholder="Cuéntanos sobre ti..." rows="3" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white"></textarea>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium mb-1">Especialidades (separadas por coma)</label>
-                                <input id="profileEspecialidades" name="especialidades" type="text" placeholder="Ej: Carpintería, Reparación, Barnizado" class="w-full px-3 py-2 border rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white" />
-                            </div>
-
-                            <div class="flex gap-3">
-                                <button id="profileInfoSubmitBtn" type="submit" class="bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-[#0d5d62] transition">Guardar información</button>
-                                <span id="profileInfoStatus" class="text-sm text-slate-500 flex items-center"></span>
+                            <textarea id="profileBiografia" placeholder="Cuéntanos tu experiencia..." rows="3" class="w-full px-3 py-2 border rounded-lg dark:bg-slate-800"></textarea>
+                            <input id="profileEspecialidades" type="text" placeholder="Especialidades (ej: Plomería, Electricidad)" class="w-full px-3 py-2 border rounded-lg dark:bg-slate-800" />
+                            
+                            <div class="flex items-center gap-4">
+                                <button type="submit" id="profileInfoSubmitBtn" class="bg-primary text-white px-6 py-2 rounded-lg font-bold">Guardar Cambios</button>
+                                <span id="profileInfoStatus" class="text-sm font-medium"></span>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Left Column: Gallery and Reviews -->
             <div class="lg:col-span-2 space-y-8">
-                <!-- Before & After Gallery -->
                 <section>
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-xl font-bold flex items-center gap-2">
-                            <span class="material-icons text-primary">auto_awesome</span>
-                            Proyectos: Antes y Después
+                            <span class="material-icons text-primary">auto_awesome</span> Proyectos: Antes y Después
                         </h2>
-                        <button class="text-primary font-bold text-sm hover:underline">Ver todo el portafolio</button>
+                        <button onclick="document.getElementById('projectUploadForm').classList.toggle('hidden')" class="text-sm bg-primary/10 text-primary px-3 py-1 rounded-lg font-bold hover:bg-primary/20 transition-colors">
+                            + Añadir Proyecto
+                        </button>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Project Card 1 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
-                            <div class="relative grid grid-cols-2 gap-2 mb-3">
-                                <div class="relative group">
-                                    <img alt="Antes" class="rounded-lg h-40 w-full object-cover"
-                                        data-alt="Old damaged kitchen cabinets before restoration"
-                                        src="/images/FrijolitoPP.png" />
-                                    <span
-                                        class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">ANTES</span>
+
+                    <div id="projectUploadForm" class="hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl mb-6 shadow-sm">
+                        <h3 class="font-bold mb-3 text-sm uppercase text-slate-400">Nuevo Proyecto</h3>
+                        <form id="newProjectForm" class="space-y-3 text-black">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500">Foto del Proyecto</label>
+                                    <input id="projectImageInput" type="file" accept="image/*" class="w-full text-sm border rounded-lg p-2 mt-1 bg-white" required />
                                 </div>
-                                <div class="relative group">
-                                    <img alt="Después" class="rounded-lg h-40 w-full object-cover"
-                                        data-alt="New modern white kitchen cabinets after renovation"
-                                        src="/images/FrijolitoPP.png" />
-                                    <span
-                                        class="absolute top-2 left-2 bg-primary/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">DESPUÉS</span>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500">Descripción breve</label>
+                                    <input id="projectDescInput" type="text" placeholder="Ej: Pintura de fachada" class="w-full text-sm border rounded-lg p-2 mt-1" required />
                                 </div>
                             </div>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Remodelación Cocina Integral</h3>
-                            <p class="text-sm text-slate-500">Restauración de gabinetes y cambio de herrajes en Col.
-                                Centro.</p>
-                        </div>
-                        <!-- Project Card 2 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
-                            <div class="relative grid grid-cols-2 gap-2 mb-3">
-                                <div class="relative group">
-                                    <img alt="Antes" class="rounded-lg h-40 w-full object-cover"
-                                        data-alt="Damaged wooden floor before sanding"
-                                        src="/images/FrijolitoPP.png" />
-                                    <span
-                                        class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">ANTES</span>
-                                </div>
-                                <div class="relative group">
-                                    <img alt="Después" class="rounded-lg h-40 w-full object-cover"
-                                        data-alt="Polished dark wood flooring after finish"
-                                        src="/images/FrijolitoPP.png" />
-                                    <span
-                                        class="absolute top-2 left-2 bg-primary/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">DESPUÉS</span>
-                                </div>
+                            <div class="flex justify-end gap-2">
+                                <button type="button" onclick="document.getElementById('projectUploadForm').classList.add('hidden')" class="px-4 py-2 text-sm font-semibold">Cancelar</button>
+                                <button type="submit" id="saveProjectBtn" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold">Subir Proyecto</button>
                             </div>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Barnizado de Duela</h3>
-                            <p class="text-sm text-slate-500">Pulido y barnizado marino en recámara principal, La Rueda.
-                            </p>
+                            <p id="projectStatus" class="text-xs mt-2 font-medium"></p>
+                        </form>
+                    </div>
+
+                    <div id="projectsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="col-span-full py-10 text-center bg-white dark:bg-slate-900 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800">
+                            <p class="text-slate-400 italic">No hay proyectos para mostrar.</p>
                         </div>
                     </div>
                 </section>
-                <!-- Reviews Section -->
-                <section>
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold flex items-center gap-2">
-                            <span class="material-icons text-primary">groups</span>
-                            Reseñas de Vecinos
-                        </h2>
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm font-medium text-slate-500">Ordenar por:</span>
-                            <select
-                                class="text-sm bg-transparent border-none font-bold text-primary focus:ring-0 cursor-pointer">
-                                <option>Cercanía (San Juan del Río)</option>
-                                <option>Más recientes</option>
-                                <option>Mejor calificación</option>
-                            </select>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold flex items-center gap-2">
+                        <span class="material-icons text-primary">groups</span> Reseñas de Vecinos
+                    </h2>
+                    <div id="reviewsContainer" class="space-y-4">
+                        <div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
+                            <p class="text-slate-500 italic">Este profesional aún no tiene reseñas de clientes.</p>
                         </div>
                     </div>
-                    <div class="space-y-4">
-                        <!-- Review Item 1 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="flex gap-4">
-                                    <div
-                                        class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-bold text-primary">
-                                        MA</div>
-                                    <div>
-                                        <h4 class="font-bold">María Auxilio G.</h4>
-                                        <div class="flex items-center gap-2">
-                                            <span
-                                                class="bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight">Col.
-                                                La Rueda</span>
-                                            <span class="text-slate-300">•</span>
-                                            <span class="text-xs text-slate-400">Hace 2 semanas</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex text-amber-400">
-                                    <span class="material-icons text-lg">star</span>
-                                    <span class="material-icons text-lg">star</span>
-                                    <span class="material-icons text-lg">star</span>
-                                    <span class="material-icons text-lg">star</span>
-                                    <span class="material-icons text-lg">star</span>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed italic">
-                                "Excelente trabajo con el clóset de mi hija. Roberto es muy puntual y dejó todo muy
-                                limpio al terminar. Súper recomendado para los que vivimos en La Rueda."
-                            </p>
-                        </div>
-                        <!-- Review Item 2 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="flex gap-4">
-                                    <div
-                                        class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-bold text-primary">
-                                        JL</div>
-                                    <div>
-                                        <h4 class="font-bold">Juan Luis T.</h4>
-                                        <div class="flex items-center gap-2">
-                                            <span
-                                                class="bg-slate-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tight">Zona
-                                                Centro</span>
-                                            <span class="text-slate-300">•</span>
-                                            <span class="text-xs text-slate-400">Hace 1 mes</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex text-amber-400">
-                                    <span class="material-icons text-lg">star</span>
-                                    <span class="material-icons text-lg">star</span>
-                                    <span class="material-icons text-lg">star</span>
-                                    <span class="material-icons text-lg">star</span>
-                                    <span class="material-icons text-lg">star_half</span>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed italic">
-                                "Muy buen ebanista. Arregló una mesa de comedor antigua que dábamos por perdida. El
-                                precio fue justo y la calidad del acabado es impecable."
-                            </p>
-                        </div>
-                    </div>
-                    <button
-                        class="w-full mt-6 py-3 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl text-slate-400 font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                        Ver 24 reseñas más
-                    </button>
                 </section>
             </div>
-            <!-- Right Column: Action Sidebar -->
+
             <div class="space-y-6">
-                <!-- Main CTA Card -->
-                <div
-                    class="bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-100 dark:border-slate-800 p-6 sticky top-24">
+                <div class="bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-100 dark:border-slate-800 p-6 sticky top-24">
                     <div class="text-center mb-6">
-                        <div class="text-5xl font-bold text-slate-900 dark:text-white mb-1">4.9</div>
-                        <div class="flex justify-center text-amber-400 mb-2">
-                            <span class="material-icons">star</span>
-                            <span class="material-icons">star</span>
-                            <span class="material-icons">star</span>
-                            <span class="material-icons">star</span>
-                            <span class="material-icons">star</span>
+                        <div id="ratingNumber" class="text-5xl font-bold text-slate-900 dark:text-white mb-1">--</div>
+                        <div class="flex justify-center text-slate-300 mb-2">
+                            <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span>
                         </div>
-                        <p class="text-sm text-slate-500 font-medium">Calificación promedio basada en 26 trabajos</p>
+                        <p class="text-sm text-slate-500 font-medium">Sin calificaciones acumuladas</p>
                     </div>
+
                     <div class="space-y-4 mb-8">
                         <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Servicios Ofrecidos</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Carpintería
-                                Fina</span>
-                            <span
-                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Reparación
-                                de Muebles</span>
-                            <span
-                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Barnizado
-                                y Lacado</span>
-                            <span
-                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Puertas
-                                y Clósets</span>
-                            <span
-                                class="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-full border border-primary/10">Ebanistería</span>
+                        <div id="profileEspecialidadesDisplay" class="flex flex-wrap gap-2">
+                            <span class="text-xs text-slate-400 italic">No registradas</span>
                         </div>
                     </div>
-                    <div class="space-y-3">
-                        <button
-                            class="w-full bg-primary hover:bg-[#0d5d62] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all shadow-lg shadow-primary/20">
-                            <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24">
-                                <path
-                                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.748-2.874-2.526-2.961-2.642-.087-.116-.708-.941-.708-1.797 0-.856.448-1.274.607-1.446.16-.171.347-.214.464-.214.116 0 .234.002.336.006.107.005.252-.04.395.302.144.347.491 1.197.533 1.284.043.087.071.188.014.303-.057.115-.087.188-.173.289-.087.101-.183.226-.261.303-.087.087-.177.182-.076.355.101.173.448.736.96 1.192.659.588 1.215.771 1.388.857.173.087.274.072.376-.043.101-.116.433-.505.548-.678.115-.173.231-.144.39-.087.159.058 1.011.477 1.184.563.173.087.289.13.332.202.045.072.045.419-.099.824z">
-                                </path>
-                            </svg>
-                            Contactar por WhatsApp
-                        </button>
-                        <button
-                            class="w-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
-                            <span class="material-icons text-xl">event_available</span>
-                            Solicitar Cotización
-                        </button>
+
+                    <div class="bg-primary/5 border border-primary/20 rounded-xl p-6">
+                        <h4 class="font-bold text-primary flex items-center gap-2 mb-3">
+                            <span class="material-icons">shield</span> Compromiso B E O
+                        </h4>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                <span class="material-icons text-primary text-sm">check_circle</span> Identidad validada.
+                            </li>
+                        </ul>
                     </div>
-                    <p class="mt-6 text-[10px] text-center text-slate-400 uppercase font-bold tracking-widest">
-                        Respuesta promedio: <span class="text-primary">15 minutos</span>
-                    </p>
-                </div>
-                <!-- Verification Info -->
-                <div class="bg-primary/5 border border-primary/20 rounded-xl p-6">
-                    <h4 class="font-bold text-primary flex items-center gap-2 mb-3">
-                        <span class="material-icons">shield</span>
-                        Compromiso B E O
-                    </h4>
-                    <ul class="space-y-3">
-                        <li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
-                            <span class="material-icons text-primary text-sm">check_circle</span>
-                            <span>Identidad oficial validada con INE.</span>
-                        </li>
-                        <li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
-                            <span class="material-icons text-primary text-sm">check_circle</span>
-                            <span>Comprobante de domicilio reciente en SJR.</span>
-                        </li>
-                        <li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
-                            <span class="material-icons text-primary text-sm">check_circle</span>
-                            <span>Referencias de 5 clientes locales confirmadas.</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Map Section (Simple Representation) -->
-                <div
-                    class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 p-4">
-                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">Área de Cobertura</h4>
-                    <div class="rounded-lg overflow-hidden h-32 relative bg-slate-200">
-                        <img alt="Mapa San Juan del Río" class="w-full h-full object-cover opacity-60"
-                            data-alt="Stylized map showing San Juan del Rio area" data-location="San Juan del Río"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuChlwc-IlwJwYT3Rfk1WAOEfpP72B16W9MRXASW2F_emEU_0iyl1xSDqDhmo1MOuZBMTMkwaCv-xHYtH18OWNhc08P-U0hvEs796RkrrRMXvf5Ne0lXkQF3P38mhJ0s1i59zlfqH26X2NQuBZ2TRgiSm2gxHP_DmHoH1TCAa2bzTXQ163fIgGssPnCJ-HJgwXNB8Cz5cGDNaJufhKTuhyVXDen5YMrMOUa2T9F5aoN9RvhnO2VS9-0LWy8BsHrPL7rvacay2fc7wyc" />
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="bg-primary w-4 h-4 rounded-full ring-4 ring-primary/30 animate-pulse"></div>
-                        </div>
-                    </div>
-                    <p class="mt-3 text-xs text-slate-500 text-center">Toda la zona urbana de San Juan del Río y
-                        Tequisquiapan.</p>
                 </div>
             </div>
         </div>
     </main>
+
     <script>
-        // Cargar imagen de perfil y información al iniciar
         async function loadProfileData() {
             const profileImage = document.getElementById('profileImagePreview');
-            
             try {
-                // Cargar imagen
                 if (profileImage) {
                     const imgResponse = await fetch('/api/profile/<%= user.uid %>/image-url');
                     if (imgResponse.ok) {
@@ -418,185 +209,119 @@
                     }
                 }
 
-                // Cargar información del perfil
                 const infoResponse = await fetch('/api/profile/<%= user.uid %>/info');
                 if (infoResponse.ok) {
                     const userData = await infoResponse.json();
-                    
-                    // Actualizar datos en la página
-                    if (userData.nombre) {
-                        document.getElementById('profileNameDisplay').textContent = userData.nombre;
-                    }
-                    if (userData.biografia) {
-                        document.getElementById('profileDescDisplay').textContent = userData.biografia;
-                    }
-                    if (userData.ubicacion) {
-                        document.getElementById('profileUbicacionDisplay').textContent = userData.ubicacion;
-                    }
-                    if (userData.edad) {
-                        document.getElementById('profileEdadDisplay').textContent = userData.edad + ' años';
-                    }
-                    if (userData.telefono) {
-                        document.getElementById('profileTelefonoDisplay').textContent = userData.telefono;
-                    }
+                    if (userData.nombre) document.getElementById('profileNameDisplay').textContent = userData.nombre;
+                    if (userData.biografia) document.getElementById('profileDescDisplay').textContent = userData.biografia;
+                    if (userData.ubicacion) document.getElementById('profileUbicacionDisplay').textContent = userData.ubicacion;
+                    if (userData.edad) document.getElementById('profileEdadDisplay').textContent = userData.edad + ' años';
+                    if (userData.telefono) document.getElementById('profileTelefonoDisplay').textContent = userData.telefono;
 
-                    // Llenar formulario con datos existentes
-                    if (userData.nombre) document.getElementById('profileNombre').value = userData.nombre;
-                    if (userData.edad) document.getElementById('profileEdad').value = userData.edad;
-                    if (userData.telefono) document.getElementById('profileTelefono').value = userData.telefono;
-                    if (userData.biografia) document.getElementById('profileBiografia').value = userData.biografia;
-                    if (userData.ubicacion) document.getElementById('profileUbicacion').value = userData.ubicacion;
-                    if (userData.especialidades && Array.isArray(userData.especialidades)) {
+                    document.getElementById('profileNombre').value = userData.nombre || '';
+                    document.getElementById('profileEdad').value = userData.edad || '';
+                    document.getElementById('profileTelefono').value = userData.telefono || '';
+                    document.getElementById('profileBiografia').value = userData.biografia || '';
+                    document.getElementById('profileUbicacion').value = userData.ubicacion || '';
+                    if (userData.especialidades) {
                         document.getElementById('profileEspecialidades').value = userData.especialidades.join(', ');
+                        const displayDiv = document.getElementById('profileEspecialidadesDisplay');
+                        displayDiv.innerHTML = userData.especialidades.map(esp => 
+                            `<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded-full uppercase border border-primary/20">${esp}</span>`
+                        ).join('');
                     }
                 }
-            } catch (error) {
-                console.error('Error al cargar datos del perfil:', error);
-            }
+            } catch (error) { console.error('Error:', error); }
         }
 
-        // Cargar datos al iniciar página
         document.addEventListener('DOMContentLoaded', function () {
             loadProfileData();
 
-            const form = document.getElementById('profileImageForm');
-            const fileInput = document.getElementById('profileImageInput');
-            const statusText = document.getElementById('profileImageStatus');
-            const profileImage = document.getElementById('profileImagePreview');
-            const submitBtn = document.getElementById('profileImageUploadBtn');
+            // SUBIR FOTO PERFIL
+            document.getElementById('profileImageForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const fileInput = document.getElementById('profileImageInput');
+                const status = document.getElementById('profileImageStatus');
+                const btn = document.getElementById('profileImageUploadBtn');
 
-            if (!form) return;
-
-            form.addEventListener('submit', async function (event) {
-                event.preventDefault();
-
-                if (!fileInput.files.length) {
-                    statusText.textContent = 'Selecciona una imagen primero.';
-                    return;
-                }
-
-                const file = fileInput.files[0];
                 const formData = new FormData();
-                formData.append('avatar', file);
+                formData.append('avatar', fileInput.files);
 
-                submitBtn.disabled = true;
-                statusText.textContent = 'Subiendo...';
+                btn.disabled = true;
+                status.textContent = "⏳ Subiendo...";
+                status.className = "ml-3 text-blue-500 font-bold";
 
                 try {
-                    const response = await fetch('/api/profile/image', {
-                        method: 'PUT',
-                        credentials: 'include', // IMPORTANTE: enviar cookies de sesión
-                        body: formData
-                    });
-
-                    if (!response.ok) {
-                        const error = await response.json().catch(() => ({ error: 'Error desconocido' }));
-                        throw new Error(error.error || 'No se pudo subir la imagen');
+                    const res = await fetch('/api/profile/image', { method: 'PUT', credentials: 'include', body: formData });
+                    if(res.ok) {
+                        status.textContent = "✅ Actualizado con éxito";
+                        status.className = "ml-3 text-green-600 font-bold";
+                        setTimeout(() => window.location.reload(), 1000);
                     }
-
-                    statusText.textContent = 'Obteniendo URL...';
-
-                    // Obtener URL firmada para mostrar en preview
-                    const urlResponse = await fetch('/api/profile/<%= user.uid %>/image-url');
-                    if (!urlResponse.ok) {
-                        throw new Error('No se pudo obtener la URL de la imagen');
-                    }
-
-                    const urlData = await urlResponse.json();
-                    profileImage.src = urlData.url;
-                    statusText.textContent = 'Foto actualizada correctamente';
-                    fileInput.value = '';
-                } catch (error) {
-                    console.error(error);
-                    statusText.textContent = 'Error: ' + (error.message || 'No se pudo subir la imagen');
-                } finally {
-                    submitBtn.disabled = false;
-                }
+                } catch (err) { status.textContent = "❌ Error"; }
+                finally { btn.disabled = false; }
             });
 
-            // Manejar formulario de información del perfil
-            const infoForm = document.getElementById('profileInfoForm');
-            const infoSubmitBtn = document.getElementById('profileInfoSubmitBtn');
-            const infoStatusText = document.getElementById('profileInfoStatus');
+            // GUARDAR INFO PERSONAL
+            document.getElementById('profileInfoForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const status = document.getElementById('profileInfoStatus');
+                const btn = document.getElementById('profileInfoSubmitBtn');
 
-            if (infoForm) {
-                infoForm.addEventListener('submit', async function (event) {
-                    event.preventDefault();
+                const payload = {
+                    nombre: document.getElementById('profileNombre').value,
+                    edad: document.getElementById('profileEdad').value,
+                    telefono: document.getElementById('profileTelefono').value,
+                    biografia: document.getElementById('profileBiografia').value,
+                    ubicacion: document.getElementById('profileUbicacion').value,
+                    especialidades: document.getElementById('profileEspecialidades').value.split(',').map(e => e.trim())
+                };
 
-                    const nombre = document.getElementById('profileNombre').value;
-                    const edad = document.getElementById('profileEdad').value;
-                    const telefono = document.getElementById('profileTelefono').value;
-                    const biografia = document.getElementById('profileBiografia').value;
-                    const ubicacion = document.getElementById('profileUbicacion').value;
-                    const especialidades = document.getElementById('profileEspecialidades').value;
+                btn.disabled = true;
+                status.textContent = "⏳ Guardando...";
+                status.className = "text-blue-500 font-bold ml-2";
 
-                    if (!nombre && !edad && !telefono && !biografia && !ubicacion && !especialidades) {
-                        infoStatusText.textContent = 'Rellena al menos un campo.';
-                        return;
+                try {
+                    const res = await fetch('/api/profile/info', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify(payload)
+                    });
+                    if(res.ok) {
+                        status.textContent = "✅ Información actualizada con éxito";
+                        status.className = "text-green-600 font-bold ml-2";
+                        setTimeout(() => loadProfileData(), 1500);
                     }
+                } catch (err) { status.textContent = "❌ Error"; }
+                finally { btn.disabled = false; }
+            });
 
-                    infoSubmitBtn.disabled = true;
-                    infoStatusText.textContent = 'Guardando...';
+            // SUBIR PROYECTO
+            document.getElementById('newProjectForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const status = document.getElementById('projectStatus');
+                const btn = document.getElementById('saveProjectBtn');
+                const formData = new FormData();
+                formData.append('projectImage', document.getElementById('projectImageInput').files);
+                formData.append('descripcion', document.getElementById('projectDescInput').value);
 
-                    try {
-                        const response = await fetch('/api/profile/info', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            credentials: 'include', // IMPORTANTE: enviar cookies de sesión
-                            body: JSON.stringify({
-                                nombre: nombre || undefined,
-                                edad: edad || undefined,
-                                telefono: telefono || undefined,
-                                biografia: biografia || undefined,
-                                ubicacion: ubicacion || undefined,
-                                especialidades: especialidades ? especialidades.split(',').map(e => e.trim()) : undefined
-                            })
-                        });
+                btn.disabled = true;
+                status.textContent = "⏳ Subiendo proyecto...";
+                status.className = "text-xs mt-2 text-blue-500 font-bold";
 
-                        console.log('Response status:', response.status);
-                        console.log('Response headers:', response.headers.get('content-type'));
-
-                        // Leer el response una sola vez como texto
-                        const responseText = await response.text();
-                        console.log('Response text:', responseText.substring(0, 500));
-
-                        let responseData;
-                        try {
-                            responseData = JSON.parse(responseText);
-                        } catch (jsonError) {
-                            console.error('Error parsing JSON:', jsonError);
-                            throw new Error(`Error ${response.status}: La respuesta no es JSON válido. Primeros 200 caracteres: ${responseText.substring(0, 200)}`);
-                        }
-
-                        if (!response.ok) {
-                            throw new Error(responseData.error || `Error ${response.status}: ${responseData.details || 'Error desconocido'}`);
-                        }
-
-                        infoStatusText.textContent = 'Información guardada correctamente';
-                        console.log('Respuesta del servidor:', responseData);
-                        
-                        // Recargar los datos mostrados
-                        setTimeout(() => {
-                            loadProfileData();
-                            infoStatusText.textContent = '';
-                        }, 1500);
-                    } catch (error) {
-                        console.error('Error completo:', error);
-                        const errorMsg = error.message || 'Error al guardar la información';
-                        infoStatusText.textContent = 'Error: ' + errorMsg;
-                        
-                        // Mostrar el error completo en un alert para que veas sin DevTools
-                        alert('🔴 ERROR DETECTADO:\n\n' + errorMsg + '\n\nRevisa la página para más detalles.');
-                    } finally {
-                        infoSubmitBtn.disabled = false;
+                try {
+                    const res = await fetch('/api/profile/projects', { method: 'POST', credentials: 'include', body: formData });
+                    if(res.ok) {
+                        status.textContent = "✅ Proyecto subido con éxito";
+                        status.className = "text-xs mt-2 text-green-600 font-bold";
+                        setTimeout(() => window.location.reload(), 1500);
                     }
-                });
-            }
+                } catch (err) { status.textContent = "❌ Error al subir"; }
+                finally { btn.disabled = false; }
+            });
         });
     </script>
     <%- include('../../Partials/footer') %>
 </body>
-
 </html>

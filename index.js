@@ -12,8 +12,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'Views'));
 app.locals.process = { env: process.env };
 
+// --- CORRECCIÓN DE RUTAS PARA IMÁGENES ---
+// Mantenemos la doble ruta para asegurar compatibilidad con tu carpeta "Images"
 app.use('/images', express.static(path.join(__dirname, 'public/Images')));
 app.use(express.static(path.join(__dirname, 'public')));
+// -----------------------------------------
+
 app.use(express.json()); // Middleware para parsear JSON
 app.use(cookieParser()); // Middleware para manejar cookies de sesión
 
@@ -24,6 +28,7 @@ const apiRoutes = require('./routes/api');
 const authRoutes = require('./routes/auth');
 const chatRoutes = require('./routes/chat');
 
+// Restauramos tus logs originales de la terminal
 console.log('Rutas API cargadas:', typeof apiRoutes);
 console.log('Métodos disponibles en apiRoutes:', Object.keys(apiRoutes));
 
@@ -42,8 +47,9 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-	console.error(err.stack);
-	res.status(500).send('Algo salió mal en el servidor');
+    console.error(err.stack);
+    res.status(500).send('Algo salió mal en el servidor');
 });
 
-app.listen(PORT, () => console.log(`BEO Server running on http://localhost:${3000}`));
+// Usamos el PORT dinámico como tenías al inicio
+app.listen(PORT, () => console.log(`BEO Server running on http://localhost:${PORT}`));
