@@ -3,10 +3,13 @@ const router = express.Router();
 const { verifySession } = require('../middlewares/authMiddleware');
 const { startChat, sendMessage } = require('../controllers/chatController');
 
-// Iniciar un chat (Protegido)
-router.post('/start', verifySession, startChat);
+// RUTA PRINCIPAL: Renderiza la página y pasa el objeto 'user' de la sesión
+router.get('/', verifySession, (req, res) => {
+    // Es vital que req.user contenga el uid o id de Firebase
+    res.render('pages/mensajes', { user: req.user }); 
+});
 
-// Enviar un mensaje (Protegido)
+router.post('/start', verifySession, startChat);
 router.post('/message', verifySession, sendMessage);
 
 module.exports = router;

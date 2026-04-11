@@ -7,8 +7,14 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
-    <script src="/js/tailwind-config.js"></script>
     <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .bg-beo { background-color: #00797a; }
+        .text-beo { color: #00797a; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .modal-animate { animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display">
@@ -17,51 +23,27 @@
         
         <main class="flex-1 flex justify-center py-8">
             <div class="flex w-full max-w-[1280px] px-6 gap-8">
-                
-                <aside class="w-64 flex flex-col shrink-0">
-                    <div class="flex flex-col gap-6 bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e8f2f3] shadow-sm">
+                <aside class="w-64 flex flex-col shrink-0 sticky top-20">
+                    <div class="flex flex-col gap-6 bg-white p-6 rounded-xl border border-[#e8f2f3] shadow-sm">
                         <h2 class="text-[#0e1a1b] text-lg font-bold">Filtros</h2>
-                        
                         <div class="flex flex-col gap-2">
                             <button id="btnLocation" class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-[#e8f2f3] rounded-lg transition-colors group">
-                                <span class="material-symbols-outlined text-primary group-hover:scale-110">location_on</span>
-                                <p class="text-[#0e1a1b] text-sm font-medium">Filtrar por Ubicación</p>
+                                <span class="material-symbols-outlined text-beo">location_on</span>
+                                <p class="text-[#0e1a1b] text-sm font-medium">Ubicación</p>
                             </button>
-                        </div>
-
-                        <div class="flex flex-col gap-2 border-t pt-4">
                             <button id="btnPrice" class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-[#e8f2f3] rounded-lg transition-colors group">
-                                <span class="material-symbols-outlined text-primary group-hover:scale-110">payments</span>
+                                <span class="material-symbols-outlined text-beo">payments</span>
                                 <p class="text-[#0e1a1b] text-sm font-medium">Precio Máximo</p>
                             </button>
                         </div>
-
-                        <div class="flex flex-col gap-2 pl-2 border-t pt-4">
+                        <div class="flex flex-col gap-2 border-t pt-4">
                             <p class="text-xs font-bold text-gray-400 mb-2 uppercase">Oficios Populares</p>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input name="trade" value="Plomería" type="checkbox" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm text-[#0e1a1b]">Plomería</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input name="trade" value="Electricidad" type="checkbox" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm text-[#0e1a1b]">Electricidad</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input name="trade" value="Albañilería" type="checkbox" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm text-[#0e1a1b]">Albañilería</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input name="trade" value="Carpintería" type="checkbox" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm text-[#0e1a1b]">Carpintería</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input name="trade" value="Mecánica" type="checkbox" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm text-[#0e1a1b]">Mecánica</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input name="trade" value="Herrería" type="checkbox" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm text-[#0e1a1b]">Herrería</span>
-                            </label>
+                            <% ['Plomería', 'Electricidad', 'Albañilería', 'Carpintería', 'Mecánica', 'Herrería'].forEach(oficio => { %>
+                                <label class="flex items-center gap-2 cursor-pointer hover:text-beo">
+                                    <input name="trade" value="<%= oficio %>" type="checkbox" class="rounded text-beo focus:ring-beo border-slate-300">
+                                    <span class="text-sm text-[#0e1a1b]"><%= oficio %></span>
+                                </label>
+                            <% }) %>
                         </div>
                     </div>
                 </aside>
@@ -69,143 +51,112 @@
                 <div class="flex-1 flex flex-col gap-4">
                     <div class="flex flex-wrap justify-between items-end gap-3 p-6 bg-white rounded-xl border border-[#e8f2f3] shadow-sm">
                         <div>
-                            <p class="text-primary text-4xl font-black">Trabajos</p>
+                            <p class="text-beo text-4xl font-black">Trabajos</p>
                             <p class="text-[#509295] text-base">Servicios en San Juan del Río</p>
                         </div>
-                        <button onclick="fetchServices()" class="flex items-center rounded-xl h-10 px-4 bg-[#e8f2f3] text-primary text-sm font-bold border border-primary/10">
+                        <button onclick="fetchServices()" class="flex items-center rounded-xl h-10 px-4 bg-[#e8f2f3] text-beo text-sm font-bold border border-beo/10 hover:bg-beo/10 transition-all">
                             <span class="material-symbols-outlined text-sm mr-2">refresh</span> Refrescar
                         </button>
                     </div>
-
-                    <div id="activeFiltersSection" class="flex gap-3 px-4 py-2 flex-wrap items-center">
-                        <p class="text-[#509295] text-xs font-bold uppercase tracking-wider">ACTIVOS:</p>
-                        <div id="chipsContainer" class="flex gap-2"></div>
-                        <button onclick="clearAllFilters()" class="text-xs text-primary font-bold hover:underline">Limpiar todo</button>
-                    </div>
-
                     <div id="servicesList" class="flex flex-col gap-6"></div>
                 </div>
             </div>
         </main>
     </div>
 
+    <div id="serviceModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 p-4 modal-animate">
+            <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="closeModal()"></div>
+            <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden max-w-2xl w-full">
+                <div class="relative h-72">
+                    <img id="modalImg" src="" class="w-full h-full object-cover">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/50 text-white rounded-full p-2 hover:bg-black/70">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex-1">
+                            <span id="modalCat" class="text-[10px] font-bold tracking-widest uppercase text-beo bg-beo/10 px-3 py-1 rounded-full"></span>
+                            <h3 id="modalTitle" class="text-3xl font-black text-slate-900 mt-2"></h3>
+                            <p id="modalLoc" class="text-slate-500 flex items-center gap-1 mt-1 text-sm font-medium">
+                                <span class="material-symbols-outlined text-xs">location_on</span>
+                                <span id="locText"></span>
+                            </p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Desde</p>
+                            <p id="modalPrice" class="text-2xl font-black text-beo"></p>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-100 pt-6">
+                        <h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2">Descripción del servicio</h4>
+                        <p id="modalDesc" class="text-slate-600 text-sm leading-relaxed mb-8"></p>
+                    </div>
+                    <button id="modalChatBtn" class="w-full bg-[#00797a] text-white py-4 rounded-2xl font-bold hover:brightness-110 flex items-center justify-center gap-2 active:scale-95 transition-all">
+                        <span class="material-symbols-outlined">chat</span> Contactar Trabajador
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         let currentFilters = { categoria: '', ubicacion: '', precio: '' };
+        function closeModal() { document.getElementById('serviceModal').classList.add('hidden'); }
 
         async function fetchServices() {
             const listContainer = document.getElementById('servicesList');
-            const searchParams = new URLSearchParams();
-            
-            // Filtros básicos para el servidor
-            if (currentFilters.categoria) searchParams.append('categoria', currentFilters.categoria);
-            if (currentFilters.ubicacion) searchParams.append('ubicacion', currentFilters.ubicacion);
-
             try {
-                const response = await fetch(`/api/services?${searchParams.toString()}`);
+                const response = await fetch(`/api/services`);
                 let services = await response.json();
-                renderChips();
-
-                // LÓGICA DE FILTRADO POR PRECIO
-                if (currentFilters.precio) {
-                    const max = parseFloat(currentFilters.precio);
-                    services = services.filter(s => parseFloat(s.precioBase) <= max);
-                }
-
-                if (services.length === 0) {
-                    listContainer.innerHTML = `<p class="p-10 text-center text-gray-400">No se encontraron servicios con estos criterios.</p>`;
-                    return;
-                }
-
                 listContainer.innerHTML = services.map(service => {
-                    // Mantenemos la lógica de imagen que revisará tu amigo
-                    let imgUrl = service.imagenPath || 'https://placehold.co/600x400/e8f2f3/509295?text=BEO+Servicios';
-                    
+                    const serviceString = encodeURIComponent(JSON.stringify(service));
                     return `
                         <div class="flex flex-col md:flex-row rounded-xl border border-[#e8f2f3] bg-white overflow-hidden shadow-sm mb-4">
                             <div class="w-full md:w-80 h-56 md:h-auto bg-gray-100 flex-shrink-0">
-                                <img src="${imgUrl}" class="w-full h-full object-cover">
+                                <img src="/Images/${service.imagenPath}" class="w-full h-full object-cover" onerror="this.src='/Images/default-avatar.png';">
                             </div>
                             <div class="flex-1 p-6 flex flex-col justify-between">
                                 <div>
-                                    <p class="text-primary text-[10px] font-bold uppercase tracking-widest">${service.categoria || 'GENERAL'}</p>
+                                    <span class="text-[9px] font-bold text-beo bg-beo/5 px-2 py-0.5 rounded uppercase">${service.categoria || 'GENERAL'}</span>
                                     <h3 class="text-[#0e1a1b] text-2xl font-black mt-1">${service.titulo}</h3>
-                                    <div class="flex items-center gap-1 text-[#509295] mt-1">
-                                        <span class="material-symbols-outlined text-sm">location_on</span>
-                                        <span class="text-sm font-medium">${service.ubicacion || 'San Juan del Río'}</span>
-                                    </div>
+                                    <p class="text-[#509295] text-xs font-medium flex items-center gap-1 mt-1">
+                                        <span class="material-symbols-outlined text-xs">location_on</span> ${service.ubicacion || 'San Juan del Río'}
+                                    </p>
                                     <p class="text-gray-500 text-sm mt-4 line-clamp-2">${service.descripcion}</p>
                                 </div>
                                 <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-50">
                                     <p class="text-[#0e1a1b] text-xl font-bold">$${service.precioBase} MXN</p>
-                                    <button class="bg-primary text-white px-8 h-11 rounded-xl text-sm font-bold">Contactar</button>
+                                    <button onclick="openDetails('${serviceString}')" class="bg-[#00797a] text-white px-8 h-11 rounded-xl text-sm font-bold active:scale-95 transition-all">Ver más</button>
                                 </div>
                             </div>
                         </div>`;
                 }).join('');
-            } catch (error) {
-                console.error('Error:', error);
-            }
+            } catch (error) { console.error('Error:', error); }
         }
 
-        function renderChips() {
-            const container = document.getElementById('chipsContainer');
-            container.innerHTML = '';
-            Object.keys(currentFilters).forEach(key => {
-                if (currentFilters[key]) {
-                    let label = key === 'precio' ? `$${currentFilters[key]}` : currentFilters[key];
-                    container.innerHTML += `
-                        <div class="flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
-                            <span class="text-primary text-[11px] font-bold uppercase">${label}</span>
-                            <button onclick="removeFilter('${key}')" class="material-symbols-outlined text-xs text-primary">close</button>
-                        </div>`;
+        function openDetails(serviceData) {
+            const s = JSON.parse(decodeURIComponent(serviceData));
+            document.getElementById('modalTitle').innerText = s.titulo;
+            document.getElementById('modalDesc').innerText = s.descripcion || "Sin descripción.";
+            document.getElementById('modalPrice').innerText = `$${s.precioBase} MXN`;
+            document.getElementById('modalCat').innerText = s.categoria || 'SERVICIO';
+            document.getElementById('locText').innerText = s.ubicacion || 'San Juan del Río';
+            document.getElementById('modalImg').src = `/Images/${s.imagenPath}`;
+
+            // REDIRECCIÓN CON ID
+            document.getElementById('modalChatBtn').onclick = () => {
+                if (s.workerId) {
+                    window.location.href = `/mensajes?chatWith=${s.workerId}`;
+                } else {
+                    alert("ID del trabajador no encontrado.");
                 }
-            });
+            };
+            document.getElementById('serviceModal').classList.remove('hidden');
         }
-
-        function removeFilter(type) {
-            currentFilters[type] = '';
-            if (type === 'categoria') {
-                document.querySelectorAll('input[name="trade"]').forEach(cb => cb.checked = false);
-            }
-            fetchServices();
-        }
-
-        function clearAllFilters() {
-            currentFilters = { categoria: '', ubicacion: '', precio: '' };
-            document.querySelectorAll('input[name="trade"]').forEach(cb => cb.checked = false);
-            fetchServices();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchServices();
-            
-            document.querySelectorAll('input[name="trade"]').forEach(cb => {
-                cb.addEventListener('change', (e) => {
-                    if (e.target.checked) {
-                        document.querySelectorAll('input[name="trade"]').forEach(other => { 
-                            if(other !== e.target) other.checked = false; 
-                        });
-                        currentFilters.categoria = e.target.value;
-                    } else {
-                        currentFilters.categoria = '';
-                    }
-                    fetchServices();
-                });
-            });
-
-            document.getElementById('btnLocation').addEventListener('click', () => {
-                const zona = prompt("¿Qué zona buscas?");
-                if (zona) { currentFilters.ubicacion = zona.trim(); fetchServices(); }
-            });
-
-            document.getElementById('btnPrice').addEventListener('click', () => {
-                const precio = prompt("Introduce el presupuesto máximo:");
-                if (precio && !isNaN(precio)) { 
-                    currentFilters.precio = precio.trim(); 
-                    fetchServices(); 
-                }
-            });
-        });
+        document.addEventListener('DOMContentLoaded', fetchServices);
     </script>
+    <%- include('../../Partials/footer') %>
 </body>
 </html>
