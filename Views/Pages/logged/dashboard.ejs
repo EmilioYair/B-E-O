@@ -1,19 +1,12 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/main.css">
     <script id="tailwind-config">
         tailwind.config = {
@@ -25,334 +18,154 @@
                         "background-light": "#f6f8f8",
                         "background-dark": "#112021",
                     },
-                    fontFamily: {
-                        "display": ["Inter"]
-                    },
+                    fontFamily: { "display": ["Inter"] },
                     borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
                 },
             },
         }
     </script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-        <!-- Header -->
         <%- include('../../Partials/header') %>
-            <div class="flex flex-1">
-                <aside
-                    class="hidden w-64 flex-col border-r border-primary/10 bg-white dark:bg-background-dark p-6 lg:flex">
-                    <div class="mb-8 px-2">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-primary/60">Main Menu</p>
-                    </div>
-                    <nav class="flex flex-col gap-2">
-                        <a class="flex items-center gap-3 rounded-xl bg-primary px-4 py-3 text-white" href="#">
-                            <span class="material-symbols-outlined">grid_view</span>
-                            <span class="font-medium text-sm">Dashboard</span>
-                        </a>
-                        <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="#">
-                            <span class="material-symbols-outlined text-primary/60">work</span>
-                            <span class="font-medium text-sm">Trabajos Activos</span>
-                        </a>
-                        <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="#">
-                            <span class="material-symbols-outlined text-primary/60">chat_bubble</span>
-                            <span class="font-medium text-sm">Mensajes</span>
-                            <span
-                                class="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">12</span>
-                        </a>
-                        <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="#">
-                            <span class="material-symbols-outlined text-primary/60">account_balance_wallet</span>
-                            <span class="font-medium text-sm">Ganancias</span>
-                        </a>
-                        <div class="my-4 border-t border-primary/5"></div>
-                        <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="#">
-                            <span class="material-symbols-outlined text-primary/60">person</span>
-                            <span class="font-medium text-sm">Perfil Público</span>
-                        </a>
-                        <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="#">
-                            <span class="material-symbols-outlined text-primary/60">settings</span>
-                            <span class="font-medium text-sm">Configuración</span>
-                        </a>
-                    </nav>
-                    <div class="mt-auto rounded-2xl bg-primary/5 p-4">
-                        <p class="text-xs font-bold text-primary">PRO MEMBER</p>
-                        <p class="mt-1 text-xs text-slate-500">Tu Perfil es Tendencia en San Juan del Río.</p>
-                        <button
-                            class="mt-3 w-full rounded-lg bg-primary py-2 text-xs font-bold text-white shadow-lg shadow-primary/20">Mejorar
-                            Plan</button>
-                    </div>
-                </aside>
-                <main class="flex-1 overflow-y-auto p-6 lg:p-10">
-                    <div class="mx-auto max-w-6xl">
-                        <div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-                            <div>
-                                <h1 class="text-3xl font-bold tracking-tight">Bienvenido De Nuevo, Alejandro! 👋</h1>
-                                <p class="mt-1 text-slate-500">Proveedor de Servicios en <span
-                                        class="font-semibold text-primary">San Juan del Río, QRO</span></p>
-                            </div>
-                            <div class="flex gap-3">
-                                <button
-                                    class="flex items-center gap-2 rounded-xl border border-primary/20 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm font-semibold hover:bg-primary/5 transition-colors">
-                                    <span class="material-symbols-outlined text-lg">share</span>
-                                    Link de Perfil
-                                </button>
-                                <button
-                                    class="flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
-                                    <span class="material-symbols-outlined text-lg">add</span>
-                                    Publicar Servicio
-                                </button>
-                            </div>
+
+        <div class="flex flex-1">
+            <aside class="hidden w-64 flex-col border-r border-primary/10 bg-white dark:bg-background-dark p-6 lg:flex">
+                <div class="mb-8 px-2">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-primary/60">Menú Principal</p>
+                </div>
+                <nav class="flex flex-col gap-2">
+                    <a class="flex items-center gap-3 rounded-xl bg-primary px-4 py-3 text-white" href="/dashboard">
+                        <span class="material-symbols-outlined">grid_view</span>
+                        <span class="font-medium text-sm">Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all" href="/postear">
+                        <span class="material-symbols-outlined text-primary/60">add_box</span>
+                        <span class="font-medium text-sm">Postear Servicio</span>
+                    </a>
+                    <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all" href="/mensajes">
+                        <span class="material-symbols-outlined text-primary/60">chat_bubble</span>
+                        <span class="font-medium text-sm">Mensajes</span>
+                    </a>
+                    <div class="my-4 border-t border-primary/5"></div>
+                    <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all" href="/perfil">
+                        <span class="material-symbols-outlined text-primary/60">person</span>
+                        <span class="font-medium text-sm">Perfil Público</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <main class="flex-1 overflow-y-auto p-6 lg:p-10">
+                <div class="mx-auto max-w-6xl">
+                    <div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold tracking-tight">
+                                Bienvenido de nuevo, <%= (typeof user !== 'undefined' && user.nombre) ? user.nombre.split(' ') : 'Usuario' %>! 
+                            </h1>
+                            <p class="mt-1 text-slate-500">Panel de control de proveedor</p>
                         </div>
-                        <div class="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                            <div
-                                class="flex flex-col gap-1 rounded-2xl border border-primary/10 bg-white dark:bg-slate-800 p-6 shadow-sm">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-medium text-slate-500 uppercase tracking-wider">
-                                        Ganancias Totales</span>
-                                    <span
-                                        class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">payments</span>
-                                </div>
-                                <div class="mt-4 flex items-baseline gap-2">
-                                    <h3 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                                        $14,250.00
-                                    </h3>
-                                    <span class="text-xs font-bold text-emerald-600">+12%</span>
-                                </div>
-                                <p class="mt-1 text-xs text-slate-400">Últimos 30 días en el área de San Juan</p>
-                            </div>
-                            <div
-                                class="flex flex-col gap-1 rounded-2xl border border-primary/10 bg-white dark:bg-slate-800 p-6 shadow-sm">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-medium text-slate-500 uppercase tracking-wider">Trabajos
-                                        Activos</span>
-                                    <span
-                                        class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">assignment</span>
-                                </div>
-                                <div class="mt-4 flex items-baseline gap-2">
-                                    <h3 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">8
-                                        Trabajos
-                                    </h3>
-                                    <span class="text-xs font-bold text-emerald-600">+2</span>
-                                </div>
-                                <p class="mt-1 text-xs text-slate-400">3 visitas pendientes esta semana</p>
-                            </div>
-                            <div
-                                class="flex flex-col gap-1 rounded-2xl border border-primary/10 bg-white dark:bg-slate-800 p-6 shadow-sm">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-medium text-slate-500 uppercase tracking-wider">Promedio.
-                                        Rating</span>
-                                    <span
-                                        class="material-symbols-outlined text-amber-500 bg-amber-500/10 p-2 rounded-lg">star</span>
-                                </div>
-                                <div class="mt-4 flex items-baseline gap-2">
-                                    <h3 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">4.92
-                                    </h3>
-                                    <div class="flex text-amber-500 text-xs">
-                                        <span class="material-symbols-outlined fill-1">star</span>
-                                    </div>
-                                </div>
-                                <p class="mt-1 text-xs text-slate-400">Basado en 124 reseñas verificadas</p>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-                            <div class="lg:col-span-2">
-                                <div class="mb-6 flex items-center justify-between">
-                                    <h2 class="text-xl font-bold tracking-tight">Gestión de Trabajos</h2>
-                                    <a class="text-sm font-semibold text-primary hover:underline" href="#">Ver Todos</a>
-                                </div>
-                                <div class="flex flex-col gap-4">
-                                    <div
-                                        class="group flex flex-col gap-4 rounded-2xl border border-primary/5 bg-white dark:bg-slate-800 p-5 transition-all hover:border-primary/20 hover:shadow-md">
-                                        <div class="flex items-start justify-between">
-                                            <div class="flex items-center gap-4">
-                                                <div
-                                                    class="h-12 w-12 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
-                                                    <span
-                                                        class="material-symbols-outlined text-slate-400">home_repair_service</span>
-                                                </div>
-                                                <div>
-                                                    <h4 class="font-bold text-slate-900 dark:text-white">Remodelación de
-                                                        Cocina
-                                                        - Centro Histórico</h4>
-                                                    <p class="text-sm text-slate-500">Cliente: Mariana Rodriguez •
-                                                        $2,400.00
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <span
-                                                class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-bold text-blue-700">En
-                                                Progreso</span>
-                                        </div>
-                                        <div class="h-1.5 w-full rounded-full bg-slate-100 dark:bg-slate-700">
-                                            <div class="h-full w-3/4 rounded-full bg-primary transition-all"></div>
-                                        </div>
-                                        <div
-                                            class="flex items-center justify-between text-xs font-medium text-slate-500">
-                                            <span>75% Completado</span>
-                                            <span>Vence en 3 días</span>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="group flex flex-col gap-4 rounded-2xl border border-primary/5 bg-white dark:bg-slate-800 p-5 transition-all hover:border-primary/20 hover:shadow-md">
-                                        <div class="flex items-start justify-between">
-                                            <div class="flex items-center gap-4">
-                                                <div
-                                                    class="h-12 w-12 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
-                                                    <span class="material-symbols-outlined text-slate-400">bolt</span>
-                                                </div>
-                                                <div>
-                                                    <h4 class="font-bold text-slate-900 dark:text-white">Evaluación
-                                                        Eléctrica - Lomas de Banthí</h4>
-                                                    <p class="text-sm text-slate-500">Cliente: Jorge Solis • $450.00</p>
-                                                </div>
-                                            </div>
-                                            <span
-                                                class="inline-flex items-center rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-bold text-amber-700">Pendiente</span>
-                                        </div>
-                                        <div class="flex items-center justify-between gap-3">
-                                            <button
-                                                class="flex-1 rounded-lg border border-primary/20 py-2 text-xs font-bold text-primary hover:bg-primary/5">Chat
-                                                con Cliente</button>
-                                            <button
-                                                class="flex-1 rounded-lg bg-primary py-2 text-xs font-bold text-white hover:bg-primary/90">Confirmar
-                                                Horario</button>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="group flex flex-col gap-4 rounded-2xl border border-primary/5 bg-white dark:bg-slate-800 p-5 transition-all hover:border-primary/20 hover:shadow-md">
-                                        <div class="flex items-start justify-between">
-                                            <div class="flex items-center gap-4">
-                                                <div
-                                                    class="h-12 w-12 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
-                                                    <span
-                                                        class="material-symbols-outlined text-slate-400">check_circle</span>
-                                                </div>
-                                                <div>
-                                                    <h4 class="font-bold text-slate-900 dark:text-white">Diseño de
-                                                        Jardines - Club de Golf</h4>
-                                                    <p class="text-sm text-slate-500">Cliente: Cliente Privado •
-                                                        $1,200.00
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <span
-                                                class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-700">Completado</span>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <span class="material-symbols-outlined text-amber-400 text-sm">stars</span>
-                                            <p class="text-xs text-slate-500 italic">"Excelente servicio, muy
-                                                profesional
-                                                y puntual."</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-8">
-                                <section>
-                                    <h2 class="mb-4 text-xl font-bold tracking-tight">Resumen Financiero</h2>
-                                    <div
-                                        class="rounded-2xl border border-primary/10 bg-white dark:bg-slate-800 p-6 shadow-sm">
-                                        <div
-                                            class="mb-4 flex flex-col items-center justify-center gap-1 rounded-xl bg-primary/5 py-6">
-                                            <span class="text-xs font-medium text-slate-500">Saldo Disponible</span>
-                                            <h4 class="text-2xl font-black text-primary">$4,820.50</h4>
-                                            <button class="mt-2 text-xs font-bold text-primary hover:underline">Retirar
-                                                a
-                                                Banco</button>
-                                        </div>
-                                        <div class="space-y-4">
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-sm text-slate-500">Esta Semana</span>
-                                                <span class="text-sm font-bold">$2,850.00</span>
-                                            </div>
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-sm text-slate-500">Comisión (3%)</span>
-                                                <span class="text-sm font-bold text-red-500">-$85.50</span>
-                                            </div>
-                                            <div
-                                                class="border-t border-primary/5 pt-4 flex items-center justify-between">
-                                                <span class="text-sm font-bold text-slate-900 dark:text-white">Net
-                                                    Total</span>
-                                                <span class="text-sm font-black text-primary">$2,764.50</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section>
-                                    <h2 class="mb-4 text-xl font-bold tracking-tight">Actividad Reciente</h2>
-                                    <div class="space-y-4">
-                                        <div class="flex gap-4">
-                                            <div
-                                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                                                <span class="material-symbols-outlined text-sm">mail</span>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm text-slate-900 dark:text-slate-200">Nueva consulta de
-                                                    <span class="font-bold">Pintura de Casas</span> de Pablo G.
-                                                </p>
-                                                <p class="text-xs text-slate-400">hace 2 minutos</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex gap-4">
-                                            <div
-                                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                                                <span class="material-symbols-outlined text-sm">task_alt</span>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm text-slate-900 dark:text-slate-200">Pago recibido por
-                                                    <span class="font-bold">Reparación de Plomería</span>
-                                                </p>
-                                                <p class="text-xs text-slate-400">hace 1 hora</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex gap-4">
-                                            <div
-                                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-600">
-                                                <span class="material-symbols-outlined text-sm">star</span>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm text-slate-900 dark:text-slate-200">New 5-star review
-                                                    from
-                                                    <span class="font-bold">Ana Sofia</span>
-                                                </p>
-                                                <p class="text-xs text-slate-400">5 hours ago</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <div class="rounded-2xl overflow-hidden relative h-48 group">
-                                    <img class="w-full h-full object-cover transition-transform group-hover:scale-110"
-                                        data-alt="Map of San Juan del Rio showing service coverage"
-                                        data-location="San Juan del Río"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAGHLrqTSA3V1U1HBezREfA5GkqLXqoBMhrfLM5KS2aOv7_gTnmf-g6igJcTIZu9s5FEh5ddPaL3xVOpzvGtBTVA0_5yKpGLNXgJF7Ezd-IK23d1HwVSPE8fGZbPAXDXoE9ZeSG5ymlL11SyX1bNVrbwYaD_BIPlPupj3Y9OwNlY0RNGhTzmX4Mst_Am0HOcLxJwMwGwDHl0Tyc8rGOZO9Poff69EmmaNkkng0PDFE5DJUaUA8H9Ohp2JGv-viqS8IDHnglaLLm6Q" />
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-                                        <p class="text-white text-xs font-bold uppercase tracking-widest opacity-80">
-                                            Area de Servicio</p>
-                                        <h5 class="text-white font-bold">San Juan del Río Metro</h5>
-                                        <p class="text-white/60 text-[10px] mt-1">Próximamente Tequisquiapan</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="flex gap-3">
+                            <a href="/postear" class="flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all active:scale-95">
+                                <span class="material-symbols-outlined text-lg">add</span>
+                                Publicar Servicio
+                            </a>
                         </div>
                     </div>
-                </main>
-            </div>
+
+                    <div class="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        <div class="flex flex-col gap-1 rounded-2xl border border-primary/10 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                            <span class="text-sm font-medium text-slate-500 uppercase tracking-wider">Ganancias Totales</span>
+                            <h3 class="mt-4 text-3xl font-bold text-slate-900 dark:text-white">
+                                $<%= (typeof stats !== 'undefined') ? stats.ganancias : '0.00' %>
+                            </h3>
+                        </div>
+                        <div class="flex flex-col gap-1 rounded-2xl border border-primary/10 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                            <span class="text-sm font-medium text-slate-500 uppercase tracking-wider">Trabajos Activos</span>
+                            <h3 class="mt-4 text-3xl font-bold text-slate-900 dark:text-white">
+                                <%= (typeof stats !== 'undefined') ? stats.activos : '0' %>
+                            </h3>
+                        </div>
+                        <div class="flex flex-col gap-1 rounded-2xl border border-primary/10 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                            <span class="text-sm font-medium text-slate-500 uppercase tracking-wider">Rating</span>
+                            <h3 class="mt-4 text-3xl font-bold text-slate-900 dark:text-white">
+                                <%= (typeof stats !== 'undefined' && stats.rating) ? stats.rating : '—' %> ⭐
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                        <div class="lg:col-span-2">
+                            <div class="mb-6 flex items-center justify-between">
+                                <h2 class="text-xl font-bold tracking-tight">Gestión de Trabajos</h2>
+                                <a href="/mis_servicios" class="text-sm font-semibold text-primary hover:underline">Ver todos</a>
+                            </div>
+                            <div class="flex flex-col gap-4">
+                                <% if (typeof trabajos !== 'undefined' && trabajos.length > 0) { %>
+                                    <% trabajos.forEach(job => { %>
+                                        <div class="group flex flex-col gap-4 rounded-2xl border border-primary/5 bg-white dark:bg-slate-800 p-5 transition-all hover:border-primary/20 hover:shadow-md">
+                                            <div class="flex items-start justify-between">
+                                                <div class="flex items-center gap-4">
+                                                    <div class="h-12 w-12 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
+                                                        <span class="material-symbols-outlined text-slate-400">home_repair_service</span>
+                                                    </div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-900 dark:text-white"><%= job.titulo %></h4>
+                                                        <p class="text-sm text-slate-500">Cliente: <%= job.cliente %></p>
+                                                    </div>
+                                                </div>
+                                                <span class="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-bold text-blue-700"><%= job.status %></span>
+                                            </div>
+                                        </div>
+                                    <% }) %>
+                                <% } else { %>
+                                    <div class="flex flex-col items-center justify-center py-16 bg-white dark:bg-slate-800 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700 text-center px-4">
+                                        <div class="bg-primary/5 p-4 rounded-full mb-4">
+                                            <span class="material-symbols-outlined text-primary text-4xl">add_task</span>
+                                        </div>
+                                        <p class="text-slate-600 dark:text-slate-300 font-bold text-lg">No hay trabajos activos</p>
+                                        <p class="text-slate-400 text-sm mt-1 mb-6">Comienza publicando un servicio para atraer clientes.</p>
+                                        <a href="/postear" class="text-primary font-bold text-sm border border-primary px-6 py-2 rounded-xl hover:bg-primary hover:text-white transition-all">
+                                            Crear mi primer post
+                                        </a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-8">
+                            <section>
+                                <h2 class="mb-4 text-xl font-bold tracking-tight">Resumen Financiero</h2>
+                                <div class="rounded-2xl border border-primary/10 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                                    <div class="mb-4 flex flex-col items-center justify-center gap-1 rounded-xl bg-primary/5 py-6">
+                                        <span class="text-xs font-medium text-slate-500">Saldo registrado en la página</span>
+                                        <h4 class="text-2xl font-black text-primary">$<%= (typeof stats !== 'undefined') ? stats.saldo : '0.00' %></h4>
+                                    </div>
+                                    <button class="w-full rounded-lg border border-primary/20 py-2 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-all">Retirar a Banco</button>
+                                </div>
+                            </section>
+
+                            <section>
+                                <h2 class="mb-4 text-xl font-bold tracking-tight">Actividad Reciente</h2>
+                                <div class="space-y-4">
+                                    <% if (typeof actividad !== 'undefined' && actividad.length > 0) { %>
+                                        <% } else { %>
+                                        <div class="flex gap-3 items-start opacity-60">
+                                            <div class="size-2 rounded-full bg-slate-300 mt-1.5"></div>
+                                            <p class="text-sm text-slate-400 italic">No hay actividad reciente para mostrar.</p>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
 </body>
-
 </html>
