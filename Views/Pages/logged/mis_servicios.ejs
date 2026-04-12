@@ -1,416 +1,153 @@
 <!DOCTYPE html>
-
 <html class="light" lang="es">
-
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "on-tertiary-container": "#ffe1d1",
-                        "surface-container-lowest": "#ffffff",
-                        "error-container": "#fee2e2",
-                        "inverse-primary": "#83d3da",
-                        "on-tertiary-fixed-variant": "#6e3913",
-                        "on-surface-variant": "#64748b",
-                        "surface-container-low": "#f6f8f8",
-                        "inverse-surface": "#112021",
-                        "tertiary-fixed-dim": "#ffb68b",
-                        "on-error": "#ffffff",
-                        "on-surface": "#0f172a",
-                        "error": "#ef4444",
-                        "outline-variant": "#e2e8f0",
-                        "tertiary-fixed": "#ffdbc8",
-                        "secondary-fixed-dim": "#aeccce",
-                        "surface-dim": "#d7dbda",
-                        "inverse-on-surface": "#f1f5f9",
-                        "on-primary": "#ffffff",
-                        "surface-bright": "#ffffff",
-                        "on-primary-container": "#083b3e",
-                        "secondary": "#476366",
-                        "on-tertiary-fixed": "#321300",
-                        "surface-container-highest": "#ebeeee",
-                        "on-secondary-container": "#4d696c",
-                        "primary-fixed": "#9ff0f6",
-                        "surface": "#f6f8f8",
-                        "secondary-fixed": "#c9e8eb",
-                        "on-secondary": "#ffffff",
                         "primary": "#117278",
-                        "on-secondary-fixed": "#012022",
-                        "on-primary-fixed-variant": "#004f54",
-                        "on-tertiary": "#ffffff",
-                        "tertiary-container": "#955830",
-                        "on-background": "#0f172a",
+                        "on-primary": "#ffffff",
                         "background": "#f6f8f8",
-                        "surface-variant": "#ffffff",
-                        "primary-fixed-dim": "#83d3da",
-                        "on-secondary-fixed-variant": "#2f4b4e",
-                        "tertiary": "#78411b",
-                        "on-primary-fixed": "#002022",
-                        "secondary-container": "#c9e8eb",
-                        "surface-container": "#ffffff",
-                        "surface-tint": "#117278",
-                        "outline": "#cbd5e1",
-                        "surface-container-high": "#f1f4f4",
+                        "on-background": "#0f172a",
+                        "surface": "#ffffff",
+                        "on-surface": "#0f172a",
+                        "on-surface-variant": "#64748b",
+                        "outline-variant": "#e2e8f0",
                         "primary-container": "#e7f1f2",
-                        "on-error-container": "#991b1b"
+                        "on-primary-container": "#083b3e",
                     },
-                    fontFamily: {
-                        "headline": ["Inter"],
-                        "body": ["Inter"],
-                        "label": ["Inter"]
-                    },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
                 },
             },
         }
     </script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     </style>
-    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body class="bg-background text-on-background min-h-screen flex flex-col">
-    <!-- Top Navigation Bar -->
     <%- include('../../Partials/header') %>
+
     <div class="flex flex-1 max-w-screen-2xl mx-auto w-full">
-        <!-- Sidebar Navigation -->
-        <aside
-            class="hidden lg:flex flex-col w-64 h-[calc(100vh-4rem)] sticky top-16 p-4 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 divide-y divide-slate-200 dark:divide-slate-800 font-['Inter'] text-sm">
+        <aside class="hidden lg:flex flex-col w-64 h-[calc(100vh-4rem)] sticky top-16 p-4 border-r border-slate-200 bg-slate-50">
             <div class="pb-6">
                 <div class="flex items-center gap-3 px-2 mb-6">
                     <div class="w-10 h-10 rounded-lg bg-teal-100 flex items-center justify-center text-teal-700">
-                        <span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+                        <span class="material-symbols-outlined">engineering</span>
                     </div>
                     <div>
-                        <p class="text-lg font-bold text-slate-900 dark:text-slate-50 leading-tight">Panel de Trabajador
-                        </p>
-                        <p class="text-xs text-slate-500 dark:text-slate-400">Gestión de Servicios</p>
+                        <p class="text-lg font-bold text-slate-900 leading-tight">Panel Trabajador</p>
                     </div>
                 </div>
                 <nav class="space-y-1">
-                    <a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-all duration-200 ease-in-out"
-                        href="#">
-                        <span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
-                        <span>Pendientes</span>
+                    <a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-100 rounded-lg transition-all" href="/dashboard">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span>Dashboard</span>
                     </a>
-                    <a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-all duration-200 ease-in-out"
-                        href="#">
-                        <span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
-                        <span>Completados</span>
-                    </a>
-                    <a class="flex items-center gap-3 bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 font-semibold px-4 py-3 rounded-lg transition-all duration-200 ease-in-out"
-                        href="#">
-                        <span class="material-symbols-outlined" data-icon="publish">publish</span>
-                        <span>Publicados</span>
+                    <a class="flex items-center gap-3 bg-teal-50 text-teal-700 font-semibold px-4 py-3 rounded-lg" href="/mis_servicios">
+                        <span class="material-symbols-outlined">publish</span>
+                        <span>Mis Servicios</span>
                     </a>
                 </nav>
             </div>
-            <div class="pt-6">
-                <p class="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Estadísticas Rápidas
-                </p>
-                <div class="px-4 space-y-4">
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500">Reputación</span>
-                        <span class="font-bold text-teal-600">4.9/5</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500">Ingresos (Mes)</span>
-                        <span class="font-bold text-slate-900">$12,450</span>
-                    </div>
-                </div>
-            </div>
         </aside>
-        <!-- Main Content Area -->
+
         <main class="flex-1 p-6 md:p-8 lg:p-12">
-            <!-- Header Section -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
                 <div>
-                    <h1 class="text-3xl font-extrabold text-on-surface tracking-tight mb-2">Mis Servicios en San Juan
-                        del Río</h1>
-                    <p class="text-on-surface-variant max-w-xl">Gestiona tus publicaciones activas, revisa los trabajos
-                        en curso y el historial de servicios finalizados.</p>
+                    <h1 class="text-3xl font-extrabold text-on-surface tracking-tight mb-2">Mis Servicios</h1>
+                    <p class="text-on-surface-variant">Gestiona tus publicaciones y revisa tus trabajos.</p>
                 </div>
-                <button
-                    class="flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all shadow-md shadow-primary/20 whitespace-nowrap">
-                    <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
-                    Publicar nuevo servicio
-                </button>
+                <a href="/postear" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold hover:opacity-90 shadow-md flex items-center gap-2">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    Nuevo servicio
+                </a>
             </div>
-            <!-- Dashboard Grid Layout -->
+
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                <!-- Active Services Column (Main Focus) -->
+                
                 <div class="xl:col-span-2 space-y-6">
                     <div class="flex items-center justify-between mb-4 border-b border-outline-variant pb-2">
                         <h2 class="text-lg font-bold flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
-                            Publicados (4)
+                            <span class="material-symbols-outlined text-primary">bolt</span>
+                            Publicados (<%= (typeof servicios !== 'undefined') ? servicios.length : 0 %>)
                         </h2>
-                        <button class="text-sm font-semibold text-primary hover:underline">Ver todos</button>
                     </div>
-                    <!-- Service Card 1 -->
-                    <div
-                        class="group bg-white rounded-2xl border border-outline-variant hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-56 h-48 md:h-auto overflow-hidden">
-                            <img alt="Service thumbnail"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                data-alt="Plumbing repair tools and pipes in bathroom"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdSC4s367D2v5BWU3RVHyo0t39wwZmlAvHhxSl8Nlm-Dv1ZqhvXJq5A9D_IemQ5-86fHQq12zlI5k8I3srsa5iW7HBhVGyxMifjEGUUYks5PG-vr1lkHDNdChFsyHWU0TchBB81SEfA5QWf3ACQTNLPhyWhL4oB-UqtMiMVaFNDxwlUmXSFguah0AOyqKGN2YO79rAq2FwHGPx12lhkUb1wt12cC6zRbgqaWy7wNTA3Ci8tamiTiFn555RZhGyxKl8FyAboHVWFbM" />
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-2">
-                                    <span
-                                        class="px-2 py-1 rounded bg-teal-50 text-teal-700 text-[10px] font-bold uppercase tracking-wider">Activo</span>
-                                    <div class="flex items-center gap-1 text-on-surface-variant text-sm">
-                                        <span class="material-symbols-outlined text-sm" data-icon="star"
-                                            data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
-                                        <span class="font-bold text-on-surface">4.8</span>
-                                        <span>(24 reseñas)</span>
-                                    </div>
+
+                    <% if (typeof servicios !== 'undefined' && servicios.length > 0) { %>
+                        <% servicios.forEach(servicio => { %>
+                            <div class="group bg-white rounded-2xl border border-outline-variant hover:border-primary/50 hover:shadow-xl transition-all flex flex-col md:flex-row overflow-hidden">
+                                <div class="w-full md:w-48 h-48 md:h-auto bg-slate-100">
+                                    <img src="<%= servicio.imagenPath || 'https://via.placeholder.com/300' %>" class="w-full h-full object-cover" />
                                 </div>
-                                <h3 class="text-xl font-bold text-on-surface mb-2">Reparación de Fugas y Plomería
-                                    General</h3>
-                                <p class="text-on-surface-variant text-sm mb-4 line-clamp-2">Servicio técnico
-                                    especializado para residencias y comercios en San Juan del Río. Atención inmediata
-                                    24/7.</p>
-                            </div>
-                            <div class="flex items-center justify-between mt-4">
-                                <div class="flex items-center gap-4 text-xs font-semibold text-on-surface-variant">
-                                    <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-lg" data-icon="group">group</span>
-                                        <span>3 solicitudes activas</span>
+                                <div class="p-6 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start mb-2">
+                                            <span class="px-2 py-1 rounded bg-teal-50 text-teal-700 text-[10px] font-bold uppercase">
+                                                <%= servicio.activo ? 'Activo' : 'Pausado' %>
+                                            </span>
+                                            <span class="font-bold text-primary">$<%= servicio.precioBase %></span>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-on-surface mb-2"><%= servicio.titulo %></h3>
+                                        <p class="text-on-surface-variant text-sm line-clamp-2"><%= servicio.descripcion %></p>
                                     </div>
-                                    <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-lg"
-                                            data-icon="visibility">visibility</span>
-                                        <span>412 vistas</span>
+                                    <div class="flex items-center justify-between mt-6">
+                                        <div class="flex items-center gap-4 text-[11px] font-semibold text-slate-500">
+                                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-base text-slate-400">location_on</span> <%= servicio.ubicacion %></span>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <button class="p-2 rounded-lg border border-outline-variant hover:bg-slate-50"><span class="material-symbols-outlined text-slate-600">edit</span></button>
+                                            <button class="px-4 py-2 rounded-lg bg-slate-100 text-on-surface font-bold text-sm hover:bg-slate-200">
+                                                <%= servicio.activo ? 'Pausar' : 'Activar' %>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="flex gap-2">
-                                    <button
-                                        class="p-2 rounded-lg border border-outline hover:bg-surface-container-low transition-colors">
-                                        <span class="material-symbols-outlined text-on-surface-variant"
-                                            data-icon="edit">edit</span>
-                                    </button>
-                                    <button
-                                        class="px-4 py-2 rounded-lg bg-surface-container-highest text-on-surface font-bold text-sm hover:bg-outline-variant transition-colors">
-                                        Pausar
-                                    </button>
                                 </div>
                             </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="flex flex-col items-center justify-center py-20 border-2 border-dashed border-slate-200 rounded-3xl">
+                            <span class="material-symbols-outlined text-5xl text-slate-200 mb-4">inventory_2</span>
+                            <h3 class="text-lg font-bold text-slate-400">No has publicado servicios aún</h3>
                         </div>
-                    </div>
-                    <!-- Service Card 2 -->
-                    <div
-                        class="group bg-white rounded-2xl border border-outline-variant hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-56 h-48 md:h-auto overflow-hidden">
-                            <img alt="Service thumbnail"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                data-alt="Interior painter painting wall with blue paint"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ3fdbbl01UycsLSvzTF6CTHdeCRUiSmMf-NNJ4VTiLNbMd9-qNPgJHiZFhqxdna0eP65jUEJez7-MP-p4FkyXatwuQI2jBX5ObIajv2Y9p6WEcZftwjuAGNlj0rLEYsDQrYIiT7scr0RMNxAjNNhrpxvCMtxZFMs9tO8J0bw-EhBtRMzLsxwaVx201xuJYphjrtaWwLZ0SyDLWQPPrHEF27vPSpWNLuRcSxxXNg9XKLUHz8RyrxD_ZFCsig-VJIsVkCZLv4sQ4a0" />
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-2">
-                                    <span
-                                        class="px-2 py-1 rounded bg-teal-50 text-teal-700 text-[10px] font-bold uppercase tracking-wider">Activo</span>
-                                    <div class="flex items-center gap-1 text-on-surface-variant text-sm">
-                                        <span class="material-symbols-outlined text-sm" data-icon="star"
-                                            data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
-                                        <span class="font-bold text-on-surface">5.0</span>
-                                        <span>(12 reseñas)</span>
+                    <% } %>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-white rounded-3xl p-6 border border-outline-variant shadow-sm">
+                        <h2 class="text-lg font-bold flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-orange-500">pending</span>
+                            Pendientes (<%= (typeof pendientes !== 'undefined') ? pendientes.length : 0 %>)
+                        </h2>
+                        
+                        <% if (typeof pendientes !== 'undefined' && pendientes.length > 0) { %>
+                            <% pendientes.forEach(p => { %>
+                                <div class="p-4 rounded-xl mb-3 bg-slate-50 border border-slate-100">
+                                    <p class="font-bold text-sm text-slate-800"><%= p.titulo %></p>
+                                    <div class="w-full bg-slate-200 h-2 mt-3 rounded-full overflow-hidden">
+                                        <div class="bg-orange-500 h-full rounded-full" style="width: 50%;"></div>
                                     </div>
                                 </div>
-                                <h3 class="text-xl font-bold text-on-surface mb-2">Pintura de Interiores y Acabados
-                                    Finos</h3>
-                                <p class="text-on-surface-variant text-sm mb-4 line-clamp-2">Renueva tus espacios con
-                                    materiales de alta calidad y mano de obra experta. Limpieza garantizada.</p>
-                            </div>
-                            <div class="flex items-center justify-between mt-4">
-                                <div class="flex items-center gap-4 text-xs font-semibold text-on-surface-variant">
-                                    <div class="flex items-center gap-1 text-orange-600">
-                                        <span class="material-symbols-outlined text-lg"
-                                            data-icon="notifications_active">notifications_active</span>
-                                        <span>Nueva solicitud</span>
-                                    </div>
-                                    <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-lg"
-                                            data-icon="visibility">visibility</span>
-                                        <span>158 vistas</span>
-                                    </div>
-                                </div>
-                                <div class="flex gap-2">
-                                    <button
-                                        class="p-2 rounded-lg border border-outline hover:bg-surface-container-low transition-colors">
-                                        <span class="material-symbols-outlined text-on-surface-variant"
-                                            data-icon="edit">edit</span>
-                                    </button>
-                                    <button
-                                        class="px-4 py-2 rounded-lg bg-surface-container-highest text-on-surface font-bold text-sm hover:bg-outline-variant transition-colors">
-                                        Pausar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                            <% }); %>
+                        <% } else { %>
+                            <p class="text-sm text-slate-400 text-center italic">Sin tareas en curso</p>
+                        <% } %>
                     </div>
                 </div>
-                <!-- Right Column: Pending & Stats -->
-                <div class="space-y-8">
-                    <!-- Pending Section -->
-                    <div class="bg-surface-container-low rounded-3xl p-6 border border-outline-variant">
-                        <div class="flex items-center justify-between mb-6">
-                            <h2 class="text-lg font-bold flex items-center gap-2">
-                                <span class="material-symbols-outlined text-tertiary" data-icon="pending">pending</span>
-                                Pendientes (2)
-                            </h2>
-                        </div>
-                        <div class="space-y-4">
-                            <!-- Pending Task Item -->
-                            <div class="bg-white p-4 rounded-xl border border-outline-variant flex gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center shrink-0">
-                                    <span class="material-symbols-outlined text-orange-600"
-                                        data-icon="electric_bolt">electric_bolt</span>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="font-bold text-sm truncate">Instalación Eléctrica Local</p>
-                                    <p class="text-xs text-on-surface-variant mb-2">En proceso • San Juan</p>
-                                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                                        <div class="bg-orange-500 h-full w-[65%] rounded-full"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Pending Task Item -->
-                            <div class="bg-white p-4 rounded-xl border border-outline-variant flex gap-4">
-                                <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
-                                    <span class="material-symbols-outlined text-blue-600"
-                                        data-icon="imagesearch_roller">imagesearch_roller</span>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="font-bold text-sm truncate">Barnizado de Puertas (3)</p>
-                                    <p class="text-xs text-on-surface-variant mb-2">Esperando materiales</p>
-                                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                                        <div class="bg-blue-500 h-full w-[30%] rounded-full"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Completed Summary -->
-                    <div class="bg-white rounded-3xl p-6 border border-outline-variant">
-                        <div class="flex items-center justify-between mb-6">
-                            <h2 class="text-lg font-bold flex items-center gap-2">
-                                <span class="material-symbols-outlined text-teal-600"
-                                    data-icon="verified">verified</span>
-                                Completados
-                            </h2>
-                            <span class="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded">Total: 48</span>
-                        </div>
-                        <div class="space-y-4">
-                            <div
-                                class="flex items-center justify-between py-2 border-b border-outline-variant/50 last:border-0">
-                                <div>
-                                    <p class="text-sm font-bold">Mantenimiento AC</p>
-                                    <p class="text-[10px] text-on-surface-variant">Finalizado el 20/01/2024</p>
-                                </div>
-                                <button class="text-xs font-bold text-primary">Detalles</button>
-                            </div>
-                            <div
-                                class="flex items-center justify-between py-2 border-b border-outline-variant/50 last:border-0">
-                                <div>
-                                    <p class="text-sm font-bold">Limpieza de Cisterna</p>
-                                    <p class="text-[10px] text-on-surface-variant">Finalizado el 18/01/2024</p>
-                                </div>
-                                <button class="text-xs font-bold text-primary">Detalles</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Help Card -->
-                    <div class="bg-primary-container/30 rounded-3xl p-6 border border-primary-fixed-dim/30">
-                        <div class="flex gap-4 items-start">
-                            <span class="material-symbols-outlined text-primary text-3xl"
-                                data-icon="lightbulb">lightbulb</span>
-                            <div>
-                                <p class="font-bold text-on-primary-container mb-1">¿Necesitas más trabajo?</p>
-                                <p class="text-xs text-on-primary-container/80 mb-4">Mejora tus fotos y descripciones
-                                    para aparecer en los primeros resultados de búsqueda.</p>
-                                <button class="text-sm font-extrabold text-primary flex items-center gap-1 group">
-                                    Ver consejos de optimización
-                                    <span
-                                        class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform"
-                                        data-icon="arrow_forward">arrow_forward</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Empty State Example (Hidden by default, for logic reference) -->
-            <div class="hidden flex-col items-center justify-center py-24 text-center">
-                <div class="w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mb-6">
-                    <span class="material-symbols-outlined text-5xl text-on-surface-variant"
-                        data-icon="inventory_2">inventory_2</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">No tienes servicios publicados aún</h3>
-                <p class="text-on-surface-variant max-w-sm mb-8">Empieza a ofrecer tus talentos hoy mismo y conecta con
-                    clientes en San Juan del Río.</p>
-                <button
-                    class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold hover:opacity-90 shadow-lg shadow-primary/20 transition-all flex items-center gap-2">
-                    <span class="material-symbols-outlined" data-icon="add">add</span>
-                    Publicar primer servicio
-                </button>
+
             </div>
         </main>
     </div>
-    <%- include('../../Partials/footer') %>
-    <!-- Mobile Bottom Navigation (Visible only on small screens) -->
-    <nav
-        class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-6 py-3 flex justify-between items-center z-50">
-        <button class="flex flex-col items-center gap-1 text-slate-400">
-            <span class="material-symbols-outlined" data-icon="explore">explore</span>
-            <span class="text-[10px] font-medium">Explorar</span>
-        </button>
-        <button class="flex flex-col items-center gap-1 text-teal-700">
-            <span class="material-symbols-outlined" data-icon="work" data-weight="fill"
-                style="font-variation-settings: 'FILL' 1;">work</span>
-            <span class="text-[10px] font-bold">Mis Servicios</span>
-        </button>
-        <div class="relative -top-6">
-            <button
-                class="bg-teal-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-teal-700/40">
-                <span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
-            </button>
-        </div>
-        <button class="flex flex-col items-center gap-1 text-slate-400">
-            <span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
-            <span class="text-[10px] font-medium">Mensajes</span>
-        </button>
-        <button class="flex flex-col items-center gap-1 text-slate-400">
-            <span class="material-symbols-outlined" data-icon="person">person</span>
-            <span class="text-[10px] font-medium">Perfil</span>
-        </button>
-    </nav>
-</body>
 
+    <%- include('../../Partials/footer') %>
+</body>
 </html>

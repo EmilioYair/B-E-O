@@ -1,26 +1,45 @@
 const express = require('express');
 const router = express.Router();
 const { verifySession } = require('../middlewares/authMiddleware');
+const { db } = require('../firebase'); // Asegúrate de que esta sea la ruta a tu config de Firebase
 
-// GUEST
+router.get('/mis_servicios', verifySession, async (req, res) => {
+    try {
+        // En tu consola vimos que el ID viene en req.user.uid
+        const userId = req.user.uid; 
+        
+        console.log("Intentando buscar servicios para el workerId:", userId);
 
-router.get('/', (req, res) => res.render('Pages/guest/inicio'));
-router.get('/login', (req, res) => res.render('Pages/guest/login'));
-router.get('/registro', (req, res) => res.render('Pages/guest/registro'));
+        // Hacemos la consulta
+        const serviciosSnapshot = await db.collection('servicios')
+            .where('workerId', '==', userId)
+            .get();
 
-// LOGGED
+        // Si la consulta está vacía, esto lo dirá en tu terminal
+        console.log("Total encontrados:", serviciosSnapshot.size);
 
+        const misServicios = [];
+        serviciosSnapshot.forEach(doc => {
+            misServicios.push({ id: doc.id, ...doc.data() });
+        });
 
-router.get('/dashboard', verifySession, (req, res) => res.render('Pages/logged/dashboard'));
-router.get('/mensajes', verifySession, (req, res) => res.render('Pages/logged/mensajes'));
-router.get('/mis_servicios', verifySession, (req, res) => res.render('Pages/logged/mis_servicios'));
+        res.render('Pages/logged/mis_servicios', { 
+            servicios: misServicios,
+            pendientes: [] 
+        });
+
+    } catch (error) {
+        console.error("ERROR EN FIRESTORE:", error);
+        res.status(500).send("Error al cargar datos");
+    }
+});
+
 router.get('/perfil', verifySession, (req, res) => res.render('Pages/logged/perfil'));
 router.get('/postear', verifySession, (req, res) => res.render('Pages/logged/crear-servicio'));
 router.get('/publicaciones', verifySession, (req, res) => res.render('Pages/logged/publicaciones'));
 router.get('/settings', verifySession, (req, res) => res.render('Pages/logged/settings'));
 
 // SHARED
-
 router.get('/ayuda', (req, res) => res.render('Pages/shared/ayuda'));
 router.get('/buscar', (req, res) => res.render('Pages/shared/buscar'));
 router.get('/como_funciona', (req, res) => res.render('Pages/shared/como_funciona'));
