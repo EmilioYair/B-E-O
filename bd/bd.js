@@ -1,24 +1,22 @@
 require('dotenv').config();
 const path = require('path');
-const { initializeApp } = require("firebase/app");
-const { getFirestore } = require("firebase/firestore");
 const admin = require('firebase-admin');
+const { initializeApp } = require("firebase/app"); // Mantener si lo usas en otros lados
+const { getFirestore } = require("firebase/firestore"); // Mantener si lo usas en otros lados
 
-// Configuración para cliente (Firebase SDK v9+)
+// Configuración para cliente (Opcional, por si lo necesitas)
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
     projectId: process.env.FIREBASE_PROJECT_ID,
     storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_APP_ID,
-    measurementId: process.env.FIREBASE_MEASUREMENT_ID
+    appId: process.env.FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-// Configuración para servidor (Firebase Admin SDK)
+// --- CONFIGURACIÓN ADMIN SDK (BACKEND) ---
 if (!admin.apps.length) {
     try {
         const serviceAccountPath = path.join(__dirname, '../serviceAccountKey.json');
@@ -39,13 +37,16 @@ if (!admin.apps.length) {
             console.log("Firebase Admin initialized with Application Default Credentials");
         }
     } catch (error) {
-        console.error("Warning: Firebase Admin initialization failed. Server-side auth and storage may not work.", error.message);
+        console.error("Firebase Admin initialization failed:", error.message);
     }
 }
 
+// DEFINICIÓN DE INSTANCIAS PARA EL BACKEND
+const db = admin.firestore(); // USAR EL DE ADMIN PARA LAS RUTAS
 const auth = admin.auth();
-const bucket = admin.storage().bucket(process.env.FIREBASE_STORAGE_BUCKET);
+const bucket = admin.storage().bucket();
 
 console.log("Firebase and Admin SDK initialized successfully");
 
+// Exportamos todo
 module.exports = { app, db, admin, auth, bucket };

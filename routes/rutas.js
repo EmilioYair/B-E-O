@@ -1,22 +1,32 @@
 const express = require('express');
 const router = express.Router();
 const { verifySession } = require('../middlewares/authMiddleware');
-const { db } = require('../firebase'); // Asegúrate de que esta sea la ruta a tu config de Firebase
+const { db } = require('../bd/bd'); 
+
+router.get('/', (req, res) => {
+    res.render('Pages/guest/inicio');
+});
+
+
+router.get('/dashboard', verifySession, (req, res) => {
+    res.render('Pages/logged/dashboard');
+});
+
+router.get('/mensajes', verifySession, (req, res) => {
+    res.render('Pages/logged/mensajes');
+});
+
+// Esta ruta carga el formulario para crear servicios
+router.get('/postear', verifySession, (req, res) => {
+    res.render('Pages/logged/crear-servicio');
+});
 
 router.get('/mis_servicios', verifySession, async (req, res) => {
     try {
-        // En tu consola vimos que el ID viene en req.user.uid
         const userId = req.user.uid; 
-        
-        console.log("Intentando buscar servicios para el workerId:", userId);
-
-        // Hacemos la consulta
         const serviciosSnapshot = await db.collection('servicios')
             .where('workerId', '==', userId)
             .get();
-
-        // Si la consulta está vacía, esto lo dirá en tu terminal
-        console.log("Total encontrados:", serviciosSnapshot.size);
 
         const misServicios = [];
         serviciosSnapshot.forEach(doc => {
@@ -27,7 +37,6 @@ router.get('/mis_servicios', verifySession, async (req, res) => {
             servicios: misServicios,
             pendientes: [] 
         });
-
     } catch (error) {
         console.error("ERROR EN FIRESTORE:", error);
         res.status(500).send("Error al cargar datos");
@@ -35,17 +44,17 @@ router.get('/mis_servicios', verifySession, async (req, res) => {
 });
 
 router.get('/perfil', verifySession, (req, res) => res.render('Pages/logged/perfil'));
-router.get('/postear', verifySession, (req, res) => res.render('Pages/logged/crear-servicio'));
 router.get('/publicaciones', verifySession, (req, res) => res.render('Pages/logged/publicaciones'));
 router.get('/settings', verifySession, (req, res) => res.render('Pages/logged/settings'));
+router.get('/verify', verifySession, (req, res) => res.render('Pages/logged/verify'));
 
-// SHARED
+
 router.get('/ayuda', (req, res) => res.render('Pages/shared/ayuda'));
 router.get('/buscar', (req, res) => res.render('Pages/shared/buscar'));
 router.get('/como_funciona', (req, res) => res.render('Pages/shared/como_funciona'));
 router.get('/contactanos', (req, res) => res.render('Pages/shared/contactanos'));
-router.get('/exitos', (req, res) => res.render('Pages/shared/exitos'));
 router.get('/encuentra', (req, res) => res.render('Pages/shared/encuentra'));
+router.get('/exitos', (req, res) => res.render('Pages/shared/exitos'));
 router.get('/pasos', (req, res) => res.render('Pages/shared/pasos'));
 router.get('/politica_privacidad', (req, res) => res.render('Pages/shared/politica_privacidad'));
 router.get('/recursos', (req, res) => res.render('Pages/shared/recursos'));
