@@ -57,6 +57,25 @@ const createService = async (req, res) => {
 };
 
 /**
+ * Helper para generar URLs firmadas
+ */
+const getSignedUrlHelper = async (filePath) => {
+    if (!filePath) return null;
+    try {
+        const file = bucket.file(filePath);
+        const [url] = await file.getSignedUrl({
+            version: 'v4',
+            action: 'read',
+            expires: Date.now() + 60 * 60 * 1000,
+        });
+        return url;
+    } catch (err) {
+        console.error('Error generating signed URL:', err);
+        return null;
+    }
+};
+
+/**
  * Obtiene la lista de servicios filtrados o todos
  */
 const getServices = async (req, res) => {
@@ -74,9 +93,11 @@ const getServices = async (req, res) => {
         const snapshot = await query.get();
 
         const services = [];
-        snapshot.forEach(doc => {
-            services.push({ id: doc.id, ...doc.data() });
-        });
+        for (const doc of snapshot.docs) {
+            const data = doc.data();
+            const imageUrl = await getSignedUrlHelper(data.imagenPath);
+            services.push({ id: doc.id, ...data, imageUrl });
+        }
 
         // Sort locally in descending order by createdAt to avoid Firestore index requirement
         services.sort((a, b) => {
@@ -103,9 +124,11 @@ const getMyServices = async (req, res) => {
             .get();
 
         const services = [];
-        snapshot.forEach(doc => {
-            services.push({ id: doc.id, ...doc.data() });
-        });
+        for (const doc of snapshot.docs) {
+            const data = doc.data();
+            const imageUrl = await getSignedUrlHelper(data.imagenPath);
+            services.push({ id: doc.id, ...data, imageUrl });
+        }
 
         // Sort locally in descending order by createdAt to avoid Firestore index requirement
         services.sort((a, b) => {
@@ -134,15 +157,7 @@ const getServiceImageUrl = async (req, res) => {
             return res.status(404).json({ error: 'Imagen no encontrada' });
         }
 
-        const imagenPath = serviceDoc.data().imagenPath;
-        const file = bucket.file(imagenPath);
-
-        const [url] = await file.getSignedUrl({
-            version: 'v4',
-            action: 'read',
-            expires: Date.now() + 60 * 60 * 1000, // 1 hora
-        });
-
+        const url = await getSignedUrlHelper(serviceDoc.data().imagenPath);
         res.status(200).json({ url });
     } catch (error) {
         console.error('Error al generar URL de imagen:', error);

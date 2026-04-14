@@ -40,7 +40,7 @@
                 <div class="absolute -bottom-12 left-8 flex items-end gap-6">
                     <div class="w-32 h-32 rounded-xl border-4 border-white dark:border-slate-900 overflow-hidden shadow-lg bg-white">
                         <img id="profileImagePreview" alt="Foto de perfil" class="w-full h-full object-cover"
-                            src="<%= user && user.picture ? user.picture : '/images/DefaultProfile.png' %>" />
+                            src="<%= user && user.picture ? user.picture : '/Images/default-avatar.png' %>" />
                     </div>
                     <div class="mb-4">
                         <div class="flex items-center gap-3">
@@ -245,7 +245,7 @@
                 const btn = document.getElementById('profileImageUploadBtn');
 
                 const formData = new FormData();
-                formData.append('avatar', fileInput.files);
+                formData.append('avatar', fileInput.files[0]);
 
                 btn.disabled = true;
                 status.textContent = "⏳ Subiendo...";

@@ -87,7 +87,7 @@
                         <% servicios.forEach(servicio => { %>
                             <div class="group bg-white rounded-2xl border border-outline-variant hover:border-primary/50 hover:shadow-xl transition-all flex flex-col md:flex-row overflow-hidden">
                                 <div class="w-full md:w-48 h-48 md:h-auto bg-slate-100">
-                                    <img src="<%= servicio.imagenPath || 'https://via.placeholder.com/300' %>" class="w-full h-full object-cover" />
+                                    <img src="<%= servicio.imageUrl || '/Images/default-avatar.png' %>" class="w-full h-full object-cover" />
                                 </div>
                                 <div class="p-6 flex-1 flex flex-col justify-between">
                                     <div>

@@ -7,6 +7,9 @@ router.get('/', (req, res) => {
     res.render('Pages/guest/inicio');
 });
 
+router.get('/login', (req, res) => res.render('Pages/guest/login'));
+router.get('/registro', (req, res) => res.render('Pages/guest/registro'));
+
 
 router.get('/dashboard', verifySession, (req, res) => {
     res.render('Pages/logged/dashboard');

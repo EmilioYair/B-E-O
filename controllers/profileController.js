@@ -1,4 +1,4 @@
-const { admin } = require('../bd/bd');
+const { admin, bucket } = require('../bd/bd');
 
 /**
  * Obtiene la información del perfil desde Firestore
@@ -28,8 +28,8 @@ const getProfileInfo = async (req, res) => {
  */
 const updateProfileInfo = async (req, res) => {
     try {
-        // Extraemos el UID de la sesión (ajustado a la estructura común de Express-Session)
-        const uid = req.session.user ? req.session.user.uid : (req.session.userId || null);
+        // Obtenemos el UID del middleware verifySession
+        const uid = req.user ? req.user.uid : null;
 
         if (!uid) {
             return res.status(401).json({ 
@@ -84,36 +84,97 @@ const updateProfileInfo = async (req, res) => {
 };
 
 /**
- * Obtiene la URL de la imagen de perfil (simulado según tu estructura)
+ * Obtiene la URL de la imagen de perfil (Soporta Storage y Local)
  */
 const getProfileImageUrl = async (req, res) => {
     try {
         const userId = req.params.userId;
         const userDoc = await admin.firestore().collection('users').doc(userId).get();
         
-        if (userDoc.exists && userDoc.data().photoURL) {
-            return res.json({ url: userDoc.data().photoURL });
+        if (userDoc.exists) {
+            const userData = userDoc.data();
+            // Preferimos la foto subida (profileImagePath) sobre la de Auth (photoURL)
+            const photoUrl = userData.profileImagePath || userData.photoURL;
+            
+            if (photoUrl) {
+                // Si es una URL externa (Google, etc.)
+                if (photoUrl.startsWith('http')) {
+                    return res.json({ url: photoUrl });
+                }
+
+                // Si es una ruta de Firebase Storage (e.g., profiles/UID/file.jpg)
+                if (photoUrl.startsWith('profiles/') || photoUrl.includes('/')) {
+                    try {
+                        const file = bucket.file(photoUrl);
+                        const [url] = await file.getSignedUrl({
+                            version: 'v4',
+                            action: 'read',
+                            expires: Date.now() + 60 * 60 * 1000,
+                        });
+                        return res.json({ url });
+                    } catch (storageError) {
+                        console.error('Error al generar signed URL de perfil:', storageError);
+                    }
+                }
+
+                // Si es un path local relativo
+                return res.json({ url: `/Images/${photoUrl}` });
+            }
         }
         
-        // Imagen por defecto si no tiene una
-        res.json({ url: '/img/default-avatar.png' });
+        // Imagen por defecto
+        res.json({ url: '/Images/default-avatar.png' });
     } catch (error) {
-        console.error('Error al obtener URL de imagen:', error);
+        console.error('Error al obtener URL de imagen de perfil:', error);
         res.status(500).json({ error: 'Error al obtener imagen' });
     }
 };
 
 /**
- * Actualiza la imagen de perfil (Lógica base para Multer)
+ * Actualiza la imagen de perfil en Firebase Storage y Firestore
  */
 const updateProfileImage = async (req, res) => {
     try {
-        // Aquí iría tu lógica de subida a Firebase Storage
-        // Por ahora, devolvemos éxito para no romper el flujo
-        res.json({ success: true, message: 'Imagen procesada' });
+        // Obtenemos el UID del middleware verifySession
+        const uid = req.user ? req.user.uid : null;
+        
+        if (!uid) {
+            return res.status(401).json({ success: false, error: 'No se encontró sesión de usuario' });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ success: false, error: 'No se subió ningún archivo' });
+        }
+
+        const fileName = `profiles/${uid}/${Date.now()}-${req.file.originalname}`;
+        const file = bucket.file(fileName);
+
+        // Subir buffer a Storage
+        await file.save(req.file.buffer, {
+            metadata: {
+                contentType: req.file.mimetype,
+            }
+        });
+
+        // Actualizar Firestore con el nuevo path
+        await admin.firestore().collection('users').doc(uid).update({
+            profileImagePath: fileName,
+            updatedAt: admin.firestore.FieldValue.serverTimestamp()
+        });
+
+        res.json({ 
+            success: true, 
+            message: 'Imagen actualizada con éxito', 
+            path: fileName 
+        });
+
     } catch (error) {
-        console.error('Error al actualizar imagen:', error);
-        res.status(500).json({ error: 'No se pudo actualizar la imagen' });
+        console.error('Error al actualizar imagen de perfil:', error);
+        res.status(500).json({ 
+            success: false, 
+            error: 'Error interno al procesar la imagen',
+            details: error.message 
+        });
     }
 };
 

@@ -6,7 +6,7 @@ const { startChat, sendMessage } = require('../controllers/chatController');
 // RUTA PRINCIPAL: Renderiza la página y pasa el objeto 'user' de la sesión
 router.get('/', verifySession, (req, res) => {
     // Es vital que req.user contenga el uid o id de Firebase
-    res.render('pages/mensajes', { user: req.user }); 
+    res.render('Pages/logged/mensajes', { user: req.user }); 
 });
 
 router.post('/start', verifySession, startChat);
