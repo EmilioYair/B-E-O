@@ -34,13 +34,21 @@
 <body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen">
     <%- include('../../Partials/header') %>
     
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <% 
+        // Determinamos si es vista propia o pública
+        const targetUserId = typeof publicUserId !== 'undefined' ? publicUserId : (user ? user.uid : null);
+        const isPublicView = typeof publicUserId !== 'undefined' && (user ? user.uid !== publicUserId : true);
+    %>
         <div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden mb-8 border border-slate-100 dark:border-slate-800">
             <div class="h-48 bg-gradient-to-r from-primary/20 to-primary/5 relative">
                 <div class="absolute -bottom-12 left-8 flex items-end gap-6">
                     <div class="w-32 h-32 rounded-xl border-4 border-white dark:border-slate-900 overflow-hidden shadow-lg bg-white">
+                        <% 
+                            // Si es vista pública, no mostramos la foto del usuario logueado inicialmente
+                            const initialPhoto = (!isPublicView && user && user.picture) ? user.picture : '/Images/default-avatar.png';
+                        %>
                         <img id="profileImagePreview" alt="Foto de perfil" class="w-full h-full object-cover"
-                            src="<%= user && user.picture ? user.picture : '/Images/default-avatar.png' %>" />
+                            src="<%= initialPhoto %>" />
                     </div>
                     <div class="mb-4">
                         <div class="flex items-center gap-3">
@@ -76,6 +84,7 @@
                 </button>
             </div>
 
+            <% if (!isPublicView) { %>
             <div class="border-t border-slate-200 dark:border-slate-800 p-6 bg-slate-50 dark:bg-slate-900 rounded-b-xl">
                 <div class="space-y-6">
                     <div>
@@ -111,6 +120,7 @@
                     </div>
                 </div>
             </div>
+            <% } %>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -120,9 +130,11 @@
                         <h2 class="text-xl font-bold flex items-center gap-2">
                             <span class="material-icons text-primary">auto_awesome</span> Proyectos: Antes y Después
                         </h2>
+                        <% if (!isPublicView) { %>
                         <button onclick="document.getElementById('projectUploadForm').classList.toggle('hidden')" class="text-sm bg-primary/10 text-primary px-3 py-1 rounded-lg font-bold hover:bg-primary/20 transition-colors">
                             + Añadir Proyecto
                         </button>
+                        <% } %>
                     </div>
 
                     <div id="projectUploadForm" class="hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl mb-6 shadow-sm">
@@ -200,20 +212,26 @@
     <script>
         async function loadProfileData() {
             const profileImage = document.getElementById('profileImagePreview');
+            const targetId = '<%= targetUserId %>';
+            if (!targetId) return;
+
             try {
                 if (profileImage) {
-                    const imgResponse = await fetch('/api/profile/<%= user.uid %>/image-url');
+                    const imgResponse = await fetch(`/api/profile/${targetId}/image-url`);
                     if (imgResponse.ok) {
                         const imgData = await imgResponse.json();
-                        profileImage.src = imgData.url;
+                        if (imgData.url) profileImage.src = imgData.url;
+                    } else {
+                        console.error('Error al obtener URL de imagen:', await imgResponse.text());
                     }
                 }
 
-                const infoResponse = await fetch('/api/profile/<%= user.uid %>/info');
+                const infoResponse = await fetch(`/api/profile/${targetId}/info`);
                 if (infoResponse.ok) {
                     const userData = await infoResponse.json();
+                    
                     if (userData.nombre) document.getElementById('profileNameDisplay').textContent = userData.nombre;
-                    if (userData.biografia) document.getElementById('profileDescDisplay').textContent = userData.biografia;
+                    if (userData.biografia) document.getElementById('profileNameDisplay').parentElement.nextElementSibling.textContent = userData.biografia;
                     if (userData.ubicacion) document.getElementById('profileUbicacionDisplay').textContent = userData.ubicacion;
                     if (userData.edad) document.getElementById('profileEdadDisplay').textContent = userData.edad + ' años';
                     if (userData.telefono) document.getElementById('profileTelefonoDisplay').textContent = userData.telefono;

@@ -4,7 +4,7 @@ const { admin } = require('../bd/bd');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 const { verifySession } = require('../middlewares/authMiddleware');
-const { createService, getServices, getMyServices, getServiceImageUrl } = require('../controllers/serviceController');
+const { createService, getServices, getMyServices, getServiceImageUrl, hireService, createRequest } = require('../controllers/serviceController');
 const { updateProfileImage, getProfileImageUrl, updateProfileInfo, getProfileInfo } = require('../controllers/profileController');
 const { addReview } = require('../controllers/reviewController');
 
@@ -12,6 +12,10 @@ const { addReview } = require('../controllers/reviewController');
 router.get('/test', (req, res) => {
     res.json({ status: 'API working', timestamp: new Date().toISOString() });
 });
+
+// Contrataciones y Solicitudes
+router.post('/services/hire', verifySession, hireService);
+router.post('/requests', verifySession, createRequest);
 
 // Reviews
 router.post('/reviews', verifySession, addReview);
@@ -58,6 +62,38 @@ router.post('/register', async (req, res) => {
     } catch (error) {
         console.error('Error registry user to Firestore:', error);
         res.status(500).json({ error: 'Error al registrar en la base de datos' });
+    }
+});
+
+// Búsqueda de Usuarios
+router.get('/users/search', async (req, res) => {
+    try {
+        const { q } = req.query;
+        if (!q) return res.json([]);
+
+        // Búsqueda simple por prefijo (Firestore no soporta "contains")
+        const snapshot = await admin.firestore().collection("users")
+            .where("nombre", ">=", q)
+            .where("nombre", "<=", q + '\uf8ff')
+            .limit(20)
+            .get();
+
+        const users = [];
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            users.push({ 
+                uid: doc.id, 
+                nombre: data.nombre,
+                profileImagePath: data.profileImagePath,
+                photoURL: data.photoURL,
+                esTrabajador: data.esTrabajador
+            });
+        });
+
+        res.json(users);
+    } catch (error) {
+        console.error('Error en búsqueda de usuarios:', error);
+        res.status(500).json({ error: 'Error al buscar usuarios' });
     }
 });
 

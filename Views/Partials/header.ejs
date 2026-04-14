@@ -31,10 +31,12 @@
             <% } %>
         </nav>
 
-        <!-- Botón de acción principal -->
-        <% if (typeof user !== 'undefined' && user) { %>
+        <!-- Botón de acción principal dinámico -->
+        <% if (typeof user !== 'undefined' && user) { 
+            const esTrabajador = user.esTrabajador === true || user.esTrabajador === 'true'; 
+        %>
             <a href="/postear" class="app-btn-primary">
-                Postear un servicio
+                <%= esTrabajador ? 'Postear un servicio' : 'Publicar búsqueda' %>
             </a>
         <% } %>
     </div>
@@ -49,7 +51,7 @@
                     <span class="material-symbols-outlined">search</span>
                 </div>
                 <!-- Input de texto -->
-                <input class="app-search-input" placeholder="Buscar" value="" />
+                <input id="headerSearchInput" class="app-search-input" placeholder="Buscar usuarios" value="" />
             </div>
         </label>
 
@@ -82,5 +84,15 @@
                 }
             })
             .catch(err => console.log('Avatar no encontrado, usando default'));
+    }
+
+    // Lógica de búsqueda en el header
+    const headerSearch = document.getElementById('headerSearchInput');
+    if (headerSearch) {
+        headerSearch.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter' && headerSearch.value.trim() !== '') {
+                window.location.href = `/search-users?q=${encodeURIComponent(headerSearch.value.trim())}`;
+            }
+        });
     }
 </script>

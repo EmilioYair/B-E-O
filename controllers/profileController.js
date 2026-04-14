@@ -89,20 +89,20 @@ const updateProfileInfo = async (req, res) => {
 const getProfileImageUrl = async (req, res) => {
     try {
         const userId = req.params.userId;
+        console.log(`[getProfileImageUrl] Buscando imagen para: ${userId}`);
+        
         const userDoc = await admin.firestore().collection('users').doc(userId).get();
         
         if (userDoc.exists) {
             const userData = userDoc.data();
-            // Preferimos la foto subida (profileImagePath) sobre la de Auth (photoURL)
             const photoUrl = userData.profileImagePath || userData.photoURL;
+            console.log(`[getProfileImageUrl] Path encontrado: ${photoUrl}`);
             
             if (photoUrl) {
-                // Si es una URL externa (Google, etc.)
                 if (photoUrl.startsWith('http')) {
                     return res.json({ url: photoUrl });
                 }
 
-                // Si es una ruta de Firebase Storage (e.g., profiles/UID/file.jpg)
                 if (photoUrl.startsWith('profiles/') || photoUrl.includes('/')) {
                     try {
                         const file = bucket.file(photoUrl);
@@ -113,19 +113,20 @@ const getProfileImageUrl = async (req, res) => {
                         });
                         return res.json({ url });
                     } catch (storageError) {
-                        console.error('Error al generar signed URL de perfil:', storageError);
+                        console.error(`[getProfileImageUrl] Error Storage para ${photoUrl}:`, storageError.message);
                     }
                 }
-
-                // Si es un path local relativo
                 return res.json({ url: `/Images/${photoUrl}` });
+            } else {
+                console.log(`[getProfileImageUrl] Usuario sin foto registrada, usando default.`);
             }
+        } else {
+            console.log(`[getProfileImageUrl] Usuario ${userId} no existe en Firestore.`);
         }
         
-        // Imagen por defecto
         res.json({ url: '/Images/default-avatar.png' });
     } catch (error) {
-        console.error('Error al obtener URL de imagen de perfil:', error);
+        console.error('[getProfileImageUrl] Error Crítico:', error);
         res.status(500).json({ error: 'Error al obtener imagen' });
     }
 };

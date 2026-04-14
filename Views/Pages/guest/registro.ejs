@@ -95,12 +95,12 @@
                     <p class="text-slate-500 dark:text-slate-400">Unete a nuestra comunidad hoy y empieza a crecer.</p>
                 </div>
                 <div class="flex p-1 bg-primary/10 dark:bg-primary/20 rounded-xl">
-                    <button
+                    <button id="choiceClient" type="button"
                         class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-white dark:bg-slate-800 shadow-sm text-primary font-semibold text-sm transition-all">
                         <span class="material-symbols-outlined text-xl">person</span>
                         Estoy Buscando
                     </button>
-                    <button
+                    <button id="choiceWorker" type="button"
                         class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-slate-600 dark:text-slate-400 font-medium text-sm hover:text-primary transition-all">
                         <span class="material-symbols-outlined text-xl">handyman</span>
                         Estoy Ofreciendo
@@ -185,15 +185,43 @@
         </div>
     </div>
     <script>
+        let esTrabajador = false;
+        const choiceClient = document.getElementById('choiceClient');
+        const choiceWorker = document.getElementById('choiceWorker');
+
+        function updateToggle() {
+            if (esTrabajador) {
+                choiceWorker.classList.add('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary', 'font-semibold');
+                choiceWorker.classList.remove('text-slate-600', 'dark:text-slate-400', 'font-medium');
+                
+                choiceClient.classList.remove('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary', 'font-semibold');
+                choiceClient.classList.add('text-slate-600', 'dark:text-slate-400', 'font-medium');
+            } else {
+                choiceClient.classList.add('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary', 'font-semibold');
+                choiceClient.classList.remove('text-slate-600', 'dark:text-slate-400', 'font-medium');
+                
+                choiceWorker.classList.remove('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary', 'font-semibold');
+                choiceWorker.classList.add('text-slate-600', 'dark:text-slate-400', 'font-medium');
+            }
+        }
+
+        choiceClient.addEventListener('click', () => { esTrabajador = false; updateToggle(); });
+        choiceWorker.addEventListener('click', () => { esTrabajador = true; updateToggle(); });
+
         document.getElementById('registerForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const nombre = document.getElementById('nombre').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            // Podrías agregar el campo esTrabajador si el usuario lo selecciona en la UI
 
             try {
+                // Estado de carga
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Creando cuenta...';
+
                 // 1. Crear usuario en Firebase Auth
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 const user = userCredential.user;
@@ -206,20 +234,25 @@
                         uid: user.uid,
                         nombre,
                         email,
-                        esTrabajador: false // Valor por defecto o dinámico
+                        esTrabajador: esTrabajador
                     })
                 });
 
                 if (response.ok) {
-                    alert('Registro exitoso de ' + user.email + '. Por favor inicia sesión.');
+                    alert('¡Bienvenido a BEO! Tu cuenta ha sido creada exitosamente.');
                     window.location.href = '/login';
                 } else {
                     const errorData = await response.json();
                     alert('Error al guardar datos de perfil: ' + errorData.error);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
                 }
             } catch (error) {
                 console.error('Error de registro:', error);
                 alert('Error al crear cuenta: ' + error.message);
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Crea una Cuenta <span class="material-symbols-outlined">arrow_forward</span>';
             }
         });
     </script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>B E O - Buscar Trabajadores</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/tailwind-config.js"></script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen">
+    <%- include('../../Partials/header') %>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="mb-10 text-center">
+            <h1 class="text-4xl font-black text-primary mb-2">Buscando Trabajadores</h1>
+            <p class="text-slate-500">Resultados para: <span class="font-bold text-slate-800 dark:text-white">"<%= query %>"</span></p>
+        </div>
+
+        <div id="usersResultsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Los resultados se cargarán aquí vía JS -->
+            <div class="col-span-full flex flex-col items-center py-20 opacity-50">
+                <span class="material-symbols-outlined text-6xl mb-4 animate-pulse">search</span>
+                <p class="text-xl font-medium">Buscando talento...</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('usersResultsContainer');
+            const query = '<%= query %>';
+
+            if (!query) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <p class="text-slate-500 italic">No se ingresó ningún término de búsqueda.</p>
+                        <a href="/" class="text-primary font-bold mt-4 inline-block underline">Volver al inicio</a>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/users/search?q=${encodeURIComponent(query)}`);
+                const users = await response.json();
+
+                if (!Array.isArray(users) || users.length === 0) {
+                    container.innerHTML = `
+                        <div class="col-span-full text-center py-20">
+                            <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">person_search</span>
+                            <p class="text-xl font-medium text-slate-500">No encontramos trabajadores con ese nombre.</p>
+                            <p class="text-slate-400 mt-2">Prueba con otro nombre o término.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const cards = await Promise.all(users.map(async (user) => {
+                    // Intentamos obtener la URL de imagen procesada para cada uno
+                    let imageUrl = '/Images/default-avatar.png';
+                    try {
+                        const imgRes = await fetch(`/api/profile/${user.uid}/image-url`);
+                        if (imgRes.ok) {
+                            const imgData = await imgRes.json();
+                            imageUrl = imgData.url;
+                        }
+                    } catch (e) {}
+
+                    return `
+                        <a href="/perfil/${user.uid}" class="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 flex flex-col items-center text-center shadow-sm hover:shadow-xl hover:border-primary/30 transition-all">
+                            <div class="size-24 rounded-full overflow-hidden border-4 border-slate-50 dark:border-slate-800 mb-4 group-hover:scale-110 transition-transform shadow-md">
+                                <img src="${imageUrl}" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold group-hover:text-primary transition-colors">${user.nombre}</h3>
+                            <div class="mt-2 flex items-center gap-1.5 bg-primary/5 text-primary px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                                <span class="material-symbols-outlined text-sm font-bold">verified</span> ${user.esTrabajador ? 'Trabajador' : 'Usuario'}
+                            </div>
+                            <div class="mt-6 w-full py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-slate-500 text-sm font-bold group-hover:bg-primary group-hover:text-white transition-all">
+                                Ver Perfil
+                            </div>
+                        </a>
+                    `;
+                }));
+
+                container.innerHTML = cards.join('');
+
+            } catch (error) {
+                console.error('Error fetching users:', error);
+                container.innerHTML = '<div class="col-span-full text-center py-20 text-red-500 font-bold">Error al conectar con el servidor.</div>';
+            }
+        });
+    </script>
+
+    <%- include('../../Partials/footer') %>
+</body>
+</html>

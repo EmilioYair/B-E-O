@@ -336,34 +336,54 @@
         }
 
         async function submitForm() {
+            const submitBtn = document.querySelector('#wizardForm button[type="submit"]');
+            const originalContent = submitBtn.innerHTML;
+            
             const termsBox = document.getElementById('terms');
             if (!termsBox.checked) {
                 alert('Debes aceptar los términos y condiciones antes de publicar.');
                 return;
             }
 
-            const formData = new FormData(document.getElementById('wizardForm'));
+            const formElement = document.getElementById('wizardForm');
+            const formData = new FormData(formElement);
+            
             const imageFile = document.getElementById('serviceImage');
             if (imageFile && imageFile.files[0]) {
-                formData.append('imagen', imageFile.files[0]);
+                formData.set('imagen', imageFile.files[0]);
+            }
+
+            const precioInput = formElement.querySelector('[name="precioBase"]');
+            if (precioInput) {
+                formData.set('precioBase', precioInput.value.replace(/[^0-9.]/g, ''));
             }
 
             try {
+                // Estado de carga
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Publicando...';
+                
+                console.log('Enviando datos del servicio...');
                 const response = await fetch('/api/services', {
                     method: 'POST',
                     body: formData
                 });
                 
+                const result = await response.json();
+                
                 if (!response.ok) {
-                    const errorMsg = await response.json();
-                    throw new Error(errorMsg.error || 'Error del servidor');
+                    throw new Error(result.error || 'Error desconocido en el servidor');
                 }
                 
-                alert('¡Servicio publicado con éxito!');
+                alert('¡Felicidades! Tu servicio ha sido publicado con éxito.');
                 window.location.href = '/publicaciones';
             } catch (error) {
-                console.error('Error:', error);
-                alert('Ocurrió un error en el servidor o al enviar la forma');
+                console.error('Error al publicar:', error);
+                alert('No se pudo publicar el servicio: ' + error.message);
+                
+                // Restaurar botón
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalContent;
             }
         }
     </script>

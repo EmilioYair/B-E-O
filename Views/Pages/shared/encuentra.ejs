@@ -93,9 +93,14 @@
                         <h4 class="text-[10px] font-bold text-slate-400 uppercase mb-2">Descripción del servicio</h4>
                         <p id="modalDesc" class="text-slate-600 text-sm leading-relaxed mb-8"></p>
                     </div>
-                    <button id="modalChatBtn" class="w-full bg-[#00797a] text-white py-4 rounded-2xl font-bold hover:brightness-110 flex items-center justify-center gap-2 active:scale-95 transition-all">
-                        <span class="material-symbols-outlined">chat</span> Contactar Trabajador
-                    </button>
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <button id="modalChatBtn" class="bg-primary/10 text-primary py-4 rounded-2xl font-bold hover:bg-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined">chat</span> Contactar
+                        </button>
+                        <button id="modalHireBtn" class="bg-primary text-white py-4 rounded-2xl font-bold hover:brightness-110 flex items-center justify-center gap-2 active:scale-95 transition-all shadow-lg shadow-primary/20">
+                            <span class="material-symbols-outlined">verified</span> Contratar Ahora
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,11 +110,54 @@
         let currentFilters = { categoria: '', ubicacion: '', precio: '' };
         function closeModal() { document.getElementById('serviceModal').classList.add('hidden'); }
 
+        async function hireService(id, workerId, titulo, precio) {
+            if (!confirm(`¿Estás seguro que deseas contratar el servicio "${titulo}"?`)) return;
+            
+            try {
+                const response = await fetch('/api/services/hire', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ serviceId: id, workerId, titulo, precio })
+                });
+
+                if (response.ok) {
+                    alert('¡Contratación registrada! El trabajador ha sido notificado.');
+                    window.location.href = '/dashboard';
+                } else {
+                    const err = await response.json();
+                    alert('Error: ' + (err.error || 'No se pudo procesar'));
+                }
+            } catch (error) {
+                alert('Error al conectar con el servidor');
+            }
+        }
+
         async function fetchServices() {
             const listContainer = document.getElementById('servicesList');
+            const urlParams = new URLSearchParams(window.location.search);
+            const q = urlParams.get('q') || '';
+            const category = urlParams.get('categoria') || '';
+            const location = urlParams.get('ubicacion') || '';
+
             try {
-                const response = await fetch(`/api/services`);
+                let apiUrl = `/api/services?`;
+                if (q) apiUrl += `q=${encodeURIComponent(q)}&`;
+                if (category) apiUrl += `categoria=${encodeURIComponent(category)}&`;
+                if (location) apiUrl += `ubicacion=${encodeURIComponent(location)}`;
+
+                const response = await fetch(apiUrl);
                 let services = await response.json();
+                
+                if (!Array.isArray(services) || services.length === 0) {
+                    listContainer.innerHTML = `
+                        <div class="col-span-full text-center py-20 bg-white rounded-xl border border-[#e8f2f3]">
+                            <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">search_off</span>
+                            <p class="text-xl font-medium text-slate-500">No encontramos servicios que coincidan.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
                 listContainer.innerHTML = services.map(service => {
                     const serviceString = encodeURIComponent(JSON.stringify(service));
                     return `
@@ -147,12 +195,15 @@
 
             // REDIRECCIÓN CON ID
             document.getElementById('modalChatBtn').onclick = () => {
-                if (s.workerId) {
-                    window.location.href = `/mensajes?chatWith=${s.workerId}`;
-                } else {
-                    alert("ID del trabajador no encontrado.");
-                }
+                if (s.workerId) { window.location.href = `/mensajes?chatWith=${s.workerId}`; }
+                else { alert("ID del trabajador no encontrado."); }
             };
+
+            // BOTOTAL DE CONTRATACIÓN
+            document.getElementById('modalHireBtn').onclick = () => {
+                hireService(s.id, s.workerId, s.titulo, s.precioBase);
+            };
+
             document.getElementById('serviceModal').classList.remove('hidden');
         }
         document.addEventListener('DOMContentLoaded', fetchServices);

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>B E O - Publicar Búsqueda</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/main.css">
+    <script id="tailwind-config">
+        tailwind.config = { theme: { extend: { colors: { "primary": "#117278", "bg-light": "#f6f8f8" }, fontFamily: { "display": ["Inter"] } } } }
+    </script>
+</head>
+<body class="bg-bg-light font-display">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <%- include('../../Partials/header') %>
+        
+        <main class="flex-1 flex flex-col items-center py-10 px-6">
+            <div class="max-w-3xl w-full">
+                <div class="mb-10 text-center">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">Post de Cliente</span>
+                    <h1 class="text-4xl font-black text-slate-900 tracking-tight">¿Qué servicio estás buscando?</h1>
+                    <p class="text-slate-500 mt-2 text-lg">Describe lo que necesitas y los profesionales de San Juan del Río te contactarán.</p>
+                </div>
+
+                <form id="requestForm" class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 flex flex-col gap-8">
+                    <!-- Título -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-bold text-slate-700 ml-1">Título de tu solicitud</label>
+                        <input name="titulo" type="text" placeholder="Ej: Busco plomero para fuga en cocina" required
+                            class="rounded-2xl border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary h-14 px-5 transition-all text-lg">
+                    </div>
+
+                    <!-- Categoría y Presupuesto -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Categoría</label>
+                            <select name="categoria" required class="rounded-2xl border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary h-14 px-5 transition-all">
+                                <option value="" disabled selected>Selecciona un oficio</option>
+                                <option value="Plomería">Plomería</option>
+                                <option value="Electricidad">Electricidad</option>
+                                <option value="Albañilería">Albañilería</option>
+                                <option value="Carpintería">Carpintería</option>
+                                <option value="Mecánica">Mecánica</option>
+                                <option value="Herrería">Herrería</option>
+                                <option value="Limpieza">Limpieza</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Presupuesto Estimado (MXN)</label>
+                            <input name="presupuesto" type="number" placeholder="Ej: 500"
+                                class="rounded-2xl border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary h-14 px-5 transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Ubicación -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-bold text-slate-700 ml-1">Ubicación (En San Juan del Río)</label>
+                        <select name="ubicacion" required class="rounded-2xl border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary h-14 px-5 transition-all">
+                            <option value="Zona Centro">Zona Centro</option>
+                            <option value="Zona Oriente">Zona Oriente</option>
+                            <option value="Zona Poniente">Zona Poniente</option>
+                            <option value="Banhi">Banhi</option>
+                            <option value="San Cayetano">San Cayetano</option>
+                            <option value="Lomas de San Juan">Lomas de San Juan</option>
+                        </select>
+                    </div>
+
+                    <!-- Descripción -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-bold text-slate-700 ml-1">Detalles de lo que necesitas</label>
+                        <textarea name="descripcion" required rows="5" placeholder="Cuéntanos más detalles para que los profesionales entiendan mejor tu problema..."
+                            class="rounded-2xl border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary p-5 transition-all resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn"
+                        class="mt-4 bg-primary text-white h-16 rounded-2xl font-black text-xl hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3">
+                        <span class="material-symbols-outlined">send</span>
+                        Publicar Solicitud
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const form = document.getElementById('requestForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Publicando...';
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/api/requests', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('¡Búsqueda publicada con éxito!');
+                    window.location.href = '/dashboard';
+                } else {
+                    const err = await response.json();
+                    alert('Error: ' + (err.error || 'No se pudo publicar'));
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Ocurrió un error inesperado');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Publicar Solicitud';
+            }
+        };
+    </script>
+</body>
+</html>

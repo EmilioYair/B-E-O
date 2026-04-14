@@ -1,7 +1,7 @@
-const { auth } = require('../bd/bd');
+const { auth, db } = require('../bd/bd');
 
 /**
- * Middleware para adjuntar el usuario decodificado a res.locals.user
+ * Middleware para adjuntar el usuario decodificado y sus datos de Firestore a res.locals.user
  * No bloquea la petición, solo provee el estado a las plantillas EJS
  */
 const attachUser = async (req, res, next) => {
@@ -11,8 +11,20 @@ const attachUser = async (req, res, next) => {
     if (sessionCookie) {
         try {
             const decodedClaims = await auth.verifySessionCookie(sessionCookie, true);
-            req.user = decodedClaims;
-            res.locals.user = decodedClaims;
+            
+            // 1. Obtener datos adicionales de Firestore para tener el rol (esTrabajador) y el nombre real en todas las páginas
+            const userDoc = await db.collection('users').doc(decodedClaims.uid).get();
+            const userData = userDoc.exists ? userDoc.data() : {};
+
+            // 2. Fusionar datos de Auth y Firestore
+            const fullUser = {
+                ...decodedClaims,
+                ...userData,
+                uid: decodedClaims.uid // Asegurar que el uid se mantenga
+            };
+
+            req.user = fullUser;
+            res.locals.user = fullUser;
         } catch (error) {
             // Ignorar el error (sesión expirada o inválida), se queda como nulo
         }
